@@ -204,7 +204,70 @@
     }
 
     /* --------------------------------------------------
-       4. Project Sections (Team & Individual)
+       4. Skills & Tools Section (Vision 아래 추가 영역)
+       -------------------------------------------------- */
+    .skills-section {
+      margin-top: 10px;
+    }
+
+    .skills-section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text-main);
+    }
+
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .skills-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90px;
+    }
+
+    .skill-icon-box {
+      width: 90px;
+      height: 100px;
+      background-color: #cbd5e1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 1.1rem;
+      overflow: hidden;
+    }
+
+    .skill-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .skill-card span {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    /* --------------------------------------------------
+       5. Project Sections (Team & Individual)
        -------------------------------------------------- */
     .section-container {
       max-width: var(--max-width);
@@ -228,14 +291,12 @@
       background-color: var(--border-color);
     }
 
-    /* Team Project Grid */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
 
-    /* Individual Project Grid */
     .indiv-grid-top {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -287,7 +348,7 @@
     }
 
     /* --------------------------------------------------
-       5. Contact & Footer
+       6. Contact & Footer
        -------------------------------------------------- */
     .contact-section {
       background-color: var(--bg-card);
@@ -372,7 +433,6 @@
       <!-- Profile Sidebar -->
       <div class="profile-card">
         <div class="media-box profile-img">
-          <!-- 실제 프로필 이미지나 GIF 경로로 변경 가능 -->
           <span>인물 사진 GIF</span>
         </div>
         <div class="info-list">
@@ -400,10 +460,6 @@
             <h4>EXP</h4>
             <p>2025.09-2026.04 경일게임 아카데미 (생성 AI 활용한 게임기획 부트캠프)<br>2024.01-2024.06 MBC아카데미 컴퓨터교육센터</p>
           </div>
-          <div class="info-item">
-            <h4>Skills & Tools</h4>
-            <p>Adobe 디자인 툴 사용가능</p>
-          </div>
         </div>
       </div>
 
@@ -429,10 +485,70 @@
           </div>
         </div>
 
+        <!-- Vision Box -->
         <div class="vision-box">
           <h3>Vision</h3>
           <p>AI와 다방면의 스킬셋을 접목해 아이디어를 빠르게 시각화·구현하고, 팀원들과의 정교한 소통으로 하나의 명확한 비전을 향해 달려가는 개발 환경을 만들겠습니다.</p>
         </div>
+
+        <!-- Skills & Tools Section (Vision 바로 밑) -->
+        <div class="skills-section">
+          <h2>Skills & Tools</h2>
+          <div class="skills-container">
+            <!-- First Row (6 Icons) -->
+            <div class="skills-row">
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+            </div>
+
+            <!-- Second Row (5 Icons) -->
+            <div class="skills-row">
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon-box">Gif</div>
+                <span>text</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -464,7 +580,6 @@
   <section id="indiv-project" class="section-container">
     <h2 class="section-title">PROJECT Individual</h2>
     
-    <!-- Top Row (4 Cards) -->
     <div class="indiv-grid-top">
       <div class="project-card">
         <div class="media-box">Gif</div>
@@ -484,7 +599,6 @@
       </div>
     </div>
 
-    <!-- Bottom Row (3 Cards) -->
     <div class="indiv-grid-bottom">
       <div class="project-card">
         <div class="media-box">Gif</div>
@@ -501,7 +615,7 @@
     </div>
   </section>
 
-  <!-- Contact & Resume Section -->
+  <!-- Contact Section -->
   <section id="contact" class="contact-section">
     <div class="contact-container">
       <h2 style="font-size: 1.8rem; font-weight: 700;">CONTACT</h2>
