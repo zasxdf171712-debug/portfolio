@@ -99,7 +99,7 @@
     }
 
     /* ==================================================
-       3. 메인 컨텐츠 레이아웃
+       3. 메인 컨텐츠 레이아웃 & 구분선
        ================================================== */
     main {
       max-width: var(--max-width);
@@ -107,21 +107,23 @@
       padding: 20px 20px 0px;
     }
 
+    /* About 섹션과 Project 섹션을 확실히 분리해주는 초록색 바 */
     .divider-line {
       width: 100%;
-      height: 2px;
+      height: 3px;
       background-color: var(--accent-green);
       margin: 50px 0;
+      border-radius: 2px;
     }
 
     /* ==================================================
-       4. About 섹션 (최상단 첫번째 위치)
+       4. About 섹션 (등장 애니메이션 & 라인 맞춤)
        ================================================== */
     .about-section {
       padding-bottom: 20px;
     }
 
-    /* 메인 헤드라인 (가운데 정렬, 녹색 + 나하준 검정색) */
+    /* [애니메이션 1] 메인 헤드라인: 아래에서 위로 부드럽게 등장 */
     .about-headline {
       font-size: 1.6rem;
       font-weight: 800;
@@ -130,43 +132,70 @@
       text-align: center;
       margin-bottom: 45px;
       word-break: keep-all;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
     }
 
     .about-headline span.black-text {
       color: #000000;
     }
 
-    /* 상단 비주얼 영역 (좌측 텍스트/이력 + 우측 사선 이미지) */
     .about-top-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 20px;
-      align-items: start;
+      gap: 24px;
+      align-items: stretch; /* 좌우 높이를 맞추어 하단 라인 정렬 */
     }
 
-    /* INFO 타이틀 */
+    .about-left-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* INFO 상단 ~ Skills 하단 라인 맞춤 */
+    }
+
+    /* INFO 타이틀 & 밑줄 초록 바 */
+    .info-header {
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
     .info-section-title {
       font-size: 1.5rem;
       font-weight: 900;
       color: #000000;
-      margin-bottom: 20px;
       letter-spacing: 0.5px;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 6px;
     }
 
-    /* 이력/스펙 2열 배치 (좌측 정렬) */
+    /* INFO 밑 초록색 바 */
+    .info-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-width: 200px;
+      height: 3px;
+      background-color: var(--accent-green);
+      border-radius: 2px;
+    }
+
+    /* 이력/스펙 2열 배치 */
     .info-columns {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
       gap: 20px;
-      margin-bottom: 30px;
-      text-align: left; /* 텍스트 좌정렬 */
+      margin-bottom: 24px;
+      text-align: left;
     }
 
     .info-block {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    /* 항목 제목: 녹색 */
     .info-block h4 {
       font-size: 1.05rem;
       font-weight: 800;
@@ -174,51 +203,48 @@
       margin-bottom: 4px;
     }
 
-    /* 항목 본문: 얇은 검정색 */
     .info-block p {
       font-size: 0.85rem;
       color: #222222;
       line-height: 1.5;
       white-space: pre-line;
-      font-weight: 400; /* 얇은 폰트 */
+      font-weight: 400;
     }
 
-    /* Skills & Tools */
+    /* Skills & Tools (하단 라인 맞춤) */
     .skills-section {
-      margin-top: 20px;
-      text-align: center;
+      text-align: left;
+      margin-top: auto; /* 우측 사진 하단과 밑라인 정렬 */
     }
 
     .skills-title {
       font-size: 1.35rem;
       font-weight: 800;
-      color: var(--text-black);
-      margin-bottom: 14px;
+      color: var(--point-green);
+      margin-bottom: 12px;
     }
 
     .skills-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      align-items: center;
+      gap: 10px;
     }
 
     .skills-row {
       display: flex;
       gap: 10px;
-      justify-content: center;
     }
 
     .skill-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 46px;
+      width: 44px;
     }
 
     .skill-box {
-      width: 46px;
-      height: 52px;
+      width: 44px;
+      height: 48px;
       background-color: var(--card-bg);
       border-radius: 4px;
       display: flex;
@@ -236,18 +262,19 @@
     }
 
     .skill-item span {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: #333;
       margin-top: 4px;
     }
 
-    /* 우측 사선 인물 사진 GIF */
+    /* [애니메이션 2] 우측 직사각형 인물 사진 GIF: 오른쪽에서 왼쪽으로 등장 */
     .about-media-wrapper {
       width: 100%;
-      height: 560px;
+      height: 100%;
+      min-height: 520px;
       background-color: var(--card-bg);
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+      border-radius: 12px; /* 직사각형 처리 및 살짝 라운딩 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -255,6 +282,9 @@
       font-weight: 700;
       color: #222;
       overflow: hidden;
+      opacity: 0;
+      transform: translateX(40px);
+      animation: fadeInRight 0.8s ease-out 0.3s forwards; /* 0.3초 딜레이 후 등장 */
     }
 
     .about-media-wrapper img {
@@ -265,10 +295,10 @@
 
     /* 하단 강점 3개 */
     .strengths-container {
-      margin-top: 60px;
+      margin-top: 50px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 36px;
     }
 
     .strengths-row-top {
@@ -342,7 +372,7 @@
     }
 
     .team-section {
-      margin-bottom: 100px;
+      margin-bottom: 80px;
     }
 
     .project-grid-2x2 {
@@ -718,15 +748,40 @@
       cursor: pointer;
     }
 
+    /* ==================================================
+       8. 애니메이션 Keyframes 정의
+       ================================================== */
+    /* 아래에서 위로 등장 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 오른쪽에서 왼쪽으로 등장 */
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     /* 모바일 반응형 */
     @media (max-width: 768px) {
       .about-top-grid {
         grid-template-columns: 1fr;
       }
       .about-media-wrapper {
-        height: 300px;
-        clip-path: none;
-        border-radius: 16px;
+        min-height: 320px;
       }
       .strengths-row-top {
         grid-template-columns: 1fr;
@@ -764,60 +819,63 @@
   <main id="home">
 
     <!-- ==================================================
-         1. About Section (순서 변경: 최상단으로 이동)
+         1. About Section (최상단)
          ================================================== -->
     <section class="about-section" id="about">
       
-      <!-- 메인 헤드라인 (가운데 정렬 + 나하준 이름 검정색) -->
+      <!-- 메인 헤드라인 (아래 ➔ 위 슬라이드 등장 애니메이션) -->
       <h2 class="about-headline">
         “생성형AI와 넓은 실무 스펙트럼으로<br>
         기획을 완성하는 게임 디자이너 <span class="black-text">나하준</span>입니다.”
       </h2>
 
       <div class="about-top-grid">
-        <!-- Left Info Content -->
-        <div>
-          <!-- INFO 타이틀 -->
-          <h3 class="info-section-title">INFO</h3>
+        <!-- Left Content -->
+        <div class="about-left-content">
+          <div>
+            <!-- INFO 타이틀 & 하단 초록 바 -->
+            <div class="info-header">
+              <h3 class="info-section-title">INFO</h3>
+            </div>
 
-          <!-- 이력/스펙 (텍스트 좌정렬, 제목 녹색, 본문 얇은 검정색) -->
-          <div class="info-columns">
-            <div>
-              <div class="info-block">
-                <h4>Birth</h4>
-                <p>1997.09.18</p>
-              </div>
-              <div class="info-block">
-                <h4>Residence</h4>
-                <p>충청남도 아산시</p>
-              </div>
-              <div class="info-block">
-                <h4>Education</h4>
-                <p>2022 – 2024
+            <!-- 이력/스펙 -->
+            <div class="info-columns">
+              <div>
+                <div class="info-block">
+                  <h4>Birth</h4>
+                  <p>1997.09.18</p>
+                </div>
+                <div class="info-block">
+                  <h4>Residence</h4>
+                  <p>충청남도 아산시</p>
+                </div>
+                <div class="info-block">
+                  <h4>Education</h4>
+                  <p>2022 – 2024
 동아방송예술대학교
 • K-POP전공
 
 2020–2022
 강동대학교
 • K-pop댄스전공</p>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <div class="info-block">
-                <h4>Military</h4>
-                <p>2018.06 – 2020.02
+              <div>
+                <div class="info-block">
+                  <h4>Military</h4>
+                  <p>2018.06 – 2020.02
 27사단 79연대 수색중대
 병장 만기 전역</p>
-              </div>
-              <div class="info-block">
-                <h4>Certificate</h4>
-                <p>2024.05
+                </div>
+                <div class="info-block">
+                  <h4>Certificate</h4>
+                  <p>2024.05
 GTQ 그래픽 기술자격 1급</p>
-              </div>
-              <div class="info-block">
-                <h4>EXP</h4>
-                <p>2025.09 ~ 2026. 04
+                </div>
+                <div class="info-block">
+                  <h4>EXP</h4>
+                  <p>2025.09 ~ 2026. 04
 경일게임IT아카데미(디벨로켓)
 • 생성형 AI를 활용한
 게임기획 부트캠프
@@ -825,11 +883,12 @@ GTQ 그래픽 기술자격 1급</p>
 2024.01 ~ 2024.06
 MBC아카데미 컴퓨터교육센터
 • Adobe 디자인 툴 사용가능</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Skills & Tools -->
+          <!-- Skills & Tools (우측 직사각형 하단과 정확히 밑라인 맞춤) -->
           <div class="skills-section">
             <h3 class="skills-title">Skills & Tools</h3>
             <div class="skills-container">
@@ -853,7 +912,7 @@ MBC아카데미 컴퓨터교육센터
 
         </div>
 
-        <!-- Right Slanted Media -->
+        <!-- Right Rectangle Media (오른쪽 ➔ 왼쪽 슬라이드 등장) -->
         <div class="about-media-wrapper">
           <!-- <img src="images/profile.gif" alt="인물 사진 GIF"> -->
           <span>인물 사진 GIF</span>
@@ -884,6 +943,7 @@ MBC아카데미 컴퓨터교육센터
 
     </section>
 
+    <!-- About 섹션과 Project 문단을 나눠주는 구분선 바 -->
     <div class="divider-line"></div>
 
     <!-- ==================================================
