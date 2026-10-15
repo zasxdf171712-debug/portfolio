@@ -15,6 +15,7 @@
       --point-green: #22c55e;       /* 텍스트/Vision용 주요 초록색 */
       --vision-bg: #e8f8ec;         /* Vision 박스 연초록 배경 */
       --card-bg: #d9d9d9;           /* GIF/이미지 플레이스홀더 회색 */
+      --popup-bg: #e5e5e5;          /* 팝업창 회색 배경 */
       --max-width: 960px;           /* 전체 레이아웃 최대 너비 */
       --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
@@ -30,6 +31,11 @@
       color: var(--text-black);
       font-family: var(--font-family);
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* 팝업이 열렸을 때 뒤쪽 스크롤 방지 */
+    body.modal-open {
+      overflow: hidden;
     }
 
     a {
@@ -146,7 +152,7 @@
     }
 
     /* ==================================================
-       4. PROJECT 카드 & 마우스 오버(Hover) 수정
+       4. PROJECT 카드 & 마우스 오버(Hover) 스타일
        ================================================== */
     .team-section {
       margin-bottom: 100px;
@@ -165,7 +171,6 @@
       position: relative;
     }
 
-    /* 이미지/GIF 프레임 */
     .card-media {
       width: 100%;
       height: 250px;
@@ -188,7 +193,6 @@
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
     }
 
-    /* 오버레이 (마우스 오버 시 나타나는 검은색 선형 그라데이션) */
     .card-overlay {
       position: absolute;
       top: 0;
@@ -207,13 +211,11 @@
       z-index: 5;
     }
 
-    /* 마우스 오버 시 오버레이 노출 */
     .card-media:hover .card-overlay {
       opacity: 1;
       visibility: visible;
     }
 
-    /* 좌측 텍스트 그룹 (Game Text, Text2) */
     .overlay-text-group {
       display: flex;
       flex-direction: column;
@@ -239,7 +241,6 @@
       opacity: 0.85;
     }
 
-    /* 우측 하단 스킬/툴 배지 */
     .overlay-skills {
       display: flex;
       gap: 8px;
@@ -272,7 +273,6 @@
       object-fit: cover;
     }
 
-    /* 평소 카드 아래에 나타나는 외부 타이틀 */
     .card-title-external {
       margin-top: 14px;
       font-size: 1.2rem;
@@ -287,7 +287,6 @@
       transform: translateY(-6px);
     }
 
-    /* Individual 카드 */
     .individual-section {
       display: flex;
       flex-direction: column;
@@ -354,7 +353,6 @@
       font-weight: 600;
     }
 
-    /* Skills & Tools */
     .skills-section {
       margin-top: 20px;
       text-align: center;
@@ -413,7 +411,6 @@
       margin-top: 4px;
     }
 
-    /* 우측 사선 인물 사진 GIF */
     .about-media-wrapper {
       width: 100%;
       height: 560px;
@@ -434,7 +431,6 @@
       object-fit: cover;
     }
 
-    /* 하단 강점 3개 */
     .strengths-container {
       margin-top: 60px;
       display: flex;
@@ -474,7 +470,7 @@
     }
 
     /* ==================================================
-       6. Vision 섹션
+       6. Vision & CONTACT
        ================================================== */
     .vision-section {
       padding: 60px 0 20px;
@@ -508,9 +504,6 @@
       margin: 0 auto;
     }
 
-    /* ==================================================
-       7. CONTACT 섹션
-       ================================================== */
     .contact-section {
       padding: 40px 0 80px;
       text-align: center;
@@ -569,6 +562,150 @@
       opacity: 0.85;
     }
 
+    /* ==================================================
+       7. 모달 팝업 스타일 (Modal Popup)
+       ================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* 팝업 활성화 시 스타일 */
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 중앙 팝업창 바디 */
+    .modal-window {
+      width: 100%;
+      max-width: 650px;
+      max-height: 88vh;
+      background-color: var(--popup-bg);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-window {
+      transform: scale(1);
+    }
+
+    /* 우측 상단 닫기(X) 버튼 */
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #000;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background-color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* 팝업 내부 헤더 */
+    .modal-header h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 6px;
+    }
+
+    .modal-header p {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    /* PV 영상 또는 GIF 영역 */
+    .modal-media-box {
+      width: 100%;
+      height: 280px;
+      background-color: #333;
+      border: 2px solid #000;
+      margin: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      overflow: hidden;
+    }
+
+    .modal-media-box video, .modal-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 팝업 하단 세부 기획 텍스트 */
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .modal-section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #000;
+    }
+
+    .modal-sub-block h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 4px;
+    }
+
+    .modal-sub-block p {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .pdf-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
     /* 모바일 반응형 */
     @media (max-width: 768px) {
       .about-top-grid {
@@ -584,6 +721,12 @@
       }
       .project-grid-2x2 {
         grid-template-columns: 1fr;
+      }
+      .modal-window {
+        padding: 20px;
+      }
+      .modal-media-box {
+        height: 200px;
       }
     }
   </style>
@@ -618,7 +761,7 @@
 
       <div class="project-grid-2x2">
         <!-- Team Card 1 -->
-        <div class="project-card">
+        <div class="project-card" onclick="openModal('modal-team-1')">
           <div class="card-media">
             <!-- <img src="images/team1.gif" alt="Game Text1"> -->
             <div class="card-overlay">
@@ -636,7 +779,7 @@
         </div>
 
         <!-- Team Card 2 -->
-        <div class="project-card">
+        <div class="project-card" onclick="openModal('modal-team-2')">
           <div class="card-media">
             <!-- <img src="images/team2.gif" alt="Game Text2"> -->
             <div class="card-overlay">
@@ -654,7 +797,7 @@
         </div>
 
         <!-- Team Card 3 -->
-        <div class="project-card">
+        <div class="project-card" onclick="openModal('modal-team-3')">
           <div class="card-media">
             <!-- <img src="images/team3.gif" alt="Game Text3"> -->
             <div class="card-overlay">
@@ -672,7 +815,7 @@
         </div>
 
         <!-- Team Card 4 -->
-        <div class="project-card">
+        <div class="project-card" onclick="openModal('modal-team-4')">
           <div class="card-media">
             <!-- <img src="images/team4.gif" alt="Game Text4"> -->
             <div class="card-overlay">
@@ -700,7 +843,7 @@
       </div>
 
       <div class="single-card-wrapper">
-        <div class="project-card">
+        <div class="project-card" onclick="openModal('modal-indiv-1')">
           <div class="card-media">
             <!-- <img src="images/indiv1.gif" alt="Game Text1"> -->
             <div class="card-overlay">
@@ -855,6 +998,159 @@ MBC아카데미 컴퓨터교육센터
     </section>
 
   </main>
+
+  <!-- ==================================================
+       8. 모달 팝업창 목록 (Modal Containers)
+       ================================================== -->
+
+  <!-- [팝업 1] Team Card 1 전용 모달 -->
+  <div class="modal-overlay" id="modal-team-1" onclick="closeModalOnOverlay(event, 'modal-team-1')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('modal-team-1')">✕</button>
+      
+      <div class="modal-header">
+        <h2>Game Text1</h2>
+        <p>Game Text2</p>
+        <p>Game Text3</p>
+      </div>
+
+      <div class="modal-media-box">
+        <!-- 영상 사용 시: <video src="videos/pv1.mp4" autoplay muted loop playsinline></video> -->
+        <!-- GIF 사용 시: <img src="images/pv1.gif" alt="PV GIF"> -->
+        <span>PV영상 또는 GIF</span>
+      </div>
+
+      <div class="modal-body">
+        <h3 class="modal-section-title">Game Text4</h3>
+        
+        <div class="modal-sub-block">
+          <h4>Game Text5</h4>
+          <p>Game Text 5-1</p>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크1</a>
+        </div>
+
+        <div class="modal-sub-block">
+          <h4>Game Text6</h4>
+          <p>Game Text 6-1</p>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크2</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [팝업 2] Team Card 2 전용 모달 -->
+  <div class="modal-overlay" id="modal-team-2" onclick="closeModalOnOverlay(event, 'modal-team-2')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('modal-team-2')">✕</button>
+      <div class="modal-header">
+        <h2>Game Text2</h2>
+        <p>게임에 대한 서브 설명 영역 2</p>
+      </div>
+      <div class="modal-media-box">
+        <span>PV영상 또는 GIF</span>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-section-title">기획 상세 내용</h3>
+        <div class="modal-sub-block">
+          <h4>기획서 문서 1</h4>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [팝업 3] Team Card 3 전용 모달 -->
+  <div class="modal-overlay" id="modal-team-3" onclick="closeModalOnOverlay(event, 'modal-team-3')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('modal-team-3')">✕</button>
+      <div class="modal-header">
+        <h2>Game Text3</h2>
+        <p>게임에 대한 서브 설명 영역 3</p>
+      </div>
+      <div class="modal-media-box">
+        <span>PV영상 또는 GIF</span>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-section-title">기획 상세 내용</h3>
+        <div class="modal-sub-block">
+          <h4>기획서 문서 1</h4>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [팝업 4] Team Card 4 전용 모달 -->
+  <div class="modal-overlay" id="modal-team-4" onclick="closeModalOnOverlay(event, 'modal-team-4')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('modal-team-4')">✕</button>
+      <div class="modal-header">
+        <h2>Game Text4</h2>
+        <p>게임에 대한 서브 설명 영역 4</p>
+      </div>
+      <div class="modal-media-box">
+        <span>PV영상 또는 GIF</span>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-section-title">기획 상세 내용</h3>
+        <div class="modal-sub-block">
+          <h4>기획서 문서 1</h4>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [팝업 5] Individual Card 전용 모달 -->
+  <div class="modal-overlay" id="modal-indiv-1" onclick="closeModalOnOverlay(event, 'modal-indiv-1')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('modal-indiv-1')">✕</button>
+      <div class="modal-header">
+        <h2>Individual Game Title</h2>
+        <p>개인 프로젝트 상세 소개</p>
+      </div>
+      <div class="modal-media-box">
+        <span>PV영상 또는 GIF</span>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-section-title">개인 기획서 상세</h3>
+        <div class="modal-sub-block">
+          <h4>상세 기획 링크</h4>
+          <a href="#" target="_blank" class="pdf-link">PDF 링크 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       9. 자바스크립트 (모달 열기/닫기 처리)
+       ================================================== -->
+  <script>
+    // 팝업 열기
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.classList.add('modal-open'); // 뒤쪽 배경 스크롤 락
+      }
+    }
+
+    // 팝업 닫기 (버튼 클릭)
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    // 팝업 바깥 어두운 배경 클릭 시 닫기
+    function closeModalOnOverlay(event, modalId) {
+      if (event.target.classList.contains('modal-overlay')) {
+        closeModal(modalId);
+      }
+    }
+  </script>
 
 </body>
 </html>
