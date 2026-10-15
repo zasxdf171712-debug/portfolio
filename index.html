@@ -138,7 +138,6 @@
       margin-top: 8px;
     }
 
-    /* 구획 나눔 연초록 밑줄 공통 클래스 */
     .divider-line {
       width: 100%;
       height: 2px;
@@ -147,7 +146,7 @@
     }
 
     /* ==================================================
-       4. PROJECT Team & Individual
+       4. PROJECT 카드 & 마우스 오버(Hover) 스타일
        ================================================== */
     .team-section {
       margin-bottom: 100px;
@@ -163,19 +162,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
+    /* 이미지/GIF 담는 프레임 */
     .card-media {
       width: 100%;
-      height: 240px;
+      height: 250px;
       background-color: var(--card-bg);
       border-radius: 24px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 1.1rem;
+      position: relative;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
+      cursor: pointer;
+      z-index: 1;
     }
 
     .card-media img {
@@ -184,14 +184,110 @@
       object-fit: cover;
     }
 
-    .card-title {
+    /* 1. 마우스 오버 시 카드 전체 확대 및 그림자 효과 */
+    .card-media:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+    }
+
+    /* 2. 아래에서 위로 어두워지는 Linear-Gradient 오버레이 */
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-media:hover .card-overlay {
+      opacity: 1;
+    }
+
+    /* 3. 오버레이 내 좌측 텍스트 (Game Text1, Text2) */
+    .overlay-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transform: translateY(15px);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .card-media:hover .overlay-text-group {
+      transform: translateY(0);
+    }
+
+    .overlay-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .overlay-subtitle {
+      font-size: 0.9rem;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    /* 4. 오버레이 내 우측 하단 스킬&툴 아이콘 그룹 */
+    .overlay-skills {
+      display: flex;
+      gap: 8px;
+      transform: translateY(15px);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .card-media:hover .overlay-skills {
+      transform: translateY(0);
+    }
+
+    .skill-badge {
+      width: 36px;
+      height: 36px;
+      background-color: #ffffff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #000000;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 평소 카드 아래에 나타나는 외부 타이틀 */
+    .card-title-external {
       margin-top: 14px;
       font-size: 1.2rem;
       font-weight: 700;
       text-align: center;
       color: var(--text-black);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
+    /* 오버 시 외부 타이틀은 자연스럽게 숨김 처리 */
+    .project-card:hover .card-title-external {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    /* Individual 카드 전용 (단일 1개 지정) */
     .individual-section {
       display: flex;
       flex-direction: column;
@@ -201,17 +297,17 @@
 
     .single-card-wrapper {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       margin: 0 auto;
     }
 
     /* ==================================================
-       5. About 섹션 (상/하 연초록 밑줄 포함)
+       5. About 섹션
        ================================================== */
     .about-section {
       margin-top: 40px;
-      border-top: 2px solid var(--accent-green);    /* 상단 연초록 밑줄 */
-      border-bottom: 2px solid var(--accent-green); /* 하단 연초록 밑줄 */
+      border-top: 2px solid var(--accent-green);
+      border-bottom: 2px solid var(--accent-green);
       padding: 40px 0;
     }
 
@@ -378,7 +474,7 @@
     }
 
     /* ==================================================
-       6. Vision 섹션 (가운데 정렬 박스)
+       6. Vision 섹션
        ================================================== */
     .vision-section {
       padding: 60px 0 20px;
@@ -413,7 +509,7 @@
     }
 
     /* ==================================================
-       7. CONTACT 섹션 (모두 가운데 정렬)
+       7. CONTACT 섹션
        ================================================== */
     .contact-section {
       padding: 40px 0 80px;
@@ -444,10 +540,9 @@
     }
 
     .contact-info p span.link-text {
-      color: #2563eb; /* 이메일 파란색 링크 효과 */
+      color: #2563eb;
     }
 
-    /* RESUME 버튼 영역 */
     .resume-wrapper {
       display: flex;
       align-items: center;
@@ -474,9 +569,7 @@
       opacity: 0.85;
     }
 
-    /* ==================================================
-       8. 모바일 반응형
-       ================================================== */
+    /* 모바일 반응형 */
     @media (max-width: 768px) {
       .about-top-grid {
         grid-template-columns: 1fr;
@@ -524,29 +617,76 @@
       </div>
 
       <div class="project-grid-2x2">
+        <!-- Team Card 1 -->
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/team1.gif" alt="Game Text1"> -->
+            <div class="card-overlay">
+              <div class="overlay-text-group">
+                <span class="overlay-title">Game Text1</span>
+                <span class="overlay-subtitle">Text2</span>
+              </div>
+              <div class="overlay-skills">
+                <div class="skill-badge">GIF</div>
+                <div class="skill-badge">GIF</div>
+              </div>
+            </div>
           </div>
-          <div class="card-title">Game Text1</div>
+          <div class="card-title-external">Game Text1</div>
         </div>
+
+        <!-- Team Card 2 -->
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/team2.gif" alt="Game Text2"> -->
+            <div class="card-overlay">
+              <div class="overlay-text-group">
+                <span class="overlay-title">Game Text2</span>
+                <span class="overlay-subtitle">Text2</span>
+              </div>
+              <div class="overlay-skills">
+                <div class="skill-badge">GIF</div>
+                <div class="skill-badge">GIF</div>
+              </div>
+            </div>
           </div>
-          <div class="card-title">Game Text2</div>
+          <div class="card-title-external">Game Text2</div>
         </div>
+
+        <!-- Team Card 3 -->
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/team3.gif" alt="Game Text3"> -->
+            <div class="card-overlay">
+              <div class="overlay-text-group">
+                <span class="overlay-title">Game Text3</span>
+                <span class="overlay-subtitle">Text2</span>
+              </div>
+              <div class="overlay-skills">
+                <div class="skill-badge">GIF</div>
+                <div class="skill-badge">GIF</div>
+              </div>
+            </div>
           </div>
-          <div class="card-title">Game Text3</div>
+          <div class="card-title-external">Game Text3</div>
         </div>
+
+        <!-- Team Card 4 -->
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/team4.gif" alt="Game Text4"> -->
           </div>
-          <div class="card-title">Game Text4</div>
+          <div class="card-overlay">
+            <div class="overlay-text-group">
+              <span class="overlay-title">Game Text4</span>
+              <span class="overlay-subtitle">Text2</span>
+            </div>
+            <div class="overlay-skills">
+              <div class="skill-badge">GIF</div>
+              <div class="skill-badge">GIF</div>
+            </div>
+          </div>
+          <div class="card-title-external">Game Text4</div>
         </div>
       </div>
     </section>
@@ -563,19 +703,25 @@
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/indiv1.gif" alt="Game Text1"> -->
+            <div class="card-overlay">
+              <div class="overlay-text-group">
+                <span class="overlay-title">Game Text1</span>
+                <span class="overlay-subtitle">Text2</span>
+              </div>
+              <div class="overlay-skills">
+                <div class="skill-badge">GIF</div>
+                <div class="skill-badge">GIF</div>
+              </div>
+            </div>
           </div>
-          <div class="card-title">Game Text1</div>
+          <div class="card-title-external">Game Text1</div>
         </div>
       </div>
     </section>
 
-    <!-- 3. About Section (위/아래 연초록 밑줄 처리) -->
+    <!-- 3. About Section -->
     <section class="about-section" id="about">
-      
-      <!-- Top Layout -->
       <div class="about-top-grid">
-        
-        <!-- Left Column -->
         <div>
           <h2 class="about-headline">
             “생성형AI와 넓은 실무 스펙트럼으로<br>
@@ -630,11 +776,10 @@ MBC아카데미 컴퓨터교육센터
             </div>
           </div>
 
-          <!-- Skills & Tools (제목 추가 + GIF 위쪽배치) -->
+          <!-- Skills & Tools -->
           <div class="skills-section">
             <h3 class="skills-title">Skills & Tools</h3>
             <div class="skills-container">
-              <!-- Row 1 (5 items) -->
               <div class="skills-row">
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
@@ -642,7 +787,6 @@ MBC아카데미 컴퓨터교육센터
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
               </div>
-              <!-- Row 2 (6 items) -->
               <div class="skills-row">
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
                 <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
@@ -664,7 +808,7 @@ MBC아카데미 컴퓨터교육센터
 
       </div>
 
-      <!-- Bottom Strengths -->
+      <!-- Strengths -->
       <div class="strengths-container">
         <div class="strengths-row-top">
           <div class="strength-box">
@@ -695,10 +839,9 @@ MBC아카데미 컴퓨터교육센터
       </div>
     </section>
 
-    <!-- Vision 아래 문단 구획선 -->
     <div class="divider-line"></div>
 
-    <!-- 5. CONTACT Section (가운데 정렬) -->
+    <!-- 5. CONTACT Section -->
     <section class="contact-section" id="contact">
       <h2 class="contact-title">📩 C O N T A C T 📩</h2>
       <div class="contact-info">
