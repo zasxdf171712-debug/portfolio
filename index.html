@@ -6,13 +6,14 @@
   <title>Hajun Portfolio</title>
   <style>
     /* ==================================================
-       1. 디자인 변수 설정 (색상/크기 변경)
+       1. 디자인 변수 설정 (색상/크기)
        ================================================== */
     :root {
       --bg-color: #ffffff;          /* 전체 배경색 */
       --text-black: #000000;        /* 기본 검은 글자색 */
-      --accent-green: #81e69b;      /* 상단 버튼 및 밑줄 연초록색 */
-      --point-green: #22c55e;       /* About 섹션 주요 초록색 텍스트 포인트 */
+      --accent-green: #81e69b;      /* 구분선 및 버튼용 연초록색 */
+      --point-green: #22c55e;       /* 텍스트/Vision용 주요 초록색 */
+      --vision-bg: #e8f8ec;         /* Vision 박스 연초록 배경 */
       --card-bg: #d9d9d9;           /* GIF/이미지 플레이스홀더 회색 */
       --max-width: 960px;           /* 전체 레이아웃 최대 너비 */
       --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -37,7 +38,7 @@
     }
 
     /* ==================================================
-       2. 상단 네비게이션 헤더 (Header & Nav)
+       2. 상단 네비게이션 헤더
        ================================================== */
     header {
       width: 100%;
@@ -98,7 +99,7 @@
     main {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 20px 20px 100px;
+      padding: 20px 20px 0px;
     }
 
     .section-header {
@@ -137,8 +138,16 @@
       margin-top: 8px;
     }
 
+    /* 구획 나눔 연초록 밑줄 공통 클래스 */
+    .divider-line {
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-green);
+      margin: 40px 0;
+    }
+
     /* ==================================================
-       4. PROJECT Team 섹션 (2x2)
+       4. PROJECT Team & Individual
        ================================================== */
     .team-section {
       margin-bottom: 100px;
@@ -183,14 +192,11 @@
       color: var(--text-black);
     }
 
-    /* ==================================================
-       5. PROJECT Individual 섹션 (1개)
-       ================================================== */
     .individual-section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 120px;
+      margin-bottom: 80px;
     }
 
     .single-card-wrapper {
@@ -200,22 +206,22 @@
     }
 
     /* ==================================================
-       6. About 섹션 (새로 추가된 자기소개)
+       5. About 섹션 (상/하 연초록 밑줄 포함)
        ================================================== */
     .about-section {
-      margin-top: 60px;
+      margin-top: 40px;
+      border-top: 2px solid var(--accent-green);    /* 상단 연초록 밑줄 */
+      border-bottom: 2px solid var(--accent-green); /* 하단 연초록 밑줄 */
+      padding: 40px 0;
     }
 
-    /* 상단 비주얼 영역 (좌측 텍스트/이력 + 우측 사선 이미지) */
     .about-top-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 20px;
       align-items: start;
-      position: relative;
     }
 
-    /* 좌측 헤드라인 타이틀 */
     .about-headline {
       font-size: 1.55rem;
       font-weight: 800;
@@ -225,7 +231,6 @@
       word-break: keep-all;
     }
 
-    /* 이력/스펙 2열 배치 */
     .info-columns {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
@@ -253,18 +258,30 @@
       font-weight: 600;
     }
 
-    /* Tools & Skills (5개 / 6개 2줄) */
+    /* Skills & Tools */
+    .skills-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .skills-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-black);
+      margin-bottom: 14px;
+    }
+
     .skills-container {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 10px;
+      align-items: center;
     }
 
     .skills-row {
       display: flex;
       gap: 10px;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     .skill-item {
@@ -300,12 +317,11 @@
       margin-top: 4px;
     }
 
-    /* 우측 사선 처리된 인물 사진 GIF 영역 */
+    /* 우측 사선 인물 사진 GIF */
     .about-media-wrapper {
       width: 100%;
-      height: 520px;
+      height: 560px;
       background-color: var(--card-bg);
-      /* 오른쪽 사선 트밍 (Polygon 기법) */
       clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
       display: flex;
       align-items: center;
@@ -322,15 +338,14 @@
       object-fit: cover;
     }
 
-    /* 하단 3개 핵심 강점 섹션 */
+    /* 하단 강점 3개 */
     .strengths-container {
-      margin-top: 70px;
+      margin-top: 60px;
       display: flex;
       flex-direction: column;
-      gap: 50px;
+      gap: 40px;
     }
 
-    /* 상단 2열 강점 */
     .strengths-row-top {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -352,7 +367,6 @@
       word-break: keep-all;
     }
 
-    /* 하단 중앙 1개 강점 */
     .strengths-row-bottom {
       display: flex;
       justify-content: center;
@@ -364,7 +378,104 @@
     }
 
     /* ==================================================
-       7. 모바일 반응형
+       6. Vision 섹션 (가운데 정렬 박스)
+       ================================================== */
+    .vision-section {
+      padding: 60px 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .vision-card {
+      width: 100%;
+      background-color: var(--vision-bg);
+      border: 1.5px solid var(--accent-green);
+      border-radius: 20px;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .vision-card h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--point-green);
+      margin-bottom: 12px;
+    }
+
+    .vision-card p {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--point-green);
+      line-height: 1.6;
+      word-break: keep-all;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ==================================================
+       7. CONTACT 섹션 (모두 가운데 정렬)
+       ================================================== */
+    .contact-section {
+      padding: 40px 0 80px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--text-black);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .contact-info p {
+      color: var(--text-black);
+    }
+
+    .contact-info p span.link-text {
+      color: #2563eb; /* 이메일 파란색 링크 효과 */
+    }
+
+    /* RESUME 버튼 영역 */
+    .resume-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .resume-icon {
+      font-size: 1.3rem;
+    }
+
+    .btn-resume {
+      background-color: var(--accent-green);
+      color: var(--text-black);
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-resume:hover {
+      opacity: 0.85;
+    }
+
+    /* ==================================================
+       8. 모바일 반응형
        ================================================== */
     @media (max-width: 768px) {
       .about-top-grid {
@@ -372,7 +483,7 @@
       }
       .about-media-wrapper {
         height: 300px;
-        clip-path: none; /* 모바일에서는 사선 해제 */
+        clip-path: none;
         border-radius: 16px;
       }
       .strengths-row-top {
@@ -386,7 +497,7 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header Navigation -->
   <header>
     <div class="nav-container">
       <div class="logo-box">
@@ -401,6 +512,7 @@
     </div>
   </header>
 
+  <!-- Main Content -->
   <main id="home">
     
     <!-- 1. PROJECT Team -->
@@ -457,13 +569,13 @@
       </div>
     </section>
 
-    <!-- 3. About Section (자기소개) -->
+    <!-- 3. About Section (위/아래 연초록 밑줄 처리) -->
     <section class="about-section" id="about">
       
-      <!-- Top Area (Left: Info / Right: Slanted GIF) -->
+      <!-- Top Layout -->
       <div class="about-top-grid">
         
-        <!-- Left Info Content -->
+        <!-- Left Column -->
         <div>
           <h2 class="about-headline">
             “생성형AI와 넓은 실무 스펙트럼으로<br>
@@ -471,7 +583,6 @@
           </h2>
 
           <div class="info-columns">
-            <!-- Left Column Info -->
             <div>
               <div class="info-block">
                 <h4>Birth</h4>
@@ -493,7 +604,6 @@
               </div>
             </div>
 
-            <!-- Right Column Info -->
             <div>
               <div class="info-block">
                 <h4>Military</h4>
@@ -520,30 +630,33 @@ MBC아카데미 컴퓨터교육센터
             </div>
           </div>
 
-          <!-- Skills & Tools (5개 / 6개 배치) -->
-          <div class="skills-container">
-            <!-- Row 1 (5 items) -->
-            <div class="skills-row">
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-            </div>
-            <!-- Row 2 (6 items) -->
-            <div class="skills-row">
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
-              <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+          <!-- Skills & Tools (제목 추가 + GIF 위쪽배치) -->
+          <div class="skills-section">
+            <h3 class="skills-title">Skills & Tools</h3>
+            <div class="skills-container">
+              <!-- Row 1 (5 items) -->
+              <div class="skills-row">
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+              </div>
+              <!-- Row 2 (6 items) -->
+              <div class="skills-row">
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+                <div class="skill-item"><div class="skill-box">Gif</div><span>text</span></div>
+              </div>
             </div>
           </div>
 
         </div>
 
-        <!-- Right Slanted Image Container -->
+        <!-- Right Slanted Media -->
         <div class="about-media-wrapper">
           <!-- <img src="images/profile.gif" alt="인물 사진 GIF"> -->
           <span>인물 사진 GIF</span>
@@ -551,9 +664,8 @@ MBC아카데미 컴퓨터교육센터
 
       </div>
 
-      <!-- Bottom Strengths (3 Points) -->
+      <!-- Bottom Strengths -->
       <div class="strengths-container">
-        <!-- Top 2 Columns -->
         <div class="strengths-row-top">
           <div class="strength-box">
             <h3>• 기술 활용과 다장르 개발 경험</h3>
@@ -565,7 +677,6 @@ MBC아카데미 컴퓨터교육센터
           </div>
         </div>
 
-        <!-- Bottom 1 Centered Column -->
         <div class="strengths-row-bottom">
           <div class="strength-box">
             <h3>• 상황에 최적화된 유연한 소통</h3>
@@ -574,6 +685,30 @@ MBC아카데미 컴퓨터교육센터
         </div>
       </div>
 
+    </section>
+
+    <!-- 4. Vision Section -->
+    <section class="vision-section">
+      <div class="vision-card">
+        <h3>Vision</h3>
+        <p>AI와 다방면의 스킬셋을 접목해 아이디어를 빠르게 시각화·구현하고, 팀원들과의 정교한 소통으로 하나의 명확한 비전을 향해 달려가는 개발 환경을 만들겠습니다.</p>
+      </div>
+    </section>
+
+    <!-- Vision 아래 문단 구획선 -->
+    <div class="divider-line"></div>
+
+    <!-- 5. CONTACT Section (가운데 정렬) -->
+    <section class="contact-section" id="contact">
+      <h2 class="contact-title">📩 C O N T A C T 📩</h2>
+      <div class="contact-info">
+        <p>Email: <span class="link-text">nsminzzang@naver.com</span></p>
+        <p>Tel: +82-10-6788-5457</p>
+      </div>
+      <div class="resume-wrapper">
+        <span class="resume-icon">🔽</span>
+        <a href="#" class="btn-resume" target="_blank">RESUME</a>
+      </div>
     </section>
 
   </main>
