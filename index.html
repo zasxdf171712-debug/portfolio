@@ -26,6 +26,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth; /* 네비게이션 클릭 시 부드러운 스크롤 이동 */
+    }
+
     body {
       background-color: var(--bg-color);
       color: var(--text-black);
@@ -43,12 +47,17 @@
     }
 
     /* ==================================================
-       2. 상단 네비게이션 헤더
+       2. 상단 네비게이션 헤더 (스크롤 고정 Header)
        ================================================== */
     header {
       width: 100%;
-      padding: 40px 0 20px;
-      background-color: var(--bg-color);
+      padding: 20px 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px); /* 스크롤 시 뒤 배경 살짝 비침 */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .nav-container {
@@ -81,21 +90,22 @@
 
     nav {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
     nav a {
       background-color: var(--accent-green);
       color: var(--text-black);
-      padding: 8px 20px;
+      padding: 8px 18px;
       border-radius: 30px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: opacity 0.2s;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: opacity 0.2s, transform 0.2s;
     }
 
     nav a:hover {
       opacity: 0.85;
+      transform: translateY(-1px);
     }
 
     /* ==================================================
@@ -120,7 +130,9 @@
        4. About 섹션
        ================================================== */
     .about-section {
+      padding-top: 10px;
       padding-bottom: 10px;
+      scroll-margin-top: 90px;
     }
 
     .about-headline {
@@ -294,6 +306,10 @@
     /* ==================================================
        5. PROJECT 카드 & 마우스 오버(Hover) 스타일
        ================================================== */
+    .project-section-wrapper {
+      scroll-margin-top: 90px;
+    }
+
     .section-header {
       text-align: center;
       margin-bottom: 40px;
@@ -476,13 +492,14 @@
     }
 
     /* ==================================================
-       6. Strengths (강점 3개 영역 - Vision 바로 상단 위치)
+       6. Strengths (소제목 & 본문 전체 가운데 정렬, 검은색)
        ================================================== */
     .strengths-container {
       margin: 20px 0 40px;
       display: flex;
       flex-direction: column;
       gap: 36px;
+      text-align: center; /* 전체 가운데 정렬 */
     }
 
     .strengths-row-top {
@@ -491,18 +508,22 @@
       gap: 30px;
     }
 
+    .strength-box {
+      text-align: center; /* 소제목 & 본문 가운데 정렬 */
+    }
+
     .strength-box h3 {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--point-green);
-      margin-bottom: 8px;
+      color: var(--point-green); /* 소제목 녹색 유지 */
+      margin-bottom: 10px;
     }
 
     .strength-box p {
       font-size: 0.9rem;
-      color: var(--point-green);
-      line-height: 1.55;
-      font-weight: 600;
+      color: #222222; /* 본문 검은색으로 변경 */
+      line-height: 1.6;
+      font-weight: 500;
       word-break: keep-all;
     }
 
@@ -513,7 +534,7 @@
     }
 
     .strengths-row-bottom .strength-box {
-      max-width: 520px;
+      max-width: 560px;
     }
 
     /* ==================================================
@@ -558,6 +579,7 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
+      scroll-margin-top: 90px;
     }
 
     .contact-title {
@@ -795,9 +817,9 @@
     }
   </style>
 </head>
-<body>
+<body id="home">
 
-  <!-- Header Navigation -->
+  <!-- Header Navigation (스크롤 반응 고정 헤더) -->
   <header>
     <div class="nav-container">
       <div class="logo-box">
@@ -807,13 +829,14 @@
       <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#project">Project</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main id="home">
+  <main>
 
     <!-- ==================================================
          1. About Section (최상단)
@@ -923,125 +946,128 @@ MBC아카데미 컴퓨터교육센터
     <div class="divider-line"></div>
 
     <!-- ==================================================
-         2. PROJECT Team
+         2. PROJECT Section (Project 버튼 스크롤 영역)
          ================================================== -->
-    <section class="team-section">
-      <div class="section-header">
-        <div class="header-icon">🎮</div>
-        <div><span class="title-project">PROJECT</span></div>
-        <h1 class="title-sub">Team</h1>
-      </div>
-
-      <div class="project-grid-2x2">
-        <!-- Team Card 1 -->
-        <div class="project-card" onclick="openModal('modal-team-1')">
-          <div class="card-media">
-            <!-- <img src="images/team1.gif" alt="Game Text1"> -->
-            <div class="card-overlay">
-              <div class="overlay-text-group">
-                <span class="overlay-title">Game Text1</span>
-                <span class="overlay-subtitle">Text2</span>
-              </div>
-              <div class="overlay-skills">
-                <div class="skill-badge">GIF</div>
-                <div class="skill-badge">GIF</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-title-external">Game Text1</div>
+    <div id="project" class="project-section-wrapper">
+      
+      <!-- 2-1. PROJECT Team -->
+      <section class="team-section">
+        <div class="section-header">
+          <div class="header-icon">🎮</div>
+          <div><span class="title-project">PROJECT</span></div>
+          <h1 class="title-sub">Team</h1>
         </div>
 
-        <!-- Team Card 2 -->
-        <div class="project-card" onclick="openModal('modal-team-2')">
-          <div class="card-media">
-            <!-- <img src="images/team2.gif" alt="Game Text2"> -->
-            <div class="card-overlay">
-              <div class="overlay-text-group">
-                <span class="overlay-title">Game Text2</span>
-                <span class="overlay-subtitle">Text2</span>
-              </div>
-              <div class="overlay-skills">
-                <div class="skill-badge">GIF</div>
-                <div class="skill-badge">GIF</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-title-external">Game Text2</div>
-        </div>
-
-        <!-- Team Card 3 -->
-        <div class="project-card" onclick="openModal('modal-team-3')">
-          <div class="card-media">
-            <!-- <img src="images/team3.gif" alt="Game Text3"> -->
-            <div class="card-overlay">
-              <div class="overlay-text-group">
-                <span class="overlay-title">Game Text3</span>
-                <span class="overlay-subtitle">Text2</span>
-              </div>
-              <div class="overlay-skills">
-                <div class="skill-badge">GIF</div>
-                <div class="skill-badge">GIF</div>
+        <div class="project-grid-2x2">
+          <!-- Team Card 1 -->
+          <div class="project-card" onclick="openModal('modal-team-1')">
+            <div class="card-media">
+              <!-- <img src="images/team1.gif" alt="Game Text1"> -->
+              <div class="card-overlay">
+                <div class="overlay-text-group">
+                  <span class="overlay-title">Game Text1</span>
+                  <span class="overlay-subtitle">Text2</span>
+                </div>
+                <div class="overlay-skills">
+                  <div class="skill-badge">GIF</div>
+                  <div class="skill-badge">GIF</div>
+                </div>
               </div>
             </div>
+            <div class="card-title-external">Game Text1</div>
           </div>
-          <div class="card-title-external">Game Text3</div>
-        </div>
 
-        <!-- Team Card 4 -->
-        <div class="project-card" onclick="openModal('modal-team-4')">
-          <div class="card-media">
-            <!-- <img src="images/team4.gif" alt="Game Text4"> -->
-            <div class="card-overlay">
-              <div class="overlay-text-group">
-                <span class="overlay-title">Game Text4</span>
-                <span class="overlay-subtitle">Text2</span>
-              </div>
-              <div class="overlay-skills">
-                <div class="skill-badge">GIF</div>
-                <div class="skill-badge">GIF</div>
+          <!-- Team Card 2 -->
+          <div class="project-card" onclick="openModal('modal-team-2')">
+            <div class="card-media">
+              <!-- <img src="images/team2.gif" alt="Game Text2"> -->
+              <div class="card-overlay">
+                <div class="overlay-text-group">
+                  <span class="overlay-title">Game Text2</span>
+                  <span class="overlay-subtitle">Text2</span>
+                </div>
+                <div class="overlay-skills">
+                  <div class="skill-badge">GIF</div>
+                  <div class="skill-badge">GIF</div>
+                </div>
               </div>
             </div>
+            <div class="card-title-external">Game Text2</div>
           </div>
-          <div class="card-title-external">Game Text4</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ==================================================
-         3. PROJECT Individual
-         ================================================== -->
-    <section class="individual-section">
-      <div class="section-header">
-        <div class="header-icon">🕹️</div>
-        <div><span class="title-project">PROJECT</span></div>
-        <h1 class="title-sub">Individual</h1>
-      </div>
-
-      <div class="single-card-wrapper">
-        <div class="project-card" onclick="openModal('modal-indiv-1')">
-          <div class="card-media">
-            <!-- <img src="images/indiv1.gif" alt="Game Text1"> -->
-            <div class="card-overlay">
-              <div class="overlay-text-group">
-                <span class="overlay-title">Game Text1</span>
-                <span class="overlay-subtitle">Text2</span>
-              </div>
-              <div class="overlay-skills">
-                <div class="skill-badge">GIF</div>
-                <div class="skill-badge">GIF</div>
+          <!-- Team Card 3 -->
+          <div class="project-card" onclick="openModal('modal-team-3')">
+            <div class="card-media">
+              <!-- <img src="images/team3.gif" alt="Game Text3"> -->
+              <div class="card-overlay">
+                <div class="overlay-text-group">
+                  <span class="overlay-title">Game Text3</span>
+                  <span class="overlay-subtitle">Text2</span>
+                </div>
+                <div class="overlay-skills">
+                  <div class="skill-badge">GIF</div>
+                  <div class="skill-badge">GIF</div>
+                </div>
               </div>
             </div>
+            <div class="card-title-external">Game Text3</div>
           </div>
-          <div class="card-title-external">Game Text1</div>
+
+          <!-- Team Card 4 -->
+          <div class="project-card" onclick="openModal('modal-team-4')">
+            <div class="card-media">
+              <!-- <img src="images/team4.gif" alt="Game Text4"> -->
+              <div class="card-overlay">
+                <div class="overlay-text-group">
+                  <span class="overlay-title">Game Text4</span>
+                  <span class="overlay-subtitle">Text2</span>
+                </div>
+                <div class="overlay-skills">
+                  <div class="skill-badge">GIF</div>
+                  <div class="skill-badge">GIF</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-title-external">Game Text4</div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- 2-2. PROJECT Individual -->
+      <section class="individual-section">
+        <div class="section-header">
+          <div class="header-icon">🕹️</div>
+          <div><span class="title-project">PROJECT</span></div>
+          <h1 class="title-sub">Individual</h1>
+        </div>
+
+        <div class="single-card-wrapper">
+          <div class="project-card" onclick="openModal('modal-indiv-1')">
+            <div class="card-media">
+              <!-- <img src="images/indiv1.gif" alt="Game Text1"> -->
+              <div class="card-overlay">
+                <div class="overlay-text-group">
+                  <span class="overlay-title">Game Text1</span>
+                  <span class="overlay-subtitle">Text2</span>
+                </div>
+                <div class="overlay-skills">
+                  <div class="skill-badge">GIF</div>
+                  <div class="skill-badge">GIF</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-title-external">Game Text1</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
 
     <!-- PROJECT 문단과 강점(Strengths) 영역을 나누는 초록색 구분선 바 -->
     <div class="divider-line"></div>
 
     <!-- ==================================================
-         4. Strengths (강점 3개 - Vision 바로 위로 이동)
+         3. Strengths (소제목 & 본문 가운데 정렬, 검은색 본문)
          ================================================== -->
     <div class="strengths-container">
       <div class="strengths-row-top">
@@ -1064,7 +1090,7 @@ MBC아카데미 컴퓨터교육센터
     </div>
 
     <!-- ==================================================
-         5. Vision Section
+         4. Vision Section
          ================================================== -->
     <section class="vision-section">
       <div class="vision-card">
@@ -1076,7 +1102,7 @@ MBC아카데미 컴퓨터교육센터
     <div class="divider-line"></div>
 
     <!-- ==================================================
-         6. CONTACT Section
+         5. CONTACT Section
          ================================================== -->
     <section class="contact-section" id="contact">
       <h2 class="contact-title">📩 C O N T A C T 📩</h2>
@@ -1093,7 +1119,7 @@ MBC아카데미 컴퓨터교육센터
   </main>
 
   <!-- ==================================================
-       7. 모달 팝업창 목록
+       6. 모달 팝업창 목록
        ================================================== -->
   <div class="modal-overlay" id="modal-team-1" onclick="closeModalOnOverlay(event, 'modal-team-1')">
     <div class="modal-window">
