@@ -27,7 +27,7 @@
     }
 
     html {
-      scroll-behavior: smooth; /* 네비게이션 클릭 시 부드러운 스크롤 이동 */
+      scroll-behavior: smooth; /* 네비게이션 클릭 시 부드러운 스크롤 */
     }
 
     body {
@@ -35,6 +35,7 @@
       color: var(--text-black);
       font-family: var(--font-family);
       -webkit-font-smoothing: antialiased;
+      padding-top: 80px; /* 고정 헤더 높이만큼 여백 확보 */
     }
 
     body.modal-open {
@@ -47,20 +48,24 @@
     }
 
     /* ==================================================
-       2. 상단 네비게이션 헤더 (스크롤 고정 Header)
+       2. 상단 네비게이션 헤더 (스크롤 완벽 고정 FIXED)
        ================================================== */
     header {
-      width: 100%;
-      padding: 20px 0;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px); /* 스크롤 시 뒤 배경 살짝 비침 */
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
     }
 
     .nav-container {
+      width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
       display: flex;
@@ -117,7 +122,7 @@
       padding: 20px 20px 0px;
     }
 
-    /* 각 문단을 나눠주는 초록색 바 */
+    /* 문단 분리용 초록색 바 */
     .divider-line {
       width: 100%;
       height: 3px;
@@ -130,7 +135,7 @@
        4. About 섹션
        ================================================== */
     .about-section {
-      padding-top: 10px;
+      padding-top: 20px;
       padding-bottom: 10px;
       scroll-margin-top: 90px;
     }
@@ -304,7 +309,7 @@
     }
 
     /* ==================================================
-       5. PROJECT 카드 & 마우스 오버(Hover) 스타일
+       5. PROJECT 섹션 (Team + Individual)
        ================================================== */
     .project-section-wrapper {
       scroll-margin-top: 90px;
@@ -492,49 +497,57 @@
     }
 
     /* ==================================================
-       6. Strengths (소제목 & 본문 전체 가운데 정렬, 검은색)
+       6. Strengths (소제목 녹색 + 본문 짙은 검은색 + 완벽 가운데 정렬)
        ================================================== */
     .strengths-container {
-      margin: 20px 0 40px;
+      margin: 30px 0 50px;
       display: flex;
       flex-direction: column;
-      gap: 36px;
-      text-align: center; /* 전체 가운데 정렬 */
+      gap: 40px;
+      width: 100%;
     }
 
     .strengths-row-top {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
+      width: 100%;
     }
 
     .strength-box {
-      text-align: center; /* 소제목 & 본문 가운데 정렬 */
+      text-align: center !important; /* 가운데 정렬 강제 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .strength-box h3 {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
-      color: var(--point-green); /* 소제목 녹색 유지 */
-      margin-bottom: 10px;
+      color: var(--point-green); /* 소제목 녹색 */
+      margin-bottom: 12px;
+      text-align: center !important;
     }
 
     .strength-box p {
-      font-size: 0.9rem;
-      color: #222222; /* 본문 검은색으로 변경 */
-      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #000000 !important; /* 본문 짙은 검은색 강제 */
+      line-height: 1.65;
       font-weight: 500;
       word-break: keep-all;
+      text-align: center !important;
+      max-width: 420px;
     }
 
     .strengths-row-bottom {
       display: flex;
       justify-content: center;
-      text-align: center;
+      width: 100%;
     }
 
-    .strengths-row-bottom .strength-box {
-      max-width: 560px;
+    .strengths-row-bottom .strength-box p {
+      max-width: 540px;
     }
 
     /* ==================================================
@@ -819,7 +832,7 @@
 </head>
 <body id="home">
 
-  <!-- Header Navigation (스크롤 반응 고정 헤더) -->
+  <!-- Fixed Header Navigation -->
   <header>
     <div class="nav-container">
       <div class="logo-box">
@@ -946,7 +959,7 @@ MBC아카데미 컴퓨터교육센터
     <div class="divider-line"></div>
 
     <!-- ==================================================
-         2. PROJECT Section (Project 버튼 스크롤 영역)
+         2. PROJECT Section (Project 네비게이션 스크롤 대상)
          ================================================== -->
     <div id="project" class="project-section-wrapper">
       
@@ -1067,7 +1080,7 @@ MBC아카데미 컴퓨터교육센터
     <div class="divider-line"></div>
 
     <!-- ==================================================
-         3. Strengths (소제목 & 본문 가운데 정렬, 검은색 본문)
+         3. Strengths (소제목 녹색, 본문 검은색, 완전 가운데 정렬)
          ================================================== -->
     <div class="strengths-container">
       <div class="strengths-row-top">
