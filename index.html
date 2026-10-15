@@ -281,13 +281,13 @@
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    /* 오버 시 외부 타이틀은 자연스럽게 숨김 처리 */
+    /* 오버 시 외부 타이틀 숨김 */
     .project-card:hover .card-title-external {
       opacity: 0;
       transform: translateY(-6px);
     }
 
-    /* Individual 카드 전용 (단일 1개 지정) */
+    /* Individual 카드 전용 */
     .individual-section {
       display: flex;
       flex-direction: column;
@@ -671,19 +671,19 @@
           <div class="card-title-external">Game Text3</div>
         </div>
 
-        <!-- Team Card 4 -->
+        <!-- Team Card 4 (오버레이 교정 완료) -->
         <div class="project-card">
           <div class="card-media">
             <!-- <img src="images/team4.gif" alt="Game Text4"> -->
-          </div>
-          <div class="card-overlay">
-            <div class="overlay-text-group">
-              <span class="overlay-title">Game Text4</span>
-              <span class="overlay-subtitle">Text2</span>
-            </div>
-            <div class="overlay-skills">
-              <div class="skill-badge">GIF</div>
-              <div class="skill-badge">GIF</div>
+            <div class="card-overlay">
+              <div class="overlay-text-group">
+                <span class="overlay-title">Game Text4</span>
+                <span class="overlay-subtitle">Text2</span>
+              </div>
+              <div class="overlay-skills">
+                <div class="skill-badge">GIF</div>
+                <div class="skill-badge">GIF</div>
+              </div>
             </div>
           </div>
           <div class="card-title-external">Game Text4</div>
