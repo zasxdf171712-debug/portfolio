@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게임 디자이너 나하준 - 포트폴리오</title>
+  <title>Hajun Portfolio</title>
   <style>
     /* --------------------------------------------------
-       1. Global Reset & Light Theme Palette (초안 원본 색상)
+       1. Reset & Color Variables
        -------------------------------------------------- */
     :root {
-      --bg-white: #ffffff;          /* 전체 배경: 흰색 */
-      --text-black: #111827;        /* 메인 텍스트: 검은색 */
-      --text-gray: #4b5563;         /* 설명글: 짙은 회색 */
-      --accent-blue: #2563eb;       /* Vision 제목 및 강조 파란색 */
-      --vision-bg: #eff6ff;         /* Vision 박스 배경: 파스텔 연블루 */
-      --vision-border: #3b82f6;     /* Vision 박스 테두리: 파란색 */
-      --box-gray: #e5e7eb;          /* Gif/이미지 박스: 밝은 회색 */
-      --border-light: #e5e7eb;      /* 카드 테두리 */
-      --max-width: 1100px;
-      --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      --bg-color: #ffffff;
+      --text-black: #000000;
+      --accent-green: #81e69b;      /* 상단 버튼 및 밑줄 포인트 연초록색 */
+      --card-bg: #d9d9d9;           /* 카드 이미지 플레이스홀더 회색 */
+      --max-width: 900px;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * {
@@ -27,15 +23,10 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      background-color: var(--bg-white);
-      color: var(--text-gray);
+      background-color: var(--bg-color);
+      color: var(--text-black);
       font-family: var(--font-family);
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -45,278 +36,134 @@
     }
 
     /* --------------------------------------------------
-       2. Header Navigation
+       2. Header & Navigation
        -------------------------------------------------- */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 60px;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-light);
+      padding: 40px 0 20px;
+      background-color: var(--bg-color);
     }
 
     .nav-container {
       max-width: var(--max-width);
       margin: 0 auto;
-      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
     }
 
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-black);
+    /* Left Logo */
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
+    .logo-square {
+      width: 32px;
+      height: 32px;
+      background-color: var(--accent-green);
+      border-radius: 4px;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* Right Nav Links (Oval Green Buttons) */
     nav {
       display: flex;
-      gap: 20px;
+      gap: 12px;
     }
 
     nav a {
-      color: var(--text-gray);
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.2s;
+      background-color: var(--accent-green);
+      color: var(--text-black);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
     }
 
     nav a:hover {
-      color: var(--accent-blue);
+      opacity: 0.85;
     }
 
     /* --------------------------------------------------
-       3. Main Layout & About Section
+       3. Main Hero / Project Team Section
        -------------------------------------------------- */
-    .main-container {
+    main {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 100px 20px 60px;
+      padding: 40px 20px 80px;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 290px 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-
-    /* Left Profile Side */
-    .profile-card {
-      background-color: var(--bg-white);
-    }
-
-    .profile-media {
-      width: 100%;
-      height: 270px;
-      background-color: var(--box-gray);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-
-    .profile-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .info-group {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      font-size: 0.88rem;
-    }
-
-    .info-item h4 {
-      color: var(--text-black);
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .info-item p {
-      color: var(--text-gray);
-      white-space: pre-line;
-      line-height: 1.5;
-    }
-
-    /* Right Main Intro */
-    .intro-content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .main-headline {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.45;
-      word-break: keep-all;
-    }
-
-    .strength-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .strength-item h3 {
-      font-size: 1.05rem;
-      color: var(--text-black);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .strength-item p {
-      color: var(--text-gray);
-      font-size: 0.92rem;
-      word-break: keep-all;
-      line-height: 1.6;
-    }
-
-    /* Vision Box (파스텔 파란색 배경) */
-    .vision-box {
-      background-color: var(--vision-bg);
-      border: 1.5px solid var(--vision-border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .vision-box h3 {
-      color: var(--accent-blue);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .vision-box p {
-      color: var(--text-black);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-
-    /* Skills & Tools Section */
-    .skills-section {
-      margin-top: 10px;
-    }
-
-    .skills-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 20px;
-    }
-
-    .skills-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .skills-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    .skill-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 80px;
-    }
-
-    .skill-box {
-      width: 80px;
-      height: 90px;
-      background-color: var(--box-gray);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #4b5563;
-      font-weight: 600;
-      font-size: 1rem;
-      overflow: hidden;
-    }
-
-    .skill-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .skill-card span {
-      margin-top: 6px;
-      font-size: 0.85rem;
-      color: var(--text-black);
+    /* Section Header Title */
+    .hero-header {
       text-align: center;
+      margin-bottom: 50px;
     }
 
-    /* --------------------------------------------------
-       4. Projects Sections
-       -------------------------------------------------- */
-    .section-block {
-      margin-top: 70px;
+    .hero-icon {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
     }
 
-    .section-header-title {
-      font-size: 1.5rem;
+    .hero-title-project {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 6px;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    /* PROJECT 텍스트 하단 녹색 선 */
+    .hero-title-project::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: var(--accent-green);
+      border-radius: 2px;
+    }
+
+    .hero-title-team {
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
+      margin-top: 8px;
     }
 
-    .card-grid {
+    /* 2x2 Grid Section */
+    .project-grid {
       display: grid;
-      gap: 16px;
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px 30px;
     }
 
     .project-card {
-      background-color: var(--bg-white);
-      border-radius: 8px;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .card-media {
       width: 100%;
-      height: 150px;
-      background-color: var(--box-gray);
-      border-radius: 6px;
+      height: 240px;
+      background-color: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #6b7280;
-      font-weight: 600;
-      font-size: 1rem;
-      overflow: hidden;
+      color: #666;
+      font-size: 1.1rem;
     }
 
     .card-media img {
@@ -325,310 +172,90 @@
       object-fit: cover;
     }
 
-    .card-desc {
-      padding: 10px 0;
-      font-size: 0.9rem;
-      color: var(--text-black);
-      font-weight: 500;
-    }
-
-    /* --------------------------------------------------
-       5. Contact & Footer
-       -------------------------------------------------- */
-    .contact-section {
-      margin-top: 80px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border-light);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .contact-title {
-      font-size: 1.4rem;
+    .card-title {
+      margin-top: 14px;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text-black);
-      letter-spacing: 1px;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 0.95rem;
-      color: var(--text-black);
-    }
-
-    .btn-resume {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--text-black);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      text-decoration: underline;
-    }
-
-    footer {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 40px 20px 20px;
       text-align: center;
-      font-size: 0.8rem;
-      color: #9ca3af;
+      color: var(--text-black);
     }
 
-    /* Responsive Grid Adjustments */
-    @media (max-width: 868px) {
-      .about-grid {
+    /* Responsive Design */
+    @media (max-width: 640px) {
+      .project-grid {
         grid-template-columns: 1fr;
       }
-      .grid-4, .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
+      .card-media {
+        height: 200px;
       }
-    }
-
-    @media (max-width: 500px) {
-      .grid-4, .grid-3 {
-        grid-template-columns: 1fr;
+      .hero-title-project {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Header -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
-      <div class="logo">Hajun</div>
+      <div class="logo-box">
+        <div class="logo-square"></div>
+        <span class="logo-text">Hajun</span>
+      </div>
       <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#team-project">PROJECT Team</a>
-        <a href="#indiv-project">PROJECT Individual</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="main-container" id="home">
-    <div class="about-grid" id="about">
-      
-      <!-- Left Profile Sidebar -->
-      <aside class="profile-card">
-        <div class="profile-media">
-          <span>인물 사진 GIF</span>
+  <!-- Main Content -->
+  <main id="home">
+    
+    <!-- Title Area -->
+    <section class="hero-header">
+      <div class="hero-icon">🎮</div>
+      <div>
+        <span class="hero-title-project">PROJECT</span>
+      </div>
+      <h1 class="hero-title-team">Team</h1>
+    </section>
+
+    <!-- 2x2 Image Grid -->
+    <section class="project-grid">
+      <div class="project-card">
+        <div class="card-media">
+          <!-- <img src="images/game1.gif" alt="Game Text1"> -->
         </div>
-        <div class="info-group">
-          <div class="info-item">
-            <h4>Birth</h4>
-            <p>1997.09.18</p>
-          </div>
-          <div class="info-item">
-            <h4>Residence</h4>
-            <p>충청남도 아산시</p>
-          </div>
-          <div class="info-item">
-            <h4>Education</h4>
-            <p>2022-2024
-동아방송예술대학교 K-POP전공
+        <div class="card-title">Game Text1</div>
+      </div>
 
-2020-2022
-강동대학교 K-pop댄스전공</p>
-          </div>
-          <div class="info-item">
-            <h4>Military</h4>
-            <p>2018.06-2020.02
-27사단 79연대 수색중대
-병장 만기 전역</p>
-          </div>
-          <div class="info-item">
-            <h4>Certificate</h4>
-            <p>2024.05
-GTQ 그래픽 기술자격 1급</p>
-          </div>
-          <div class="info-item">
-            <h4>EXP</h4>
-            <p>2025,09-2026,04
-경일게임 아카데미(디별로켓)
-생성 AI 활용한 게임기획 부트캠프
-
-2024,01-2024,06
-MBC아카데미 컴퓨터교육센터</p>
-          </div>
+      <div class="project-card">
+        <div class="card-media">
+          <!-- <img src="images/game2.gif" alt="Game Text2"> -->
         </div>
-      </aside>
+        <div class="card-title">Game Text2</div>
+      </div>
 
-      <!-- Right Intro Area -->
-      <section class="intro-content">
-        <h1 class="main-headline">
-          "생성형AI와 넓은 실무 스펙트럼으로<br>
-          기획을 완성하는 게임 디자이너 나하준입니다."
-        </h1>
-
-        <div class="strength-list">
-          <div class="strength-item">
-            <h3>• 기술 활용과 다장르 개발 경험</h3>
-            <p>생성 AI를 적극 활용하는 게임 기획 부트캠프 과정을 수료하며, 다양한 장르의 게임을 기획하고 실제 개발까지 주도적으로 이끌어보았습니다.</p>
-          </div>
-          <div class="strength-item">
-            <h3>• 경계를 넘나드는 올라운더(All-rounder)</h3>
-            <p>기획에만 머무르지 않고 아트 비주얼 가이드와 마케팅 영역까지 직접 발로 뛰며, 프로젝트 전반의 흐름을 빠르게 파악하고 완성도를 높이는 노하우를 쌓았습니다.</p>
-          </div>
-          <div class="strength-item">
-            <h3>• 상황에 최적화된 유연한 소통</h3>
-            <p>다양한 아르바이트 및 현장 경험을 통해 상대방의 성향과 상황에 맞게 커뮤니케이션 방식을 유연하게 조정하는 감각을 키웠습니다.</p>
-          </div>
+      <div class="project-card">
+        <div class="card-media">
+          <!-- <img src="images/game3.gif" alt="Game Text3"> -->
         </div>
+        <div class="card-title">Game Text3</div>
+      </div>
 
-        <!-- Vision Box -->
-        <div class="vision-box">
-          <h3>Vision</h3>
-          <p>AI와 다방면의 스킬셋을 접목해 아이디어를 빠르게 시각화·구현하고, 팀원들과의 정교한 소통으로 하나의 명확한 비전을 향해 달려가는 개발 환경을 만들겠습니다.</p>
+      <div class="project-card">
+        <div class="card-media">
+          <!-- <img src="images/game4.gif" alt="Game Text4"> -->
         </div>
-
-        <!-- Skills & Tools -->
-        <div class="skills-section">
-          <h2 class="skills-title">Skills & Tools</h2>
-          <div class="skills-container">
-            <!-- Row 1: 6 Cards -->
-            <div class="skills-row">
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-            </div>
-
-            <!-- Row 2: 5 Cards -->
-            <div class="skills-row">
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-              <div class="skill-card">
-                <div class="skill-box">Gif</div>
-                <span>text</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-    </div>
-
-    <!-- PROJECT Team -->
-    <section class="section-block" id="team-project">
-      <h2 class="section-header-title">PROJECT Team</h2>
-      <div class="card-grid grid-4">
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">Game Text1</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">Game Text2</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">Game Text3</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">Game Text4</div>
-        </div>
+        <div class="card-title">Game Text4</div>
       </div>
     </section>
 
-    <!-- PROJECT Individual -->
-    <section class="section-block" id="indiv-project">
-      <h2 class="section-header-title">PROJECT Individual</h2>
-      
-      <!-- Top Row (4 Cards) -->
-      <div class="card-grid grid-4" style="margin-bottom: 16px;">
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">Game Text1</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-      </div>
-
-      <!-- Bottom Row (3 Cards) -->
-      <div class="card-grid grid-3">
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-        <div class="project-card">
-          <div class="card-media">Gif</div>
-          <div class="card-desc">text</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-      <h2 class="contact-title">CONTACT</h2>
-      <div class="contact-details">
-        <p>Email: nsminzzang@naver.com</p>
-        <p>Tel: +82-10-6788-5457</p>
-      </div>
-      <a href="#" class="btn-resume" target="_blank">RESUME</a>
-    </section>
   </main>
-
-  <footer>
-    <p>© 2026 Hajun Na. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>
