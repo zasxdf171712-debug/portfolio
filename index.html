@@ -674,15 +674,15 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const 
 secs.forEach(x=>io.observe(x));
 // ===== 플레이이력 데이터 : 게임을 추가·수정하려면 아래 목록만 고치세요 =====
 // n 게임 이름 / p 플랫폼 (PC, Console, Switch, Mobile 중 선택) / g 장르 / h 플레이 시간 / i 이미지 파일명 (images/games/ 폴더, 없으면 색상 박스로 표시)
-// g 는 RPG, 액션, 어드벤처, 시뮬레이션, 스포츠, 퍼즐, 기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
+// g 는 RPG, MMORPG, 액션, 어드벤처, 시뮬레이션, 스포츠, 퍼즐, 기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
 const GAMES=[
- {n:"원신",p:["PC","Mobile"],g:"RPG",h:120,i:"genshin.jpg"},
+ {n:"검은사막",p:["PC","Console"],g:"MMORPG",h:10300,i:"blackdesert.jpg"},
  {n:"ELDEN RING",p:["PC","Console"],g:"RPG",h:98,i:"elden-ring.jpg"},
  {n:"붕괴: 스타레일",p:["Mobile"],g:"RPG",h:85,i:"star-rail.jpg"},
  {n:"Hollow Knight",p:["PC","Console"],g:"어드벤처",h:72,i:"hollow-knight.jpg"},
  {n:"Stardew Valley",p:["PC","Console"],g:"시뮬레이션",h:56,i:"stardew-valley.jpg"},
  {n:"Lies of P",p:["PC","Console"],g:"액션",h:48,i:"lies-of-p.jpg"},
- {n:"MapleStory",p:["PC"],g:"RPG",h:42,i:"maplestory.jpg"},
+ {n:"MapleStory",p:["PC"],g:"MMORPG",h:42,i:"maplestory.jpg"},
  {n:"The Division 2",p:["PC","Console"],g:"액션",h:38,i:"division-2.jpg"},
  {n:"Wuthering Waves",p:["Mobile"],g:"RPG",h:32,i:"wuthering-waves.jpg"},
  {n:"The Legend of Zelda: Tears of the Kingdom",p:["Switch"],g:"어드벤처",h:28,i:"zelda-totk.jpg"},
@@ -747,7 +747,7 @@ const GAMES=[
  {n:"예시 게임 68",p:["PC","Mobile"],g:"액션",h:15,i:"sample-68.jpg"},
 ];
 // =====================================================================
-const GENRES=["RPG","액션","어드벤처","시뮬레이션","스포츠","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
+const GENRES=["RPG","MMORPG","액션","어드벤처","시뮬레이션","스포츠","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
 let gpf="전체",ggf="",gpg=1,gpages=1;
 const hue=n=>[...n].reduce((a,c)=>(a*31+c.charCodeAt(0))%360,7);
 const gok=g=>gpf==="전체"||(gpf==="Mobile"?g.p.includes("Mobile"):g.p.some(x=>PCG.includes(x)));
