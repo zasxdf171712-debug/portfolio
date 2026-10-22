@@ -418,7 +418,7 @@ dialog::backdrop{background:rgba(5,8,14,.75);backdrop-filter:blur(3px)}
     <div class="hm">
       <div class="hm-top">
         <div class="hero">
-          <video class="hv" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true"><source src="videos/hero.mp4" type="video/mp4"></video>
+          <video class="hv" autoplay muted loop playsinline preload="auto" poster="images/hero-poster.jpg" aria-hidden="true"><source src="videos/hero.mp4" type="video/mp4"></video>
           <div class="hshade"></div>
           <div class="hc">
             <div class="hey">GAME PLANNER · NA HAJUN</div>
@@ -586,7 +586,7 @@ dialog::backdrop{background:rgba(5,8,14,.75);backdrop-filter:blur(3px)}
 const P=[
 {t:"둥둥아일랜드",tag:"itch.io 출시",team:"기획 7명 · 개발 5명",role:"시스템 기획",tg:"시스템 기획",sub:"힐링 방치형 시뮬레이션 / PC · 기획 7명, 개발 5명",img:"project1/images/doonghead.png",tool:"unity",
  d:"힐링 방치형 시뮬레이션의 시스템 구조와 수집형 도감을 기획하고, UI 가이드와 홍보를 위한 PV 영상을 제작했습니다.",
- areas:["시스템 기획","UI 기획","비주얼 가이드","PV 제작"],video:"",cats:["시스템 기획","UI·비주얼","마케팅·출시"],chips:["도감 시스템","UI 기획","PV 제작"],
+ areas:["시스템 기획","UI 기획","비주얼 가이드","PV 제작"],video:"https://youtu.be/86JnXH525is",cats:["시스템 기획","UI·비주얼","마케팅·출시"],chips:["도감 시스템","UI 기획","PV 제작"],
  w:[["시스템 기획","시스템 구조 설계, 수집형 도감 시스템 기획서 작성"],["비주얼가이드 기획","메인 및 시스템 UI 화면 기획, 비주얼 가이드 수립"],["마케팅","PV 영상 자체 제작"]],
  l:[["상세 기획명세서","project1/docs/doongdetails.pdf"],["시스템 기획서","project1/docs/dogam.pdf"],["비주얼가이드","project1/docs/visual.pdf"],["itch.io","https://devel-rocket.itch.io/doongdoongisland"],["YouTube","https://www.youtube.com/@GangTaeGom_Official"]]},
 {t:"Page of Desire",tag:"팀 프로젝트",team:"기획 6명 · 개발 5명",role:"콘텐츠 · 시나리오",tg:"콘텐츠 기획",sub:"RPG + 덱 빌딩 / PC · 기획 6명, 개발 5명",img:"project2/images/main.png",tool:"unity",
@@ -795,11 +795,16 @@ hdraw();
 $("#fl").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(!b)return;const k=+b.dataset.k;[horder[0],horder[k]]=[horder[k],horder[0]];hdraw(k)});
 $("#ft").addEventListener("click",()=>{location.hash="#work"});
 $("#ft").addEventListener("keydown",e=>{if(e.key==="Enter")location.hash="#work"});
-// 홈 영상: 홈 화면일 때만 재생 (모션 줄이기 설정이면 정지)
-const hv=$(".hv"),calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
-if(calm){hv.removeAttribute("autoplay");hv.pause()}
-function homeState(){const on=(location.hash||"#home")==="#home";
-  if(on){horder.splice(0,5,0,1,2,3,4);hdraw();if(!calm)hv.play().catch(()=>{})}else hv.pause()}
+// 홈 영상: 항상 음소거로 자동재생 + 반복. 브라우저가 막으면 첫 클릭·스크롤·키 입력에 바로 재생
+const hv=$(".hv");
+hv.muted=true;hv.defaultMuted=true;hv.loop=true;hv.playsInline=true;
+const homeOn=()=>(location.hash||"#home")==="#home";
+const tryPlay=()=>{if(homeOn()&&hv.paused)hv.play().catch(()=>{})};
+tryPlay();
+["loadeddata","canplay"].forEach(ev=>hv.addEventListener(ev,tryPlay));
+["pointerdown","keydown","touchstart","scroll","mousemove"].forEach(ev=>addEventListener(ev,tryPlay,{passive:true}));
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)tryPlay()});
+function homeState(){if(homeOn()){horder.splice(0,5,0,1,2,3,4);hdraw();tryPlay()}else hv.pause()}
 window.addEventListener("hashchange",homeState);
 // 아이콘 이미지가 없으면 글자 배지로 대체
 function fb(img){const[t,c]=img.dataset.fb.split("|");const b=document.createElement("b");b.className="bd";b.textContent=t;b.style.background=c;img.replaceWith(b)}
