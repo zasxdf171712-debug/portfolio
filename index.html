@@ -159,11 +159,6 @@ header nav a.on:after{content:"";position:absolute;left:25%;right:25%;bottom:0;h
 .ct{border-left:1px solid var(--line);padding:18px clamp(20px,3vw,48px);display:flex;flex-direction:column;justify-content:center;min-width:0}
 .ct h3{font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.5;font-weight:600;margin-bottom:8px}
 .ct p{color:var(--mut);font-size:.85rem;margin-bottom:22px}
-.ics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.ics a{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;font-size:.78rem;font-weight:600}
-.ics a span{width:50px;height:50px;border-radius:50%;background:rgba(224,181,101,.14);color:var(--gold);display:grid;place-items:center;transition:.2s}
-.ics a:hover span{background:var(--gold);color:#1a1405;transform:translateY(-3px)}
-.ics .i{width:22px;height:22px}
 .hm-more{padding:64px clamp(20px,4vw,56px) 24px;max-width:1500px;margin:0 auto}
 .str{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .sc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 28px}
@@ -202,7 +197,7 @@ header nav a.on:after{content:"";position:absolute;left:25%;right:25%;bottom:0;h
 .st small{display:block;font-size:.7rem;letter-spacing:.12em;color:var(--pm)}
 .st b{display:block;font-size:1.6rem;line-height:1.3}
 .st b.sm2{font-size:1.02rem;line-height:1.5}
-.st span{font-size:.8rem;color:var(--pm)}
+.st span{font-size:.8rem;color:var(--pm)} .st .two{display:flex;gap:26px;margin-top:2px} .st .two b{font-size:1.6rem;line-height:1.3} .st .two span{white-space:nowrap}
 .gp-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:28px 0;scroll-margin-top:84px}
 .gp-f button{border:1px solid var(--pl);background:#fff;color:var(--pink);border-radius:999px;padding:6px 16px;font-size:.85rem}
 .gp-f button:hover{border-color:var(--pink)}
@@ -431,9 +426,13 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
   color: var(--pink) !important;
   border-radius: 20px !important;
   border: 1px solid rgba(224,181,101,.28) !important;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.6) !important;
   padding: 36px 40px 40px !important;
-  margin: 16px 20px 20px !important;
+  margin: 20px 20px 40px !important;
 }
+#work .wk { padding: 6px 0 0 !important; }
+/* 카드 제목: 어두운 카드 위에서 보이도록 밝은색 */
+#work .wc h3 { color: #F5F7FB !important; }
 /* 포트폴리오 필터 버튼을 플레이이력 필터 버튼 스타일로 통일 */
 .pills button {
   border: 1px solid var(--pl) !important;
@@ -451,11 +450,13 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
   border-color: var(--pink) !important;
 }
 
-/* 선택(활성화) 상태 시 */
-.pills button.on {
-  background: var(--pink) !important;
-  color: #fff !important;
-  border-color: var(--pink) !important;
+/* 선택(활성화) 상태 시: 플레이이력 게임 태그(.hi)와 같은 금색 계열 */
+.pills button.on,
+.gp-f button.on {
+  background: #F0DDB0 !important;
+  color: #5E4719 !important;
+  border-color: #C9A86A !important;
+  font-weight: 700 !important;
 }
 
 /* 선택 버튼 내부 숫자 배지 스타일 정리 */
@@ -470,8 +471,8 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 }
 
 .pills button.on em {
-  background: rgba(255, 255, 255, .2) !important;
-  color: #fff !important;
+  background: rgba(154, 116, 48, .2) !important;
+  color: #5E4719 !important;
 }
 /* 왼쪽 텍스트 영역 가독성을 위해 어두운 오버레이 그라데이션 강화 */
 .hshade {
@@ -486,9 +487,27 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 .hv {
   object-position: center 55% !important; /* 상하 기준점을 위쪽(20%)으로 올려 영상의 아래쪽이 더 잘 보이게 조정 */
 }
-  .eyebrow2 {
+.eyebrow2 {
   color: var(--goldd) !important;
 }
+/* CONTACT: 알약 버튼 2개 (이메일 클릭 복사 + 전화번호), 위아래 정렬 */
+.ics{display:grid;grid-template-columns:max-content;justify-content:start;gap:12px;margin-top:4px}
+.ics a,.ics button{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;background:#0F1218;border:1px solid #2C3342;border-radius:999px;color:#fff;font:700 .95rem var(--font);text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);cursor:pointer;transition:border-color .2s,transform .15s,color .2s}
+.ics a:hover,.ics button:hover{border-color:var(--gold);transform:translateY(-2px)}
+.ics .i{width:18px;height:18px;color:#cfd6e6;flex:none;transition:color .2s}
+.ics a:hover .i,.ics button:hover .i{color:var(--gold)}
+.ics button.ok{border-color:var(--gold);color:var(--gold)}
+.cph{margin-top:10px;font-size:.74rem;color:var(--mut)}
+
+/* ===== 이미지가 잘리지 않게: 전체(게임 제목 포함)가 보이도록 + 같은 이미지를 흐리게 깔아 빈 곳을 채움 ===== */
+.fimg,.th,.im,.wimg{position:relative;overflow:hidden;background:#0b1220}
+.pd-m{background:#0b1220}
+.fimg::before,.th::before,.im::before,.wimg::before,.pd-m:not(.sl)::before{content:"";position:absolute;inset:-12%;background:var(--u) center/cover no-repeat;filter:blur(16px) brightness(.5)}
+.fimg img,.th img,.im img,.wimg img,.pd-m img{object-fit:contain}
+.im img,.wimg img,.pd-m img{position:relative}
+.sl-t img{position:relative}
+.big .im{height:clamp(96px,14vh,170px)}
+@media (min-width:1001px){.ft{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -541,11 +560,10 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
           <h3>좋은 경험을 함께<br>만들어가고 싶습니다.</h3>
           <p>새로운 아이디어를 실제 플레이의 재미로 이어가겠습니다.</p>
           <div class="ics">
-            <a href="mailto:nsminzzang@naver.com"><span><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>이메일</a>
-            <a href="tel:+821067885457"><span><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg></span>전화</a>
-            <a href="#resume"><span><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg></span>이력서</a>
-            <a href="#work"><span><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg></span>포트폴리오</a>
+            <button type="button" data-copy="nsminzzang@naver.com" title="클릭하면 이메일 주소가 복사됩니다" aria-label="이메일 주소 복사"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span>nsminzzang@naver.com</span></button>
+            <a href="tel:01067885457" aria-label="전화 걸기"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg><span>010-6788-5457</span></a>
           </div>
+          
         </div>
       </div>
     </div>
@@ -561,7 +579,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
         <p>AI와 다방면의 스킬셋을 접목해 아이디어를 빠르게 시각화·구현하고, 팀원들과의 정교한 소통으로 하나의 명확한 비전을 향해 달려가는 개발 환경을 만들겠습니다.</p>
       </div>
     </div>
-    <footer class="hm-f"><span>© 2026 나하준 · Game Planner Portfolio</span><span>nsminzzang@naver.com</span></footer>
+    <footer class="hm-f"><span>© 2026 나하준 · Game Planner Portfolio</span></footer>
   </section>
 
   <!-- 이력서 -->
@@ -609,7 +627,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
       </div>
       <div class="c3">
         <section class="pjs">
-          <div class="sh"><h3 class="ttl">프로젝트 경험</h3><a href="#work">더보기 <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></a></div>
+          <div class="sh"><h3 class="ttl">프로젝트 경험</h3><a href="#work" <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></a></div>
           <div class="pg" id="pg"></div>
         </section>
         <section>
@@ -625,13 +643,13 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
     <div class="paper intro">
       <article>
         <section id="s1"><div class="n">01 · 성장과정</div><h2>플레이어가 왜 이 행동을 할까?<br><em>질문에서 시작한 기획</em></h2>
-          <p>저는 게임을 플레이하는 데서 그치지 않고, <strong>플레이어가 어떤 이유로 행동하고 언제 재미와 몰입을 느끼는지 관찰해 왔습니다.</strong> 게임을 접하면 튜토리얼과 UI 배치, 보상 구조, 맵 동선 등을 살펴보며 각 요소가 플레이 경험에 어떤 영향을 주는지 고민합니다. 이러한 관심은 게임 기획이 단순히 아이디어를 제안하는 일이 아니라, <strong>플레이어의 경험을 설계하는 일</strong>이라는 생각으로 이어졌습니다.</p><p>관심을 실제 역량으로 발전시키기 위해 ‘생성형 AI를 활용한 게임기획’ 부트캠프에 참여했습니다. <strong>네 번의 프로젝트</strong>를 진행하며 다양한 장르의 재미를 살펴보았고, <strong>게임 콘셉트부터 시스템 구조, 콘텐츠 흐름, UI/UX까지 기획서로 정리했습니다.</strong> 직접 만든 게임을 플레이해 보며 기획 의도가 플레이어에게 어떻게 전달되는지도 고민할 수 있었습니다.</p><p>이러한 경험을 통해 좋은 기획은 아이디어를 떠올리는 것에서 끝나지 않고, <strong>플레이어의 반응을 관찰하고 검증하며 개선하는 과정에서 완성된다</strong>는 점을 배웠습니다. 앞으로도 플레이어의 관점에서 문제를 발견하고, 더 나은 경험을 만드는 기획자로 성장하고 싶습니다.</p></section>
+          <p>어릴 때부터 게임을 즐기며 "이런 시스템이 있었다면 더 좋았을 텐데"라는 생각을 자주 했습니다. 날개가 있는 캐릭터가 날지 못하고 걸어 다니는 것, 쏜 화살이 사라지지 않고 직접 주워 쓰거나 생활로 자급자족할 수 있다면 어땠을까 하는 생각이었습니다.</p><p>그 아쉬움은 <strong>"사람들이 겪어 보지 못한 경험을 만들어 오래 기억될 게임을 만들고 싶다"</strong>는 바람이 되었습니다.</p><p>동아방송예술대학교에서 K-POP을 전공하며 기말 콘서트 무대에 올랐고, <strong>직접 팀을 꾸려 공연 구성, 안무 지도, 연출까지 맡아</strong> 후회 없이 마무리했습니다. 하지만 갓 입학한 후배들의 실력을 보며 나이와 실력에 대한 두려움이 커졌고, 휴학을 택했습니다.</p><p>쉬는 대신 디자인 자격증을 준비했고(GTQ 그래픽 1급), 그 과정에서 배운 모션그래픽이 게임 스킬을 직접 만드는 것처럼 재미있었습니다. 이때부터 게임 개발과 기획이 눈에 들어왔고, 게임 기획은 처음이었지만 '생성형 AI를 활용한 게임기획' 부트캠프에 지원했습니다.</p><p>부트캠프에서는 게임 하나에 많은 기획서와 시간, 소통이 필요하다는 것을 배웠습니다. Run Ran Run! 기획 중에는 구상한 시스템이 <strong>구현이 불가능하다는 답을 받아 무산되었고</strong>, 팀 전체가 말을 잃었습니다.</p><p>기한이 정해져 있었기에 <strong>제가 먼저 "좌절하지 말고 쉬운 장르로 방향을 바꿔 일단 작업을 이어 가자"고 나섰습니다.</strong> 메이플월드에 올라온 게임들을 조사해 많이 찾는 장르를 고르고, 그중 구현하기 쉬운 쪽으로 작업을 시작했습니다.</p><p>그동안 저는 <strong>처음 기획한 시스템이 구현 가능한지 정보를 찾아 팀원들에게 공유했고</strong>, 팀은 연구를 이어 간 끝에 <strong>처음 기획한 방향대로 구현에 성공해</strong> Run Ran Run!을 완성했습니다.</p><p>부트캠프는 제가 이 일에 정말 맞는지 확인하는 시간이기도 했습니다. 네 개의 프로젝트에서 저는 늘 <strong>플레이어가 어떤 감정을 느끼길 바라는지</strong>부터 정했습니다.</p><p>도감에서는 얻기 어려운 아이템을 손에 넣은 성취감을, Page of Desire에서는 "나 아니면 안 된다"는 감정을 목표로 규칙과 이야기를 짰고, 그 감정이 만들어지는 과정을 설계할 때 가장 몰입했습니다. 그래서 어릴 때부터 품어 온 "새로운 추억을 선물하고 싶다"는 바람을 <strong>시스템과 콘텐츠를 설계하는 일</strong>로 이루고 싶다고 생각하게 되었습니다.</p></section>
         <section id="s2"><div class="n">02 · 성격의 장단점</div><h2>상대의 성향을 고려한 소통으로<br><em>기획 의도를 정확히 전달합니다.</em></h2>
-          <p>저의 강점은 복잡한 아이디어를 정리해 <strong>시각 자료와 문서로 풀어내고, 다른 사람에게 명확하게 전달하는 능력</strong>입니다. 예체능 전공의 팀 활동을 통해 서로 다른 의견을 조율하는 경험을 쌓았고, 에버랜드와 호프집 아르바이트를 하면서 다양한 성향의 사람들과 상황에 맞게 소통하는 방법을 배웠습니다. 이러한 경험은 프로젝트에서도 팀원들의 관점을 이해하고 공통된 목표를 찾아가는 데 도움이 되었습니다.</p><p>또한 디자인 학원과 프로젝트 경험을 통해 정보를 시각적으로 전달하는 능력을 길렀습니다. <strong>UI 기획과 비주얼 가이드 기획을 담당하며 기획과 아트 양쪽의 관점을 이해했고,</strong> 화면 구성과 시각 자료로 기획 의도를 직관적으로 표현했습니다. 그 결과 <strong>개발자분들이 내용을 더 빠르게 이해해 개발 시간을 줄일 수 있었습니다.</strong> 여기에 AI 도구를 활용한 아이디어 시각화 경험을 더해, <strong>추상적인 발상을 팀과 공유할 수 있는 결과물로 발전시키는 역량</strong>을 키웠습니다.</p><p>반면, 결과물의 완성도를 높이려는 성향 때문에 초반에 세부 요소에 많은 시간을 쓰는 경우가 있습니다. 이를 개선하기 위해 <strong>작업의 핵심 목표와 우선순위를 먼저 정리하고, 초안을 빠르게 작성한 뒤 피드백을 반영하는 방식</strong>으로 업무를 진행하고 있습니다. 또한 핵심 결과물을 일정 안에 완성한 후 세부 사항을 보완하며, 상황에 따라 작업 순서를 조정하고 있습니다.</p><p>앞으로도 꼼꼼함이라는 강점은 유지하되, 완성도와 효율성의 균형을 맞추며 팀의 목표 달성에 기여하겠습니다.</p></section>
+          <p>사람을 상대하는 일이 두려운 소심한 성격이었습니다. 첫 아르바이트로 편의점이나 고깃집 같은 익숙한 일 대신 색다른 일을 해 보고 싶어 <strong>에버랜드 MD로 일을 시작했습니다.</strong></p><p>전국에서 온 동료들과 일하고 수많은 손님을 만나 상황을 풀어 가면서 <strong>도전적이고 긍정적인 사람으로 달라졌고</strong>, 그 모습이 인정받아 <strong>한 시즌 동안 연기자로 전향했습니다.</strong> 이 일을 하며 <strong>사람들의 반응을 보고 바로 판단하는 능력</strong>이 생겼고, 팀 활동에서도 동료들과 어려움 없이 호흡을 맞출 수 있었습니다.</p><p>이 능력은 프로젝트에서 <strong>상대에 맞춰 설명 방식을 바꾸는 소통</strong>으로 이어졌습니다. 개발자에게는 말로 길게 설명하는 대신 화면 구성과 시각 자료를 함께 보여 주었고, 도감 시스템은 여러 게임을 레퍼런스로, 시나리오는 만화를 예시로 들어 의도를 전했습니다.</p><p>그 결과 <strong>둥둥아일랜드와 Page of Desire에서 개발자의 이해가 빨라져 개발 시간이 줄었습니다.</strong></p><p>다만 <strong>처음 맡는 일이라 상대에게 어떻게 전달할지 깊이 고민하다 보니</strong>, 행동보다 생각이 앞서는 것이 단점입니다. Page of Desire에서 처음으로 시나리오를 맡았을 때도 찾아보고 물어보며 고민하다 시간이 지체되었습니다.</p><p>그래서 <strong>머릿속 생각을 두서없이 전부 글로 적은 뒤, 당장 필요 없는 것을 덜어내며 정리하는 방법</strong>을 쓰고 있습니다. 적고 나면 필요한 것이 보이기 때문입니다.</p></section>
         <section id="s3"><div class="n">03 · 직무 역량 및 경험</div><h2>시스템 설계부터 PV 제작까지,<br><em>기획을 실제 결과물로 끝까지 완성했습니다.</em></h2>
-          <p>저는 <strong>시스템과 콘텐츠의 기획 의도를 실제 플레이 경험과 결과물로 구체화하는 역량</strong>을 길러왔습니다. 시스템 기획에서는 규칙과 목표, 플레이어의 선택, 그에 따른 피드백을 구조화하고, 콘텐츠 기획에서는 세계관과 공간, 퀘스트와 보상이 자연스럽게 연결되도록 고민합니다. 또한 기획이 플레이어에게 명확하게 전달될 수 있도록 UI/UX와 레벨 구조까지 함께 고려합니다.</p><p>‘둥둥아일랜드’ 프로젝트에서는 <strong>수집하는 재미를 제공할 수 있는 도감 시스템을 구상하고, 비주얼 가이드와 시스템 홍보 PV를 제작</strong>하며 콘텐츠의 특징을 시각적으로 전달했습니다. ‘Page of Desire’에서는 <strong>시나리오와 비주얼 콘셉트를 구성하고 PV를 제작</strong>해 콘텐츠의 분위기와 핵심 경험을 표현했습니다.</p><p>‘Run Ran Run!’과 ‘IF HISTORY’ 프로젝트에서는 UI를 기획하고, 생성형 AI를 활용해 게임 내 에셋을 제작하며 아이디어를 결과물로 발전시켰습니다. 개인 프로젝트인 ‘Cyber Doom Odyssey’에서는 <strong>액션 슈팅 장르의 핵심 메커니즘을 직접 구현</strong>하며 시스템이 실제 플레이로 이어지는 과정을 경험했습니다.</p><p>또한 게임 기획 부트캠프에서 기획 문서 작성과 협업을 경험하며, <strong>개발 의도와 규칙을 명확하게 전달하는 문서의 중요성</strong>을 배웠습니다. 이러한 경험을 바탕으로 플레이어가 느낄 재미를 구체적인 기획으로 설계하고, 문서와 시각 자료, 프로토타입으로 팀원들과 기획 의도를 공유하며 실현 가능한 결과물로 만들어 가는 기획자가 되고자 합니다.</p></section>
+          <p>저는 <strong>플레이어가 느낄 감정을 먼저 정하고, 그 감정이 나오도록 규칙과 콘텐츠를 설계하는 기획자</strong>가 되고 싶습니다. 부트캠프의 프로젝트들에서 이 방식을 직접 해 보았습니다.</p><p>‘둥둥아일랜드’에서는 <strong>도감 시스템을 기획</strong>했습니다. 수집형 게임에서 업적을 달성하거나 새 아이템을 얻고, 개수·무게·길이 같은 기록을 채울 때 느끼는 보람과 쾌감이 출발점이었습니다.</p><p>도감에는 <strong>희귀도 표시 등을 두어, 얻기 어려운 아이템을 손에 넣은 성취감</strong>을 느끼게 했습니다. 이를 알리는 <strong>UI 가이드와 홍보 PV도 제작</strong>했습니다. PV는 짧은 시간 안에 게임 메커니즘이 보이는 구성입니다.</p><p>‘Page of Desire’에서는 감정을 이야기로 풀었습니다. <strong>시나리오와 비주얼 콘셉트 구성, PV 제작</strong>을 맡았습니다. 카드 덱빌딩에 ‘카드로 몬스터를 봉인한다’는 세계관을 얹고, 몬스터는 칠죄종 콘셉트로 잡았습니다.</p><p>봉인된 칠죄종이 한순간에 풀려 위기를 느낀 주인공이 이들을 다시 봉인하러 탐험하는 이야기입니다. 목표는 플레이어가 <strong>“이건 내가 아니면 해결할 수 없다”</strong>고 느끼게 하는 것이었습니다.</p><p>이 시나리오는 <strong>시스템 기획서와 스크립트 테이블로 정리해 개발자가 바로 구현할 수 있게 전달했습니다.</strong></p><p>개인 프로젝트 ‘Cyber Doom Odyssey’는 <strong>바이브코딩으로 액션 슈팅의 핵심 메커니즘을 최대한 구현</strong>한 작업입니다. 플레이어 조작과 스킬, 에너미 AI 2종을 만들며 기획이 실제 플레이로 이어지는 과정을 직접 겪었습니다. ‘Run Ran Run!’과 ‘IF HISTORY’에서는 UI 기획과 에셋 제작이 제 역할이었습니다.</p><p><strong>감정을 먼저 정하고, 규칙과 콘텐츠로 설계하고, 문서와 구현으로 확인하는 것.</strong> 네 개의 팀 프로젝트와 하나의 개인 프로젝트에서 제가 반복해 온 방식을 앞으로도 이어 가겠습니다.</p></section>
         <section id="s4" style="border:0"><div class="n">04 · 입사 후 포부 및 성장계획</div><h2>프로젝트의 방향을 먼저 깊이 이해하고,<br><em>팀의 목표를 함께 완성하겠습니다.</em></h2>
-          <p>입사 후에는 회사의 개발 문화와 프로젝트의 방향, <strong>담당 게임의 플레이어 경험을 먼저 이해</strong>하겠습니다. 기존 콘텐츠와 시스템을 직접 살펴보며 게임의 핵심 재미와 구조를 파악하고, 팀이 중요하게 생각하는 기획 기준과 개발 프로세스를 익히겠습니다. 맡은 업무의 목적과 우선순위를 정확히 이해하고, <strong>진행 상황과 필요한 사항을 적극적으로 공유하며 신뢰를 쌓겠습니다.</strong></p><p>업무에 익숙해진 뒤에는 플레이어의 행동과 선택을 바탕으로 콘텐츠와 시스템을 설계하겠습니다. 새로운 기능을 제안할 때는 <strong>기능 자체의 목적뿐 아니라 플레이어가 경험하게 될 변화, 기존 시스템과의 연결, 예상되는 예외 상황까지 함께 고려</strong>하겠습니다. 또한 기획안을 문서와 시각 자료, 필요한 프로토타입으로 정리해 개발·아트 직군과 기획 의도를 명확하게 공유하고, <strong>피드백과 검증을 통해 완성도를 높이겠습니다.</strong></p><p>장기적으로는 콘텐츠의 재미와 시스템의 구조를 함께 이해하고, 기획 의도를 실제 플레이 경험으로 구현할 수 있는 게임 기획자로 성장하고 싶습니다. AI를 비롯한 다양한 제작 도구도 목적에 맞게 활용해 아이디어를 효율적으로 풀어내되, <strong>도구의 활용 자체보다 게임의 재미와 플레이어 경험을 우선하겠습니다.</strong> 팀의 목표를 이해하고 동료들과 협력하며, 플레이어에게 의미 있는 경험을 제공하는 데 기여하겠습니다.</p></section>
+          <p>입사 후에는 팀이 만들고 있는 게임의 방향과 작업 방식을 먼저 깊이 이해하겠습니다. <strong>맡은 업무는 정확하게, 속도는 팀에 맞춰 가는 것</strong>이 첫 목표입니다.</p><p>기회가 된다면 신규 프로젝트의 기획 과정도 경험해 보고 싶습니다. 막힌 상황에서도 먼저 방법을 찾고 팀을 움직였던 Run Ran Run!의 경험을 살려, 기획이 구현으로 이어지도록 돕겠습니다.</p><p><strong>5년 뒤의 목표는 제가 기획한 핵심 시스템과 콘텐츠로 플레이어에게 큰 재미를 주고, 잊지 못할 게임을 만드는 기획자입니다.</strong></p><p>어릴 때부터 품어 온 “사람들이 겪어 보지 못한 경험을 선물하고 싶다”는 바람을, 기획자로서 실제 결과물로 증명해 보이겠습니다.</p></section>
       </article>
       <div class="tocs"><div class="tocin">
         <h3 class="hd">자기소개 목차</h3>
@@ -660,7 +678,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
         </div>
         <div class="gp-stats">
           <div class="st"><svg class="i" aria-hidden="true"><use href="#i-pad"/></svg><div><small>PLAYED GAMES</small><b id="gs-n">0</b><span>게임</span></div></div>
-          <div class="st"><svg class="i" aria-hidden="true"><use href="#i-screen"/></svg><div><small>PLATFORMS</small><b id="gs-p" class="sm2">-</b><span>플랫폼</span></div></div>
+          <div class="st"><svg class="i" aria-hidden="true"><use href="#i-screen"/></svg><div><small>PLATFORMS</small><div class="two"><div><b id="gs-pc">0</b><span>PC &amp; Console</span></div><div><b id="gs-mo">0</b><span>Mobile</span></div></div></div></div>
           <div class="st"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><div><small>FAVORITE GENRE</small><b id="gs-g">-</b><span>선호 장르</span></div></div>
         </div>
       </div>
@@ -718,10 +736,10 @@ const ic=n=>`<svg class="i" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const nb=p=>`<span class="nb">${ic("users")}${(p.team.match(/\d+/g)||[]).reduce((a,b)=>a+ +b,0)}명</span>`;
 const li=a=>a.map(x=>`<li>${x}</li>`).join("");
 function big(p,i){const docs=p.l.filter(x=>!x[1].startsWith("http")).map(x=>x[0]);
-  return `<article class="big" data-open="${i}"><div class="im"><img src="${p.img}" alt="${p.t} 메인 화면"><span class="tg">${p.tg}</span></div>
+  return `<article class="big" data-open="${i}"><div class="im" style="--u:url('${p.img}')"><img src="${p.img}" alt="${p.t} 메인 화면"><span class="tg">${p.tg}</span></div>
   <div class="bh"><div><h4>${p.t}${nb(p)}</h4><small>${p.role}</small></div><button class="go" data-open="${i}" aria-label="${p.t} 상세 보기">${ic("arrow")}</button></div>
   <div class="b3"><div><b>담당 업무</b><ul>${li(p.w.map(x=>x[1]))}</ul></div><div><b>주요 산출물</b><ul>${li(docs.length?docs:p.chips)}</ul></div><div><b>프로젝트 소개</b>${p.d}</div></div></article>`}
-function sm(p,i,c){return `<button class="sm" data-pick="${c}:${i}" aria-label="${p.t} 크게 보기"><div class="im"><img src="${p.img}" alt="" loading="lazy"><span class="tg">${p.tg}</span></div><div><h4>${p.t}${nb(p)}</h4><small>${p.role}</small></div>${ic("arrow")}</button>`}
+function sm(p,i,c){return `<button class="sm" data-pick="${c}:${i}" aria-label="${p.t} 크게 보기"><div class="im" style="--u:url('${p.img}')"><img src="${p.img}" alt="" loading="lazy"><span class="tg">${p.tg}</span></div><div><h4>${p.t}${nb(p)}</h4><small>${p.role}</small></div>${ic("arrow")}</button>`}
 function dash(){const o=cols.map((c,k)=>c.find(i=>i!==sel[k]));
   $("#pg").innerHTML=cols.map((c,k)=>big(P[sel[k]],sel[k])).join("")+cols.map((c,k)=>sm(P[o[k]],o[k],k)).join("")}
 dash();
@@ -734,7 +752,7 @@ const tn=p=>(p.team.match(/\d+/g)||[]).reduce((a,b)=>a+ +b,0);
 const wl=p=>p.team?`팀 프로젝트 · ${tn(p)}명`:"개인 프로젝트 · 1인 개발";
 function draw(){
   $("#cards").innerHTML=P.map((p,i)=>({p,i})).filter(o=>cur==="전체"||o.p.cats.includes(cur)).map(({p,i})=>
-  `<div class="wc" role="button" tabindex="0" data-i="${i}"><div class="wimg"><img src="${p.img}" alt="${p.t} 대표 이미지" loading="lazy"></div><div class="wbody"><span class="wtag">${wl(p)}</span><h3>${p.t}</h3><p>${p.d}</p><div class="wk-l">주요 작업</div><div class="wchips">${p.cats.map(c=>`<span>${c}</span>`).join("")}</div><div class="wchips sub">${p.chips.map(c=>`<span>${c}</span>`).join("")}</div></div><div class="wf"><span>상세 보기</span>${ic("arrow")}</div></div>`).join("");
+  `<div class="wc" role="button" tabindex="0" data-i="${i}"><div class="wimg" style="--u:url('${p.img}')"><img src="${p.img}" alt="${p.t} 대표 이미지" loading="lazy"></div><div class="wbody"><span class="wtag">${wl(p)}</span><h3>${p.t}</h3><p>${p.d}</p><div class="wk-l">주요 작업</div><div class="wchips">${p.cats.map(c=>`<span>${c}</span>`).join("")}</div><div class="wchips sub">${p.chips.map(c=>`<span>${c}</span>`).join("")}</div></div><div class="wf"><span>상세 보기</span>${ic("arrow")}</div></div>`).join("");
   $("#filter").innerHTML=cats.map(c=>`<button class="${c===cur?"on":""}" data-c="${c}">${c}<em>${c==="전체"?P.length:P.filter(p=>p.cats.includes(c)).length}</em></button>`).join("");
 }
 draw();
@@ -750,7 +768,7 @@ vdlg.addEventListener("click",e=>{if(e.target===vdlg)vdlg.close()});
 function open_(i){const p=P[i];
   const mats=p.l.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${ic(/^https?:/.test(l[1])?"ext":"doc")}${l[0]}</a>`).join("");
   $("#dbody").innerHTML=`<div class="pd-h"><button class="pd-x" aria-label="닫기" onclick="dlg.close()">×</button><div class="pd-k">PROJECT 0${+i+1} / ${p.team?"TEAM PROJECT":"PERSONAL PROJECT"}</div><h2>${p.t}</h2><div class="pd-s">${gp(p)}</div><div class="pd-c">${p.areas.map(a=>`<span>${a}</span>`).join("")}</div></div>
-  <div class="pd-b"><div class="pd-m${p.subs?" sl":""}">${p.subs?`<div class="sl-t">${[p.img,...p.subs].map((u,k)=>`<img src="${u}" alt="${p.t} 이미지 ${k+1}" draggable="false">`).join("")}</div><button class="sl-p" hidden aria-label="이전 이미지">◀</button><button class="sl-n" aria-label="다음 이미지">▶</button><div class="sl-d"></div>`:`<img src="${p.img}" alt="${p.t} 대표 이미지">`}${p.video?`<button class="pd-play" data-v="${p.video}" aria-label="${p.t} 영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>`:""}</div>
+  <div class="pd-b"><div class="pd-m${p.subs?" sl":""}" style="--u:url('${p.img}')">${p.subs?`<div class="sl-t">${[p.img,...p.subs].map((u,k)=>`<img src="${u}" alt="${p.t} 이미지 ${k+1}" draggable="false">`).join("")}</div><button class="sl-p" hidden aria-label="이전 이미지">◀</button><button class="sl-n" aria-label="다음 이미지">▶</button><div class="sl-d"></div>`:`<img src="${p.img}" alt="${p.t} 대표 이미지">`}${p.video?`<button class="pd-play" data-v="${p.video}" aria-label="${p.t} 영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>`:""}</div>
   <div class="pd-r">${p.w.map(w=>{const r=rl(w[0]);return `<div class="pd-rc">${ic(r[2])}<small>${r[1]}</small><b>${w[0]}</b><p>${w[1]}</p></div>`}).join("")}</div>
   ${mats?`<div class="pd-l"><div class="pd-lt">PROJECT MATERIALS</div><div class="pd-ln">${mats}</div></div>`:""}</div>`;
   $(".pd-b").scrollTop=0;dlg.showModal();const sl=$(".sl-t");if(sl)initSl(sl)}
@@ -772,7 +790,12 @@ $("#dbody").addEventListener("click",e=>{const v=e.target.closest("[data-v]");if
 $("#cards").addEventListener("click",e=>{const c=e.target.closest("[data-i]");if(c)open_(c.dataset.i)});
 dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
 // 연락처 복사
-$$("[data-copy]").forEach(b=>b.addEventListener("click",()=>{const t=b.textContent;navigator.clipboard&&navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent="복사됨 ✓";setTimeout(()=>b.textContent=t,1200)}).catch(()=>{})}));
+$$("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{
+  const sp=b.querySelector("span"),t=sp.dataset.t||(sp.dataset.t=sp.textContent);
+  b.style.minWidth=b.offsetWidth+"px";
+  try{await navigator.clipboard.writeText(b.dataset.copy)}catch(e){const x=document.createElement("textarea");x.value=b.dataset.copy;document.body.appendChild(x);x.select();try{document.execCommand("copy")}catch(_){}x.remove()}
+  sp.textContent="복사됨 ✓";b.classList.add("ok");
+  setTimeout(()=>{sp.textContent=t;b.classList.remove("ok")},1400)}));
 // 자기소개 목차: 읽고 있는 항목 표시
 const secs=$$("#intro article section"),tls=$$("#intro .tocs a");
 tls[0].classList.add("on");
@@ -781,88 +804,118 @@ secs.forEach(x=>io.observe(x));
 // ===== 플레이이력 데이터 : 게임을 추가·수정하려면 아래 목록만 고치세요 =====
 // n 게임 이름 / p 플랫폼 (PC, Console, Switch, Mobile) / g 장르 / i 이미지 파일명 (images/games/ 폴더)
 // t 플레이 기록 문구 (여러 개 가능, 예: t:["클리어","46시간"] / t:["100%","430시간"] / t:["플레이 15년 이상"] / t:["상위 랭커"]). t 가 없으면 h:시간 을 "N시간"으로 표시
-// g 는 RPG, MMORPG, 액션, 어드벤처, 시뮬레이션, 스포츠, 퍼즐, 기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
+// g 는 RPG, MMORPG, 액션, 어드벤처, FPS, 생존·호러, 스포츠, 퍼즐, 기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
 const GAMES=[
  {n:"검은사막",p:["PC","Console"],g:"MMORPG",h:10000,t:["10000시간","솔라레 랭커","26시즌TOP20","25시즌TOP9"],i:"blackdesert.jpg"},
  {n:"MapleStory",p:["PC"],g:"MMORPG",t:["15년 플레이"],i:"maple.jpg"},
  {n:"PalWorld",p:["PC","Console"],g:"어드벤처",h:164,t:["클리어","2회차","164시간"],i:"palworld.jpg"},
- {n:"Lethal Company",p:["PC","Console"],g:"기타",h:98,i:"lethal.jpg"},
+ {n:"Lethal Company",p:["PC","Console"],g:"생존·호러",h:98,i:"lethal.jpg"},
  {n:"RAFT",p:["PC","Console"],g:"어드벤처",t:["클리어","2회차","80시간"],i:"raft.jpg"},
  {n:"Project Zomboid",p:["PC","Console"],g:"RPG",h:40,i:"zomboid.jpg"},
- {n:"리그오브레전드",p:["AOS"],g:"액션",t:["10년이상"],i:"lol.jpg"},
+ {n:"리그오브레전드",p:["PC"],g:"MOBA",t:["10년이상"],i:"lol.jpg"},
  {n:"이환",p:["PC","Console","Mobile"],g:"RPG",i:"nte.jpg"},
  {n:"트릭컬 리바이브",p:["Mobile"],g:"RPG",i:"trickcal.jpg"},
  {n:"MapleStoryWorlds",p:["PC","Mobile"],g:"MMORPG",h:180,i:"mapleworlds.jpg"},
  {n:"아이온2",p:["PC","Mobile"],g:"MMORPG",h:50,i:"aion.jpg"},
  {n:"STARCRAFT",p:["PC"],g:"기타",h:100,i:"starcraft.jpg"},
  // ↓ 페이지 넘김 확인용 예시입니다. 지우거나 실제 게임으로 바꾸세요.
- {n:"예시 게임 13",p:["Mobile"],g:"퍼즐",h:15,i:"sample-13.jpg"},
- {n:"예시 게임 14",p:["PC","Console"],g:"스포츠",h:14,i:"sample-14.jpg"},
- {n:"예시 게임 15",p:["PC"],g:"퍼즐",h:12,i:"sample-15.jpg"},
- {n:"예시 게임 16",p:["Mobile"],g:"스포츠",h:10,i:"sample-16.jpg"},
- {n:"예시 게임 17",p:["PC"],g:"기타",h:8,i:"sample-17.jpg"},
- {n:"예시 게임 18",p:["Mobile"],g:"RPG",h:6,i:"sample-18.jpg"},
- {n:"예시 게임 19",p:["Console"],g:"액션",h:20,i:"sample-19.jpg"},
- {n:"예시 게임 20",p:["PC","Mobile"],g:"스포츠",h:27,i:"sample-20.jpg"},
- {n:"예시 게임 21",p:["Switch"],g:"RPG",h:34,i:"sample-21.jpg"},
- {n:"예시 게임 22",p:["Mobile"],g:"시뮬레이션",h:41,i:"sample-22.jpg"},
- {n:"예시 게임 23",p:["PC","Console"],g:"기타",h:48,i:"sample-23.jpg"},
- {n:"예시 게임 24",p:["PC"],g:"어드벤처",h:55,i:"sample-24.jpg"},
- {n:"예시 게임 25",p:["Console"],g:"퍼즐",h:4,i:"sample-25.jpg"},
- {n:"예시 게임 26",p:["PC","Mobile"],g:"액션",h:11,i:"sample-26.jpg"},
- {n:"예시 게임 27",p:["Switch"],g:"스포츠",h:18,i:"sample-27.jpg"},
- {n:"예시 게임 28",p:["Mobile"],g:"RPG",h:25,i:"sample-28.jpg"},
- {n:"예시 게임 29",p:["PC","Console"],g:"시뮬레이션",h:32,i:"sample-29.jpg"},
- {n:"예시 게임 30",p:["PC"],g:"기타",h:39,i:"sample-30.jpg"},
- {n:"예시 게임 31",p:["Console"],g:"어드벤처",h:46,i:"sample-31.jpg"},
- {n:"예시 게임 32",p:["PC","Mobile"],g:"퍼즐",h:53,i:"sample-32.jpg"},
- {n:"예시 게임 33",p:["Switch"],g:"액션",h:60,i:"sample-33.jpg"},
- {n:"예시 게임 34",p:["Mobile"],g:"스포츠",h:9,i:"sample-34.jpg"},
- {n:"예시 게임 35",p:["PC","Console"],g:"RPG",h:16,i:"sample-35.jpg"},
- {n:"예시 게임 36",p:["PC"],g:"시뮬레이션",h:23,i:"sample-36.jpg"},
- {n:"예시 게임 37",p:["Console"],g:"기타",h:30,i:"sample-37.jpg"},
- {n:"예시 게임 38",p:["PC","Mobile"],g:"어드벤처",h:37,i:"sample-38.jpg"},
- {n:"예시 게임 39",p:["Switch"],g:"퍼즐",h:44,i:"sample-39.jpg"},
- {n:"예시 게임 40",p:["Mobile"],g:"액션",h:51,i:"sample-40.jpg"},
- {n:"예시 게임 41",p:["PC","Console"],g:"스포츠",h:58,i:"sample-41.jpg"},
- {n:"예시 게임 42",p:["PC"],g:"RPG",h:7,i:"sample-42.jpg"},
- {n:"예시 게임 43",p:["Console"],g:"시뮬레이션",h:14,i:"sample-43.jpg"},
- {n:"예시 게임 44",p:["PC","Mobile"],g:"기타",h:21,i:"sample-44.jpg"},
- {n:"예시 게임 45",p:["Switch"],g:"어드벤처",h:28,i:"sample-45.jpg"},
- {n:"예시 게임 46",p:["Mobile"],g:"퍼즐",h:35,i:"sample-46.jpg"},
- {n:"예시 게임 47",p:["PC","Console"],g:"액션",h:42,i:"sample-47.jpg"},
- {n:"예시 게임 48",p:["PC"],g:"스포츠",h:49,i:"sample-48.jpg"},
- {n:"예시 게임 49",p:["Console"],g:"RPG",h:56,i:"sample-49.jpg"},
- {n:"예시 게임 50",p:["PC","Mobile"],g:"시뮬레이션",h:5,i:"sample-50.jpg"},
- {n:"예시 게임 51",p:["Switch"],g:"기타",h:12,i:"sample-51.jpg"},
- {n:"예시 게임 52",p:["Mobile"],g:"어드벤처",h:19,i:"sample-52.jpg"},
- {n:"예시 게임 53",p:["PC","Console"],g:"퍼즐",h:26,i:"sample-53.jpg"},
- {n:"예시 게임 54",p:["PC"],g:"액션",h:33,i:"sample-54.jpg"},
- {n:"예시 게임 55",p:["Console"],g:"스포츠",h:40,i:"sample-55.jpg"},
- {n:"예시 게임 56",p:["PC","Mobile"],g:"RPG",h:47,i:"sample-56.jpg"},
- {n:"예시 게임 57",p:["Switch"],g:"시뮬레이션",h:54,i:"sample-57.jpg"},
- {n:"예시 게임 58",p:["Mobile"],g:"기타",h:3,i:"sample-58.jpg"},
- {n:"예시 게임 59",p:["PC","Console"],g:"어드벤처",h:10,i:"sample-59.jpg"},
- {n:"예시 게임 60",p:["PC"],g:"퍼즐",h:17,i:"sample-60.jpg"},
- {n:"예시 게임 61",p:["Console"],g:"액션",h:24,i:"sample-61.jpg"},
- {n:"예시 게임 62",p:["PC","Mobile"],g:"스포츠",h:31,i:"sample-62.jpg"},
- {n:"예시 게임 63",p:["Switch"],g:"RPG",h:38,i:"sample-63.jpg"},
- {n:"예시 게임 64",p:["Mobile"],g:"시뮬레이션",h:45,i:"sample-64.jpg"},
- {n:"예시 게임 65",p:["PC","Console"],g:"기타",h:52,i:"sample-65.jpg"},
- {n:"예시 게임 66",p:["PC"],g:"어드벤처",h:59,i:"sample-66.jpg"},
- {n:"예시 게임 67",p:["Console"],g:"퍼즐",h:8,i:"sample-67.jpg"},
- {n:"예시 게임 68",p:["PC","Mobile"],g:"액션",h:15,i:"sample-68.jpg"},
+ {n:"MapleStoryM",p:["PC","Mobile"],g:"MMORPG",i:"maplem.jpg"},
+ {n:"MapleStory2",p:["PC"],g:"MMORPG",i:"maple2.jpg"},
+ {n:"Once Human",p:["PC","Console","Mobile"],g:"기타",h:18,i:"oncehuman.jpg"},
+ {n:"운빨존많겜",p:["Mobile"],g:"기타",h:40,i:"lucky.jpg"},
+ {n:"붉은사막",p:["PC","Console"],g:"어드벤처",h:20,i:"desert.jpg"},
+ {n:"던전앤파이터",p:["PC"],g:"RPG",i:"df.jpg"},
+ {n:"테일즈런너",p:["PC"],g:"스포츠",i:"run.jpg"},
+ {n:"OVERCOOKED2",p:["PC","Console"],g:"어드벤처",i:"overcook.jpg"},
+ {n:"R.E.P.O.",p:["PC","Console"],g:"생존·호러",h:4,i:"repo.jpg"},
+ {n:"Goose Goose Duck ",p:["PC","Console","Mobile"],g:"생존·호러",h:18,i:"duck.jpg"},
+ {n:"Among Us",p:["PC","Console","Mobile"],g:"생존·호러",h:3,i:"amongus.jpg"},
+ {n:"미메시스",p:["PC","Console"],g:"생존·호러",h:5,i:"mimesis.png"},
+ {n:"트릭스터",p:["PC"],g:"MMORPG",i:"trickster.jpg"},
+ {n:"트릭스터R 26",p:["PC"],g:"MMORPG",i:"tricksterr.jpg"},
+ {n:"트릭스터AD",p:["PC"],g:"MMOPRG",i:"tricksterad.jpg"},
+ {n:"트릭스터M",p:["Mobile"],g:"MMORPG",i:"tricksterm.jpg"},
+ {n:"디아블로2",p:["PC","Console"],g:"RPG",i:"diablo.jpg"},
+ {n:"데카론",p:["PC"],g:"MMORPG",i:"dekaron.jpg"},
+ {n:"리니지",p:["PC"],g:"MMORPG",i:"lineage.jpg"},
+ {n:"리니지2",p:["PC"],g:"MMORPG",i:"lineage2.jpg"},
+ {n:"리니지M",p:["PC"],g:"MMORPG",i:"lineagem.jpg"},
+ {n:"블레이드앤소울",p:["PC"],g:"MMORPG",i:"bs.jpg"},
+ {n:"DK온라인",p:["PC"],g:"MMORPG",i:"dk.jpg"},
+ {n:"TERA",p:["PC"],g:"MMORPG",i:"tera.jpg"},
+ {n:"파이널 판타지 XIV",p:["PC","Console"],g:"MMORPG",i:"ff14.jpg"},
+ {n:"다크에덴",p:["PC"],g:"MMORPG",i:"darkeden.jpg"},
+ {n:"에오스 온라인",p:["PC"],g:"MMORPG",i:"eos.jpg"},
+ {n:"RF 온라인",p:["PC"],g:"MMORPG",i:"rf.jpg"},
+ {n:"십이지천2",p:["PC"],g:"MMORPG",i:"122.jpg"},
+ {n:"니다 온라인",p:["PC"],g:"MMORPG",i:"nida.jpg"},
+ {n:"카발 온라인",p:["PC"],g:"MMORPG",i:"cabal.jpg"},
+ {n:"카발 온라인2",p:["PC"],g:"MMORPG",i:"cabal2.jpg"},
+ {n:"나이트 온라인",p:["PC"],g:"MMORPG",i:"knight.jpg"},
+ {n:"BLESS",p:["PC"],g:"MMORPG",i:"bless.jpg"},
+ {n:"로한",p:["PC"],g:"MMORPG",i:"rohan.jpg"},
+ {n:"AIKA",p:["PC"],g:"MMORPG",i:"aika.jpg"},
+ {n:"크리티카",p:["PC"],g:"액션",i:"kritika.jpg"},
+ {n:"귀혼",p:["PC"],g:"MMORPG",i:"soul.jpg"},
+ {n:"그랜드체이스",p:["PC","Console"],g:"액션",i:"grand.jpg"},
+ {n:"열혈강호",p:["PC"],g:"MMORPG",i:"10.jpg"},
+ {n:"원더킹",p:["PC"],g:"MMORPG",i:"wonderking.jpg"},
+ {n:"텐비",p:["PC"],g:"MMORPG",i:"tenvi.jpg"},
+ {n:"스톤에이지",p:["PC"],g:"RPG",i:"stone.jpg"},
+ {n:"라테일",p:["PC"],g:"MMORPG",i:"latale.jpg"},
+ {n:"루니아전기",p:["PC"],g:"MMORPG",i:"lunia.jpg"},
+ {n:"문명온라인",p:["PC"],g:"MMORPG",i:"ansaud.jpg"},
+ {n:"요구르팅",p:["PC"],g:"MMORPG",i:"yo.jpg"},
+ {n:"쿵야 어드벤처",p:["PC"],g:"MMORPG",i:"koong.jpg"},
+ {n:"서든 어택",p:["PC"],g:"FPS",i:"sudden.jpg"},
+ {n:"스페셜포스",p:["PC"],g:"FPS",i:"sf.jpg"},
+ {n:"카운터 스트라이크",p:["PC","Console"],g:"FPS",i:"counter.jpg"},
+ {n:"버블파이터",p:["PC"],g:"FPS",i:"bubble.jpg"},
+ {n:"워록",p:["PC"],g:"FPS",i:"war.jpg"},
+ {n:"GUNZ",p:["PC"],g:"액션",i:"gunz.jpg"},
+ {n:"크레이지 아케이드",p:["PC"],g:"액션",i:"crazy.jpg"},
+ {n:"큐플레이",p:["PC"],g:"액션",i:"qplay.jpg"},
+ {n:"알투비트",p:["PC"],g:"스포츠",i:"r2.jpg"},
+ {n:"포트리스2",p:["PC"],g:"기타",i:"for.jpg"},
+ {n:"V4",p:["Mobile"],g:"MMORPG",i:"v4.jpg"},
+ {n:"PICO PARK",p:["PC","Cosole"],g:"퍼즐",i:"pico.jpg"},
+ {n:"SUBNAUTICA2",p:["PC","Cosole"],g:"생존·호러",h:9,i:"sub.jpg"},
+ {n:"DEADBYDAYLIGHT",p:["PC","Console"],g:"액션",h:4,i:"dbd.jpg"},
+ {n:"FAKEBOOK",p:["PC","Cosole"],g:"어드벤처",i:"fake.jpg"},
+ {n:"휴먼:폴 플랫",p:["PC","Cosole"],g:"퍼즐",h:5,i:"fall.jpg"},
+ {n:"루마섬",p:["PC","Cosole"],g:"RPG",h:6,i:"luma.jpg"},
+ {n:"Burger Shift: Team Rush",p:["PC","Cosole"],g:"기타",h:3,i:"burger.jpg"},
+ {n:"7DAYS TO DIE",p:["PC","Cosole"],g:"생존·호러",h:21,i:"7day.jpg"},
+ {n:"LEFT4DEAD2",p:["PC","Cosole"],g:"FPS",h:8,i:"l4d.jpg"},
+ {n:"BACKROOMS",p:["PC","Cosole"],g:"생존·호러",h:5,i:"backroom.jpg"},
+ {n:"BACKROOMS EXTRACTIONS",p:["PC","Cosole"],g:"생존·호러",h:4,i:"backroomex.jpg"},
+ {n:"EMISSARY ZERO",p:["PC","Cosole"],g:"생존·호러",h:5,i:"backroomzero.jpg"},
+ {n:"DEMONOLOGIST",p:["PC","Cosole"],g:"생존·호러",h:10,i:"demon.jpg"},
+ {n:"Lock your door",p:["PC","Cosole"],g:"생존·호러",h:3,i:"door.jpg"},
+ {n:"DEVOUR",p:["PC","Cosole"],g:"생존·호러",h:15,i:"devour.jpg"},
+ {n:"DECEIT",p:["PC","Cosole"],g:"생존·호러",h:3,i:"deceit.jpg"},
+ {n:"DECEIT2",p:["PC","Cosole"],g:"생존·호러",h:4,i:"deceit2.jpg"},
+ {n:"LURK IN THE DARK",p:["PC","Cosole"],g:"생존·호러",i:"luke.jpg"},
+ {n:"PROJECT UNHNOWN",p:["PC","Cosole"],g:"생존·호러",h:3,i:"project.jpg"},
+ {n:"POPPY PLAYTIME",p:["PC"],g:"생존·호러",i:"poppy.jpg"},
+ {n:"준비중",p:["PC"],g:"기타",i:".jpg"},
+ {n:"준비중",p:["PC"],g:"기타",i:".jpg"},
+ {n:"준비중",p:["PC"],g:"기타",i:".jpg"},
+ {n:"준비중",p:["PC"],g:"기타",i:".jpg"},
+ {n:"준비중",p:["PC"],g:"기타",i:".jpg"},
+
+
 ];
 // =====================================================================
-const GENRES=["MMORPG","RPG","액션","어드벤처","AOS","시뮬레이션","스포츠","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
-let gpf="전체",ggf="",gpg=1,gpages=1;
-const hue=n=>[...n].reduce((a,c)=>(a*31+c.charCodeAt(0))%360,7);
+const GENRES=["MMORPG","RPG","액션","FPS","어드벤처","MOBA","비주얼 노벨","생존·호러","스포츠","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
+let gpf="전체",ggs=[],gpg=1,gpages=1;
+const gl=g=>Array.isArray(g.g)?g.g:[g.g],pcnt=x=>x==="전체"?GAMES.length:GAMES.filter(g=>x==="Mobile"?g.p.includes("Mobile"):g.p.some(y=>PCG.includes(y))).length;
+  const hue=n=>[...n].reduce((a,c)=>(a*31+c.charCodeAt(0))%360,7);
 const gok=g=>gpf==="전체"||(gpf==="Mobile"?g.p.includes("Mobile"):g.p.some(x=>PCG.includes(x)));
 function gstats(){
   const pc=GAMES.some(g=>g.p.some(x=>PCG.includes(x))),mo=GAMES.some(g=>g.p.includes("Mobile")),c={};
-  GAMES.forEach(g=>c[g.g]=(c[g.g]||0)+1);
-  $("#gs-n").textContent=GAMES.length;
-  $("#gs-p").textContent=[pc&&"PC & Console",mo&&"Mobile"].filter(Boolean).join(" · ")||"-";
+  GAMES.forEach(g=>gl(g).forEach(x=>c[x]=(c[x]||0)+1));
+  $("#gs-n").textContent=GAMES.length;$("#gs-pc").textContent=pcnt("PC & Console");$("#gs-mo").textContent=pcnt("Mobile");
   const fav=Object.keys(c).sort((a,b)=>c[b]-c[a])[0]||"-";
   $("#gs-g").textContent=fav;
   $("#hs-n").textContent=GAMES.length;$("#hs-g").textContent=fav;
@@ -871,15 +924,15 @@ function gstats(){
   $("#hs-mo").textContent=GAMES.filter(g=>g.p.includes("Mobile")).length;
 }
 function gdraw(){
-  const list=GAMES.filter(g=>gok(g)&&(!ggf||g.g===ggf)),pages=Math.max(1,Math.ceil(list.length/GSZ));
+  const list=GAMES.filter(g=>gok(g)&&(!ggs.length||gl(g).some(x=>ggs.includes(x)))),pages=Math.max(1,Math.ceil(list.length/GSZ));
   if(gpg>pages)gpg=pages;gpages=pages;
   $("#gg").innerHTML=list.length?list.slice((gpg-1)*GSZ,gpg*GSZ).map(g=>{const h=hue(g.n);
     return `<div class="gi"><div class="gimg" style="background:linear-gradient(135deg,hsl(${h} 45% 58%),hsl(${(h+40)%360} 50% 30%))"><span>${g.n.trim()[0].toUpperCase()}</span>${g.i?`<img src="images/games/${g.i}" alt="" draggable="false" loading="lazy" onerror="this.remove()">`:""}</div><h4>${g.n}</h4><span class="pp">${g.p.join(" · ")}</span><div class="gt">${(g.t||(g.h?[g.h.toLocaleString("ko-KR")+"시간"]:[])).map(x=>`<span class="${/클리어|10000시간|15년 플레이|100%|솔라레랭커|랭커|엔딩|올클/.test(x)?"hi":""}">${x}</span>`).join("")}</div></div>`}).join(""):'<p class="gempty">해당 조건의 게임이 없습니다.</p>';
-  $("#gf").innerHTML=["전체","PC & Console","Mobile"].map(x=>`<button class="${x===gpf?"on":""}" data-pf="${x}">${x}</button>`).join("")+'<span class="sep"></span>'+GENRES.map(x=>`<button class="${x===ggf?"on":""}" data-gf="${x}">${x}</button>`).join("")+`<span class="gtot">총 ${list.length}개</span>`;
+  $("#gf").innerHTML=["전체","PC & Console","Mobile"].map(x=>`<button class="${x===gpf?"on":""}" data-pf="${x}">${x}</button>`).join("")+'<span class="sep"></span>'+GENRES.map(x=>`<button class="${ggs.includes(x)?"on":""}" data-gf="${x}" aria-pressed="${ggs.includes(x)}">${x}</button>`).join("")+`<span class="gtot">총 ${list.length}개</span>`;
   $("#gn").innerHTML=`<button data-pn="-1" aria-label="이전 페이지" ${gpg<=1?"disabled":""}><svg class="i" style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button><span>${gpg} / ${pages}</span><button data-pn="1" aria-label="다음 페이지" ${gpg>=pages?"disabled":""}>${ic("chev")}</button>`;
 }
 $("#gf").addEventListener("click",e=>{const a=e.target.closest("button");if(!a)return;
-  if(a.dataset.pf)gpf=a.dataset.pf;else if(a.dataset.gf)ggf=ggf===a.dataset.gf?"":a.dataset.gf;else return;gpg=1;gdraw()});
+  if(a.dataset.pf)gpf=a.dataset.pf;else if(a.dataset.gf){const v=a.dataset.gf;ggs=ggs.includes(v)?ggs.filter(y=>y!==v):[...ggs,v]}else return;gpg=1;gdraw()});
 $("#gn").addEventListener("click",e=>{const b=e.target.closest("[data-pn]");if(b&&!b.disabled){gmove(+b.dataset.pn);$("#gf").scrollIntoView({behavior:"smooth",block:"start"})}});
 function gmove(d){const n=gpg+d;if(n<1||n>gpages)return false;gpg=n;gdraw();
   $("#gg").animate([{transform:`translateX(${d*70}px)`,opacity:0},{transform:"none",opacity:1}],{duration:300,easing:"ease-out"});return true}
@@ -895,8 +948,8 @@ const horder=[0,1,2,3,4];
 const gen=p=>p.sub.split(" / ")[0].split(" · ")[0];
 function hdraw(slot){
   const f=P[horder[0]];
-  $("#ft").innerHTML=`<div class="fimg"><img src="${f.img}" alt="${f.t} 대표 이미지"></div><div class="fbody"><div class="fno"><b>0${horder[0]+1}</b><span class="fbadge">FEATURED</span></div><h3>${f.t}</h3><div class="ftag">${f.chips.join(" · ")}</div><p>${f.d}</p><span class="flink">프로젝트 자세히 보기 ${ic("arrow")}</span></div>`;
-  $("#fl").innerHTML=horder.slice(1).map((pi,k)=>{const p=P[pi];return `<button class="fi${k+1===slot?" in2":""}" data-k="${k+1}" aria-label="${p.t}를 대표 프로젝트로 보기"><span class="th"><img src="${p.img}" alt="" loading="lazy"></span><div><b>${p.t}</b><small>${gen(p)}</small></div>${ic("chev")}</button>`}).join("");
+  $("#ft").innerHTML=`<div class="fimg" style="--u:url('${f.img}')"><img src="${f.img}" alt="${f.t} 대표 이미지"></div><div class="fbody"><div class="fno"><b>0${horder[0]+1}</b><span class="fbadge">FEATURED</span></div><h3>${f.t}</h3><div class="ftag">${f.chips.join(" · ")}</div><p>${f.d}</p><span class="flink">프로젝트 자세히 보기 ${ic("arrow")}</span></div>`;
+  $("#fl").innerHTML=horder.slice(1).map((pi,k)=>{const p=P[pi];return `<button class="fi${k+1===slot?" in2":""}" data-k="${k+1}" aria-label="${p.t}를 대표 프로젝트로 보기"><span class="th" style="--u:url('${p.img}')"><img src="${p.img}" alt="" loading="lazy"></span><div><b>${p.t}</b><small>${gen(p)}</small></div>${ic("chev")}</button>`}).join("");
 }
 hdraw();
 $("#fl").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(!b)return;const k=+b.dataset.k;[horder[0],horder[k]]=[horder[k],horder[0]];hdraw(k)});
