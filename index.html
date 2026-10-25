@@ -387,7 +387,6 @@ dialog::backdrop{background:rgba(5,8,14,.75);backdrop-filter:blur(3px)}
 .pd-lt{font-size:.92rem;letter-spacing:.06em;margin-bottom:10px}
 .pd-ln{display:flex;flex-wrap:wrap;gap:8px}
 .pd-ln a{display:inline-flex;align-items:center;gap:7px;border:1px solid #CFC4AB;background:#FBF8F0;color:var(--pink);border-radius:10px;padding:8px 14px;font-weight:600;font-size:.86rem;text-decoration:none}
-.pd-ln a:first-child{background:var(--pink);color:#fff;border-color:var(--pink)}
 .pd-ln a:hover{border-color:var(--goldd)}
 .pd-ln .i{width:15px;height:15px}
 #vdlg{background:#000;max-width:960px;width:calc(100% - 24px)}
@@ -518,8 +517,8 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 @keyframes heroIn{from{opacity:0;transform:translateY(18px)}}
 .hero .hey{animation:heyIn 1s .3s ease-out backwards}
 .hero h1{animation:heroIn 1.8s 1s cubic-bezier(.22,.61,.36,1) backwards}
-.hero .hc p{animation:heroUp 1.2s 2s cubic-bezier(.22,.61,.36,1) backwards}
-.hero .hb{animation:heroUp 1.2s 2.4s cubic-bezier(.22,.61,.36,1) backwards}
+.hero .hc p{animation:heroUp .9s 1.5s cubic-bezier(.22,.61,.36,1) backwards}
+.hero .hb{animation:heroUp .7s 1.6s cubic-bezier(.22,.61,.36,1) backwards}
 .page.on{animation:pgIn .45s ease backwards}
 .rv:not(.in){opacity:0}
 .rv.in{animation:rvIn .65s cubic-bezier(.22,.61,.36,1) backwards}
@@ -577,6 +576,38 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 .wrl{font-style:normal;font-size:.7rem;font-weight:600;color:#5B6577;background:#E6E3DA;border:1px solid #D2CEC2;border-radius:999px;padding:2px 10px;white-space:nowrap}
 .wtr{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 #work #cards .wt .wrl{margin-top:-2px}
+
+.wk-hint{margin-top:10px;font-size:.92rem;color:#7A6236;font-weight:500}
+.wk-hint .h-tc{display:none}
+@media (max-width:900px),(hover:none){.wk-hint .h-pc{display:none}.wk-hint .h-tc{display:inline}}
+
+/* 영상 재생 버튼 강조 + 기획서 안내 */
+@keyframes pdPulse{0%{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 0 0 rgba(224,181,101,.65)}70%{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 0 22px rgba(224,181,101,0)}100%{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 0 0 rgba(224,181,101,0)}}
+.pd-play{width:92px;height:92px;border:3px solid #fff;background:var(--gold);animation:pdPulse 1.8s ease-out infinite}
+.pd-play svg{width:38px;height:38px;margin-left:4px}
+.pd-play::after{content:"영상 보기";position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);white-space:nowrap;background:rgba(10,16,30,.82);color:#fff;font-size:.82rem;font-weight:700;padding:5px 14px;border-radius:999px;letter-spacing:.02em}
+.pd-lt{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.pd-lh{font-size:.78rem;font-weight:700;letter-spacing:0;color:#7A5A1E;background:#F0DFB4;border:1px solid #D2B06A;border-radius:999px;padding:3px 12px}
+
+.pd-ln a{box-shadow:0 2px 0 rgba(154,116,48,.28),0 6px 14px rgba(22,35,59,.14);transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.pd-ln a:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(154,116,48,.35),0 10px 20px rgba(22,35,59,.2)}
+.pd-ln a:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(154,116,48,.28),0 2px 6px rgba(22,35,59,.14)}
+
+/* 포트폴리오 펼친 카드: 주요 작업 가독성 */
+#work #cards .wk-l{font-size:.86rem;font-weight:800;color:var(--pink);letter-spacing:.02em;margin-top:6px}
+#work #cards .wchips{gap:6px}
+#work #cards .wchips span{font-size:.84rem;font-weight:700;padding:4px 12px;border-radius:8px;background:var(--pink);color:#fff}
+#work #cards .wchips.sub span{background:#fff;border:1.5px solid rgba(22,35,59,.55);color:var(--pink);font-weight:600}
+
+@media (min-width:901px) and (max-width:1250px){#cards .wc:hover .wimg,#cards .wc:focus-visible .wimg{height:178px}}
+
+#work #cards .wk-l{color:#7A5A1E}
+#work #cards .wchips span{background:#F0DFB4;color:#5A4118;border:1.5px solid #D2B06A}
+#work #cards .wchips.sub span{background:#FBF9F4;border:1.5px solid #D2B06A;color:#7A5A1E}
+
+.pd-play[hidden]{display:none}
+.sl-c{position:absolute;top:12px;right:12px;background:rgba(10,16,28,.72);color:var(--gold);border:1px solid rgba(224,181,101,.55);border-radius:999px;font-size:.78rem;font-weight:700;padding:3px 12px;letter-spacing:.04em;z-index:2}
+.sl-c[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -640,8 +671,8 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
       <div class="lab">STRENGTHS</div>
       <div class="str">
         <div class="sc"><i>01</i><h3>기술 활용과 다장르 개발 경험</h3><p>생성형 AI를 적극 활용하는 게임 기획 부트캠프를 수료하며, 다양한 장르의 게임을 기획하고 실제 개발까지 주도적으로 이끌어보았습니다.</p></div>
-        <div class="sc"><i>02</i><h3>경계를 넘나드는 올라운더</h3><p>기획에 머무르지 않고 아트 비주얼 가이드와 마케팅 영역까지 직접 맡아, 프로젝트 전반의 흐름을 빠르게 파악하고 완성도를 높였습니다.</p></div>
-        <div class="sc"><i>03</i><h3>상황에 최적화된 유연한 소통</h3><p>다양한 아르바이트와 현장 경험을 통해 상대의 성향과 상황에 맞게 소통 방식을 조정하는 감각을 키웠습니다.</p></div>
+        <div class="sc"><i>02</i><h3>기획 너머까지 책임지는 실행력</h3><p>기획에 머무르지 않고 아트 비주얼 가이드와 마케팅 영역까지 직접 맡아, 프로젝트 전반의 흐름을 빠르게 파악하고 완성도를 높였습니다.</p></div>
+        <div class="sc"><i>03</i><h3>전달까지 책임지는 기획</h3><p>기획서에서 멈추지 않고 화면 구성과 레퍼런스까지 챙겨, 개발자가 의도를 정확히 이해하도록 끝까지 소통했습니다.</p></div>
       </div>
       <div class="vis">
         <div class="lab">VISION</div>
@@ -660,7 +691,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
           <div class="wt">
             <h2 class="nm">나하준</h2>
             <p>재미를 먼저 설계하고, 그 재미가 플레이로 이어지는 구조를 만드는 콘텐츠·시스템 기획자 지망생입니다.</p>
-            <p>시스템, 콘텐츠, 비주얼가이드, 시나리오, UI, PV까지 폭넓게 경험한 올라운더로, 아이디어를 결과물까지 완성해 왔습니다.</p>
+            <p>시스템 설계부터 시나리오, UI 가이드, PV 제작까지 직접 맡으며, 아이디어를 개발자가 구현할 수 있는 결과물로 정리해 왔습니다.</p>
           </div>
         </div>
         <div class="lb">
@@ -731,7 +762,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
   <!-- 포트폴리오 -->
 <section class="page" id="work">
   <div class="wk">
-    <div class="wk-h"><div class="eyebrow2">MY WORK</div><h2>포트폴리오</h2></div>
+    <div class="wk-h"><div class="eyebrow2">MY WORK</div><h2>포트폴리오</h2><p class="wk-hint"><span class="h-pc">카드에 마우스를 올리면 요약이 펼쳐지고, 클릭하면 상세내용을 알 수 있습니다.</span><span class="h-tc">카드를 누르면 상세내용을 알 수 있습니다.</span></p></div>
     <div class="wframe"><div class="pills" id="filter"></div>
     <div class="cards" id="cards"></div></div>
   </div>
@@ -764,24 +795,24 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 <script>
 const P=[
 {t:"둥둥아일랜드",tag:"itch.io 출시",team:"기획 7명 · 개발 5명",role:"시스템 기획",tg:"시스템 기획",sub:"힐링 방치형 시뮬레이션 / PC · 기획 7명, 개발 5명",img:"project1/images/doonghead.png",tool:"unity",
- d:"힐링 방치형 시뮬레이션의 시스템 구조와 수집형 도감을 기획하고, UI 가이드와 홍보를 위한 PV 영상을 제작했습니다.",
- areas:["시스템 기획","UI 기획","비주얼 가이드","PV 제작"],video:"https://youtu.be/86JnXH525is",cats:["시스템 기획","UI·비주얼","마케팅·출시"],chips:["도감 시스템","UI 기획","PV 제작"],
- w:[["시스템 기획","시스템 구조 설계, 수집형 도감 시스템 기획서 작성"],["비주얼가이드 기획","메인 및 시스템 UI 화면 기획, 비주얼 가이드 수립"],["마케팅","PV 영상 자체 제작"]],
+ d:"힐링 방치형 시뮬레이션의 시스템 구조와 수집형 도감을 기획하고, UI 가이드와 캐릭터 리소스, 홍보를 위한 PV 영상을 제작했습니다.",
+ areas:["시스템 기획","UI 기획","비주얼 가이드","캐릭터 리소스 제작","PV 제작"],video:"https://youtu.be/86JnXH525is",cats:["시스템 기획","UI·비주얼","마케팅·출시"],chips:["도감 시스템","UI 기획","캐릭터 리소스 제작","PV 제작"],
+ w:[["시스템 기획","시스템 구조 설계, 수집형 도감 시스템 기획서 작성"],["비주얼가이드 기획","메인 및 시스템 UI 화면 기획, 비주얼 가이드 수립"],["리소스 제작","캐릭터 리소스 제작"],["마케팅","PV 영상 자체 제작"]],
  l:[["상세 기획명세서","project1/docs/doongdetails.pdf"],["시스템 기획서","project1/docs/dogam.pdf"],["비주얼가이드","project1/docs/visual.pdf"],["itch.io","https://devel-rocket.itch.io/doongdoongisland"],["YouTube","https://www.youtube.com/@GangTaeGom_Official"]]},
 {t:"Page of Desire",tag:"팀 프로젝트",team:"기획 6명 · 개발 5명",role:"콘텐츠 · 시나리오",tg:"콘텐츠 기획",sub:"RPG + 덱 빌딩 / PC · 기획 6명, 개발 5명",img:"project2/images/main.png",tool:"unity",
  d:"RPG와 덱 빌딩을 결합한 게임의 세계관·시나리오를 쓰고, 캐릭터 리소스와 PV까지 제작했습니다.",
- areas:["시나리오 기획","세계관 설정","비주얼 가이드","PV 제작"],video:"https://www.youtube.com/watch?v=pKEthdETe0o",cats:["콘텐츠·시나리오","UI·비주얼","마케팅·출시"],chips:["세계관","시나리오 스크립트","캐릭터 애니메이션"],
- w:[["시나리오 기획","메인 세계관 설정과 시나리오 스크립트 작성"],["비주얼가이드·리소스","캐릭터 애니메이션과 리소스 제작"],["마케팅","PV 영상 자체 제작"]],
+ areas:["시나리오 기획","세계관 설정","비주얼 가이드","PV 제작"],video:"https://www.youtube.com/watch?v=pKEthdETe0o",cats:["콘텐츠·시나리오","UI·비주얼","마케팅"],chips:["세계관","시나리오 스크립트","캐릭터 리소스 제작","PV 제작"],
+ w:[["시나리오 기획","메인 세계관 설정과 시나리오 스크립트 작성"],["비주얼가이드·리소스","캐릭터 리소스(스프라이트) 제작"],["마케팅","PV 영상 자체 제작"]],
  l:[["시나리오 콘텐츠 기획서","project2/docs/story2.pdf"],["시나리오 시스템 기획서","project2/docs/story.pdf"],["스크립트 테이블","project2/docs/story.xlsx"],["비주얼컨셉가이드","project2/docs/visual.pdf"],["PV 영상","https://www.youtube.com/watch?v=pKEthdETe0o"]]},
 {t:"Run Ran Run!",tag:"팀 프로젝트",team:"기획 5명",role:"UI · 비주얼",tg:"UI/UX 기획",sub:"캐주얼 & 아케이드 / PC · 기획 5명",img:"project3/images/main.png",tool:"maple",
- d:"캐주얼 플랫폼에 맞는 UI/UX를 기획하고 인게임 리소스를 제작·최적화했습니다.",
- areas:["UI/UX 기획","가독성 개선","리소스 제작","사운드"],video:"https://youtu.be/66MMPcHDu3c",cats:["UI·비주얼"],chips:["UI/UX","가독성 개선","사운드"],
- w:[["UI/UX 기획","캐주얼 플랫폼에 맞는 UI/UX 기획과 가독성 개선"],["리소스 관리","인게임 이미지·사운드 리소스 제작 및 최적화 반영"]],
- l:[["UI/UX 기획서","project3/docs/runuiux.pdf"],["사운드 기획서","project3/docs/runbgm.pdf"]]},
+ d:"캐주얼 플랫폼에 맞는 UI/UX를 기획하고 메인 화면과 썸네일, 인게임 리소스를 제작·최적화했습니다.",
+ areas:["UI/UX 기획","가독성 개선","메인 화면·썸네일 제작","리소스 제작","사운드"],video:"https://youtu.be/66MMPcHDu3c",subs:["project3/images/sub1.png","project3/images/sub2.png","project3/images/sub3.png","project3/images/sub4.png"],cats:["UI·비주얼"],chips:["UI/UX","메인 화면","썸네일 제작","사운드"],
+ w:[["UI/UX 기획","캐주얼 플랫폼에 맞는 UI/UX 기획과 가독성 개선"],["비주얼 제작","메인 화면과 게임 썸네일 이미지 제작"],["리소스 관리","인게임 이미지·사운드 리소스 제작 및 최적화 반영"]],
+ l:[["UI/UX 기획서","project3/docs/runuiux.pdf"],["사운드 기획서","project3/docs/runbgm.pdf"],["메이플스토리 월드","https://maplestoryworlds.nexon.com/ko/play/7c72d484620545b7b77f2e4b42f7b3b6"]]},
 {t:"IF HISTORY",tag:"팀 프로젝트",team:"기획 5명",role:"UI · 비주얼",tg:"UI/UX 기획",sub:"비주얼 노벨 / PC · 기획 5명",img:"project4/images/main.png",tool:"maple",
  d:"비주얼 노벨에 맞춘 메인·대사 창 UI를 직접 제작하고 배경·인물 이미지와 SFX를 구성했습니다.",
  areas:["UI/UX 기획","UI 제작","리소스 제작","SFX"],video:"",subs:["project4/images/sub1.png","project4/images/sub2.png","project4/images/sub3.png"],cats:["UI·비주얼"],chips:["UI 제작","이미지 제작","SFX"],
- w:[["UI/UX 기획","비주얼 노벨 장르에 최적화된 메인/대사 창 UI 자체 제작"],["리소스 제작","컨셉에 맞춘 배경·인물 이미지 제작, SFX 편집과 배치"]],l:[]},
+ w:[["UI/UX 기획","비주얼 노벨 장르에 최적화된 메인/대사 창 UI 자체 제작"],["리소스 제작","컨셉에 맞춘 배경·인물 이미지 제작, SFX 편집과 배치"]],l:[["메이플스토리 월드","https://maplestoryworlds.nexon.com/ko/play/72b1b11819aa42e8a72f466d9c4bc710"]]},
 {t:"Cyber Doom Odyssey",tag:"개인 프로젝트",sub:"액션, 슈팅, 사이버펑크 · 1인 개발",img:"project_solo/images/main.png",tool:"unity",
  d:"플레이어 조작부터 에너미 AI까지 혼자 구현한 액션 슈팅 게임입니다.",
  areas:["플레이어 구현","액션 스킬","에너미 AI"],video:"https://www.youtube.com/watch?v=WfiQQoN-F9I",cats:["개인 개발"],chips:["플레이어 구현","에너미 AI","Unity"],
@@ -816,16 +847,17 @@ $("#pg").addEventListener("click",e=>{const g=e.target.closest("[data-open]");if
   const b=e.target.closest("[data-pick]");if(b){const[c,i]=b.dataset.pick.split(":");sel[c]=+i;dash()}});
 window.addEventListener("hashchange",()=>{if(location.hash==="#resume"){sel[0]=0;sel[1]=1;dash()}});
 // 포트폴리오 카드 + 필터
-const cats=["전체",...new Set(P.flatMap(p=>p.cats))];let cur="전체";
+const nc=c=>c==="마케팅"?"마케팅·출시":c,wcat=p=>p.cats.map(nc);
+const cats=["전체",...new Set(P.flatMap(wcat))];let cur="전체";
 const tn=p=>(p.team.match(/\d+/g)||[]).reduce((a,b)=>a+ +b,0);
 const wgen=p=>{const[a,b]=p.sub.split(" / ");if(!b)return a.split(" · ")[0];return a+" · "+b.split(" · ")[0]};
 const REL={"둥둥아일랜드":"itch.io 출시","Run Ran Run!":"메이플월드 출시","IF HISTORY":"메이플월드 출시"};
 const wrl=p=>REL[p.t]?`<em class="wrl">${REL[p.t]}</em>`:"";
 const wl=p=>p.team?`팀 프로젝트 · ${tn(p)}명`:"개인 프로젝트 · 1인 개발";
 function draw(){
-  $("#cards").innerHTML=P.map((p,i)=>({p,i})).filter(o=>cur==="전체"||o.p.cats.includes(cur)).map(({p,i})=>
+  $("#cards").innerHTML=P.map((p,i)=>({p,i})).filter(o=>cur==="전체"||wcat(o.p).includes(cur)).map(({p,i})=>
   `<div class="wc" role="button" tabindex="0" data-i="${i}"><div class="wimg" style="--u:url('${p.img}')"><img src="${p.img}" alt="${p.t} 대표 이미지" loading="lazy"></div><div class="wbody"><h3 class="wt"><span>${p.t}</span><small>${wgen(p)}</small>${wrl(p)}</h3><div class="wx"><div class="wtr"><span class="wtag">${wl(p)}</span>${wrl(p)}</div><h3>${p.t}</h3><p>${p.d}</p><div class="wk-l">주요 작업</div><div class="wchips">${p.cats.map(c=>`<span>${c}</span>`).join("")}</div><div class="wchips sub">${p.chips.map(c=>`<span>${c}</span>`).join("")}</div><div class="wf"><span>상세 보기</span>${ic("arrow")}</div></div></div></div>`).join("");
-  $("#filter").innerHTML=cats.map(c=>`<button class="${c===cur?"on":""}" data-c="${c}">${c}<em>${c==="전체"?P.length:P.filter(p=>p.cats.includes(c)).length}</em></button>`).join("");
+  $("#filter").innerHTML=cats.map(c=>`<button class="${c===cur?"on":""}" data-c="${c}">${c}<em>${c==="전체"?P.length:P.filter(p=>wcat(p).includes(c)).length}</em></button>`).join("");
 }
 draw();
 $("#cards").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset.i!==undefined)open_(e.target.dataset.i)});
@@ -842,12 +874,13 @@ function open_(i){const p=P[i];
   $("#dbody").innerHTML=`<div class="pd-h"><button class="pd-x" aria-label="닫기" onclick="dlg.close()">×</button><div class="pd-k">PROJECT 0${+i+1} / ${p.team?"TEAM PROJECT":"PERSONAL PROJECT"}</div><h2>${p.t}</h2><div class="pd-s">${gp(p)}</div><div class="pd-c">${p.areas.map(a=>`<span>${a}</span>`).join("")}</div></div>
   <div class="pd-b"><div class="pd-m${p.subs?" sl":""}" style="--u:url('${p.img}')">${p.subs?`<div class="sl-t">${[p.img,...p.subs].map((u,k)=>`<img src="${u}" alt="${p.t} 이미지 ${k+1}" draggable="false">`).join("")}</div><button class="sl-p" hidden aria-label="이전 이미지">◀</button><button class="sl-n" aria-label="다음 이미지">▶</button><div class="sl-d"></div>`:`<img src="${p.img}" alt="${p.t} 대표 이미지">`}${p.video?`<button class="pd-play" data-v="${p.video}" aria-label="${p.t} 영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>`:""}</div>
   <div class="pd-r">${p.w.map(w=>{const r=rl(w[0]);return `<div class="pd-rc">${ic(r[2])}<small>${r[1]}</small><b>${w[0]}</b><p>${w[1]}</p></div>`}).join("")}</div>
-  ${mats?`<div class="pd-l"><div class="pd-lt">PROJECT MATERIALS</div><div class="pd-ln">${mats}</div></div>`:""}</div>`;
+  ${mats?`<div class="pd-l"><div class="pd-lt">PROJECT MATERIALS<span class="pd-lh">${p.l.some(l=>!/^https?:/.test(l[1]))?"기획서 보기 · 아래 버튼을 클릭하면 열립니다":(p.l.every(l=>/youtu/.test(l[1]))?"시연 영상 보기 · 아래 버튼을 클릭하면 이동합니다":"플레이하기 · 아래 버튼을 클릭하면 이동합니다")}</span></div><div class="pd-ln">${mats}</div></div>`:""}</div>`;
   $(".pd-b").scrollTop=0;dlg.showModal();const sl=$(".sl-t");if(sl)initSl(sl)}
 function initSl(t){
   const box=t.parentElement,pv=box.querySelector(".sl-p"),nx=box.querySelector(".sl-n"),dt=box.querySelector(".sl-d");
   const W=()=>t.clientWidth||1,N=()=>t.children.length,cur=()=>Math.round(t.scrollLeft/W());
-  const upd=()=>{const i=cur();dt.innerHTML=[...t.children].map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");pv.hidden=i<=0;nx.hidden=i>=N()-1;dt.hidden=N()<2};
+  const pl=box.querySelector(".pd-play");let ct=box.querySelector(".sl-c");if(!ct){ct=document.createElement("span");ct.className="sl-c";box.appendChild(ct)}
+  const upd=()=>{const i=cur();ct.textContent=(i+1)+" / "+N();ct.hidden=N()<2;if(pl)pl.hidden=i>0;dt.innerHTML=[...t.children].map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");pv.hidden=i<=0;nx.hidden=i>=N()-1;dt.hidden=N()<2};
   const go=i=>t.scrollTo({left:Math.max(0,Math.min(N()-1,i))*W(),behavior:"smooth"});
   [...t.children].forEach(im=>im.addEventListener("error",()=>{im.remove();upd()}));
   t.addEventListener("scroll",upd,{passive:true});
@@ -1022,7 +1055,7 @@ const GAMES=[
  {n:"전쟁시대2",p:["PC"],g:"전략",i:"warpc2.jpg"},
  {n:"카툰레이서",p:["PC"],g:"스포츠",i:"cartoon.jpg"},
  {n:"마리오카트",p:["Console"],g:"스포츠",i:"mario.jpg"},
- {n:"프린세스 메이커2",p:["PC"],g:"비주얼 노벨",t:["클리어"],i:"maker.jpg"},
+ {n:"프린세스 메이커2",p:["PC"],g:"비주얼 노벨",i:"maker.jpg"},
  {n:"보글보글2 히어로",p:["Console"],g:"아케이드",i:"bubble2.jpg"},
  {n:"동물철권2",p:["Console"],g:"액션",i:"animal.jpg"},
  {n:"스노우브라더스2",p:["Console"],g:"아케이드",i:"snow.jpg"},
@@ -1044,14 +1077,14 @@ const GAMES=[
  {n:"메탈슬러그5",p:["Console"],g:"FPS·슈팅",i:"metal5.jpg"},
  {n:"메탈슬러그6",p:["Console"],g:"FPS·슈팅",i:"metal6.jpg"},
  {n:"메탈슬러그7",p:["Console"],g:"FPS·슈팅",i:"metal7.jpg"},
- {n:"공튀기기",p:["PC"],g:"퍼즐",t:["클리어"],i:"ball.jpg"},
+ {n:"공튀기기",p:["PC"],g:"퍼즐",i:"ball.jpg"},
  {n:"스도쿠7",p:["Mobile"],g:"퍼즐",i:"sdoku.jpg"},
  {n:"탑 로드",p:["Mobile"],g:"퍼즐",i:"toproad.jpg"},
  {n:"Bus Escape",p:["Mobile"],g:"퍼즐",i:"bus.jpg"},
  {n:"Magic Sort",p:["Mobile"],g:"퍼즐",i:"magicsort.jpg"},
 ];
 // =====================================================================
-const GENRES=["MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드","생존·호러","스포츠","전략","퍼즐","MOBA","비주얼 노벨","기타"],PCG=["PC","Console","Switch"],GSZ=12;
+const GENRES=["MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드","MOBA","비주얼 노벨","생존·호러","스포츠","전략","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
 let gpf="전체",ggs=[],gpg=1,gpages=1;
 const gl=g=>Array.isArray(g.g)?g.g:[g.g],pcnt=x=>x==="전체"?GAMES.length:GAMES.filter(g=>x==="Mobile"?g.p.includes("Mobile"):g.p.some(y=>PCG.includes(y))).length;
   const hue=n=>[...n].reduce((a,c)=>(a*31+c.charCodeAt(0))%360,7);
