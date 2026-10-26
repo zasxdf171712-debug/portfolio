@@ -538,8 +538,8 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 #work.on .wc:nth-child(1){animation-delay:.25s}#work.on .wc:nth-child(2){animation-delay:.6s}#work.on .wc:nth-child(3){animation-delay:.95s}#work.on .wc:nth-child(4){animation-delay:1.3s}#work.on .wc:nth-child(5){animation-delay:1.65s}
 .wc .wt{display:none}
 @media (min-width:901px) and (hover:hover){
-  #cards{--c:clamp(100px,10.7vw,152px);--g:14px;--H:560px;--hc:390px;--h:min(620px,calc(100vw - 240px - 4*var(--c)));
-    display:flex;justify-content:center;align-items:center;height:var(--H);gap:var(--g);width:calc(4*var(--c) + var(--h) + 4*var(--g));max-width:100%;margin:0 auto}
+  #cards{--c:clamp(88px,9.2vw,128px);--g:14px;--H:560px;--hc:390px;--h:min(620px,calc(100vw - 222px - 5*var(--c)));
+    display:flex;justify-content:center;align-items:center;height:var(--H);gap:var(--g);width:calc(5*var(--c) + var(--h) + 5*var(--g));max-width:100%;margin:0 auto}
   #cards .wc{flex:0 0 var(--c);width:var(--c);height:var(--hc);transition:flex-basis .55s cubic-bezier(.22,.61,.36,1),width .55s cubic-bezier(.22,.61,.36,1),height .55s cubic-bezier(.22,.61,.36,1),transform .25s,border-color .25s,box-shadow .25s}
   #cards .wc:hover,#cards .wc:focus-visible{flex-basis:var(--h);width:var(--h);height:var(--H);transform:none}
   #cards .wimg{aspect-ratio:auto;height:180px;flex:none;transition:height .55s cubic-bezier(.22,.61,.36,1)}
@@ -599,7 +599,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 #work #cards .wchips span{font-size:.84rem;font-weight:700;padding:4px 12px;border-radius:8px;background:var(--pink);color:#fff}
 #work #cards .wchips.sub span{background:#fff;border:1.5px solid rgba(22,35,59,.55);color:var(--pink);font-weight:600}
 
-@media (min-width:901px) and (max-width:1250px){#cards .wc:hover .wimg,#cards .wc:focus-visible .wimg{height:178px}}
+@media (min-width:901px) and (max-width:1350px){#cards .wc:hover .wimg,#cards .wc:focus-visible .wimg{height:166px}}
 
 #work #cards .wk-l{color:#7A5A1E}
 #work #cards .wchips span{background:#F0DFB4;color:#5A4118;border:1.5px solid #D2B06A}
@@ -624,6 +624,26 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
 @media (min-width:1001px) and (max-height:740px){#home .fbody p{display:none}}
 
 .wrl{font-size:.84rem;font-weight:700;color:#3F4858;background:#E3DFD3;border:1px solid #C9C4B4;padding:4px 13px}
+
+.gsort{margin:10px 2px 0;font-size:.8rem;line-height:1.6;color:#6B5A3A}
+.gsort b{display:inline-block;margin-right:8px;padding:1px 10px;border-radius:999px;background:#F0DFB4;border:1px solid #D2B06A;color:#5A4118;font-weight:700}
+.gsort span{color:#8A7B5C}
+
+.gfav{position:absolute;top:8px;left:8px;z-index:3;display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#F3D58A,#E0B565);color:#4A3510;font-size:.74rem;font-weight:800;letter-spacing:.02em;line-height:1;padding:5px 10px 5px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.7);box-shadow:0 3px 10px rgba(0,0,0,.35)}
+
+#work.on .wc:nth-child(6){animation-delay:2s}
+@media (min-width:901px) and (hover:hover){#cards .wt{padding-left:6px;padding-right:6px}#cards .wt .wrl{white-space:normal;text-align:center;line-height:1.3;font-size:.8rem;padding:3px 10px}}
+.pd-ln a.ft-pdf{border:2px solid #D32F2F;background:#FFF5F4;box-shadow:0 2px 0 rgba(211,47,47,.35),0 6px 14px rgba(211,47,47,.14)}
+.pd-ln a.ft-pdf:hover{border-color:#B71C1C;box-shadow:0 3px 0 rgba(211,47,47,.45),0 10px 20px rgba(211,47,47,.22)}
+.pd-ln a.ft-xls{border:2px solid #1E8E4E;background:#F2FAF5;box-shadow:0 2px 0 rgba(30,142,78,.35),0 6px 14px rgba(30,142,78,.14)}
+.pd-ln a.ft-xls:hover{border-color:#146B38;box-shadow:0 3px 0 rgba(30,142,78,.45),0 10px 20px rgba(30,142,78,.22)}
+.pd-ln a.ft-pdf .i{color:#D32F2F}.pd-ln a.ft-xls .i{color:#1E8E4E}
+.pd-ln a.ft-ext{border:2px solid #F28C28;background:#FFF6EA;box-shadow:0 2px 0 rgba(242,140,40,.38),0 6px 14px rgba(242,140,40,.16)}
+.pd-ln a.ft-ext:hover{border-color:#D9731A;box-shadow:0 3px 0 rgba(242,140,40,.5),0 10px 20px rgba(242,140,40,.24)}
+.pd-ln a.ft-ext .i{color:#E57A12}
+.pd-ln a.ft-yt{border:2px solid #A81414;background:linear-gradient(180deg,#E53935,#C62828);color:#fff;box-shadow:0 2px 0 rgba(120,10,10,.55),0 6px 14px rgba(198,40,40,.3)}
+.pd-ln a.ft-yt:hover{border-color:#7F0E0E;box-shadow:0 3px 0 rgba(120,10,10,.65),0 10px 20px rgba(198,40,40,.4)}
+.pd-ln a.ft-yt .i{color:#fff}
 </style>
 </head>
 <body>
@@ -796,6 +816,7 @@ header.bar{display:grid;grid-template-columns:1fr auto 1fr}
         </div>
       </div>
       <div class="gp-f" id="gf"></div>
+      <p class="gsort"><b>정렬 기준</b> 최애게임 → 플랫폼(PC → Console → Mobile) → 플레이 기록 문구 많은 순 → 플레이타임 많은 순 → 클리어 → 가나다 순 <span>· 여러 플랫폼에서 즐긴 게임은 앞선 플랫폼에 정렬됩니다</span></p>
       <div class="gg" id="gg"></div>
       <div class="gpn"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><span class="ln"></span><span class="ghint">← 좌우로 밀어서 넘겨보세요 →</span><div id="gn"></div></div>
     </div>
@@ -827,10 +848,15 @@ const P=[
  areas:["UI/UX 기획","UI 제작","리소스 제작","SFX"],video:"",subs:["project4/images/sub1.png","project4/images/sub2.png","project4/images/sub3.png"],cats:["UI·비주얼"],chips:["UI 제작","이미지 제작","SFX"],
  w:[["UI/UX 기획","비주얼 노벨 장르에 최적화된 메인/대사 창 UI 자체 제작"],["리소스 제작","컨셉에 맞춘 배경·인물 이미지 제작, SFX 편집과 배치"]],l:[["메이플스토리 월드","https://maplestoryworlds.nexon.com/ko/play/72b1b11819aa42e8a72f466d9c4bc710"]]},
 {t:"Cyber Doom Odyssey",tag:"개인 프로젝트",sub:"액션, 슈팅, 사이버펑크 · 1인 개발",img:"project_solo/images/main.png",tool:"unity",
- d:"플레이어 조작부터 에너미 AI까지 혼자 구현한 액션 슈팅 게임입니다.",
- areas:["플레이어 구현","액션 스킬","에너미 AI"],video:"https://www.youtube.com/watch?v=WfiQQoN-F9I",cats:["개인 개발"],chips:["플레이어 구현","에너미 AI","Unity"],
- w:[["플레이어 구현","플레이어 조작 및 메커니즘, 액션 스킬 스크립팅"],["에너미 AI 구현","랜덤 리스폰, 추적 기능 등 서로 다른 패턴의 몬스터 AI 2종 개발"]],
- l:[["시연 영상","http://youtube.com/watch?v=WfiQQoN-F9I&feature=youtu.be"]]}
+ d:"플레이어 조작부터 맵 디자인, 몬스터 추격 시스템 등을 구현한 액션 슈팅게임입니다.",
+ areas:["시스템 구현","액션 스킬","에너미 AI"],video:"https://www.youtube.com/watch?v=WfiQQoN-F9I",cats:["시스템 기획","1인 개발"],chips:["시스템 구현","에너미 AI","Unity"],
+ w:[["시스템 구현","플레이어 조작 및 메커니즘, 액션 스킬 스크립팅"],["에너미 AI 구현","랜덤 리스폰, 추적 기능 등 서로 다른 패턴의 몬스터 AI 2종 개발"]],
+ l:[["시연 영상","http://youtube.com/watch?v=WfiQQoN-F9I&feature=youtu.be"]]},
+{t:"기획 문서 모음",tag:"기획 문서",docs:7,role:"시스템 · 콘텐츠 기획",tg:"기획 문서",sub:"시스템·콘텐츠 기획 문서 / 7편",gline:"역기획서 · 레벨디자인 · 제안서",img:"project_docs/images/main.png",tool:"docs",
+ d:"기존 게임을 분석한 역기획서와 레벨디자인, 비주얼 가이드, 제안서, 세계관 기획서 7편을 모았습니다.",
+ areas:["역기획서","레벨디자인","비주얼 가이드","제안서","세계관 기획"],video:"",subs:["project_docs/images/cover01.png","project_docs/images/cover02.png","project_docs/images/cover03.png","project_docs/images/cover04.png","project_docs/images/cover05.png","project_docs/images/cover06.png","project_docs/images/cover07.png"],cats:["시스템 기획","콘텐츠·시나리오","UI·비주얼"],chips:["역기획서","레벨디자인","제안서","세계관"],
+ w:[["시스템 기획","강화 시스템을 역기획하여 정리하고 강화 수치 테이블 작성"],["콘텐츠 기획","신규 무기 콘텐츠를 기획하여 새로운 세계관과 신규 기능 기획"],["레벨디자인","신규 던전 '화염의 요새'의 맵 시나리오와 분위기 설계"],["비주얼 가이드","비주얼 컨셉 가이드: 키워드, 톤&무드, 요소별 가이드 작성"],["제안서","유저 퍼널·유료화 분석과 업데이트 방향·이벤트 제안"],["세계관 기획","AI 세계관 기획서(팀 작업)에서 세계관 핵심 요소와 비주얼 컨셉 파트 작성"]],
+ l:[["강화 시스템 역기획서","project_docs/docs/01_enhance_system_reverse.pdf"],["강화 수치 테이블 · Excel","project_docs/docs/02_enhance_table.xlsx"],["신규 무기 콘텐츠 기획서","project_docs/docs/03_taewang_weapon_content.pdf"],["신규 던전 콘텐츠 기획서","project_docs/docs/04_flame_fortress_leveldesign.pdf"],["비주얼 컨셉 가이드 기획서","project_docs/docs/05_lostark_visual_guide.pdf"],["업데이트 제안서","project_docs/docs/06_mapleland_update_proposal.pdf"],["AI 세계관 기획서","project_docs/docs/07_ai_worldbuilding_starlight.pdf"]]}
 ];
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const names={home:"홈",resume:"이력서",intro:"자기소개",work:"포트폴리오",play:"플레이이력"};
@@ -863,10 +889,10 @@ window.addEventListener("hashchange",()=>{if(location.hash==="#resume"){sel[0]=0
 const nc=c=>c==="마케팅"?"마케팅·출시":c,wcat=p=>p.cats.map(nc);
 const cats=["전체",...new Set(P.flatMap(wcat))];let cur="전체";
 const tn=p=>(p.team.match(/\d+/g)||[]).reduce((a,b)=>a+ +b,0);
-const wgen=p=>{const[a,b]=p.sub.split(" / ");if(!b)return a.split(" · ")[0];return a+" · "+b.split(" · ")[0]};
-const REL={"둥둥아일랜드":"itch.io 출시","Run Ran Run!":"메이플월드 출시","IF HISTORY":"메이플월드 출시"};
+const wgen=p=>{if(p.gline)return p.gline;const[a,b]=p.sub.split(" / ");if(!b)return a.split(" · ")[0];return a+" · "+b.split(" · ")[0]};
+const REL={"둥둥아일랜드":"itch.io 출시","Run Ran Run!":"메이플월드 출시","IF HISTORY":"메이플월드 출시","기획 문서 모음":"문서 7편"};
 const wrl=p=>REL[p.t]?`<em class="wrl">${REL[p.t]}</em>`:"";
-const wl=p=>p.team?`팀 프로젝트 · ${tn(p)}명`:"개인 프로젝트 · 1인 개발";
+const wl=p=>p.docs?"개인 작업 · 기획 문서":p.team?`팀 프로젝트 · ${tn(p)}명`:"개인 프로젝트 · 1인 개발";
 function draw(){
   $("#cards").innerHTML=P.map((p,i)=>({p,i})).filter(o=>cur==="전체"||wcat(o.p).includes(cur)).map(({p,i})=>
   `<div class="wc" role="button" tabindex="0" data-i="${i}"><div class="wimg" style="--u:url('${p.img}')"><img src="${p.img}" alt="${p.t} 대표 이미지" loading="lazy"></div><div class="wbody"><h3 class="wt"><span>${p.t}</span><small>${wgen(p)}</small>${wrl(p)}</h3><div class="wx"><div class="wtr"><span class="wtag">${wl(p)}</span>${wrl(p)}</div><h3>${p.t}</h3><p>${p.d}</p><div class="wk-l">주요 작업</div><div class="wchips">${p.cats.map(c=>`<span>${c}</span>`).join("")}</div><div class="wchips sub">${p.chips.map(c=>`<span>${c}</span>`).join("")}</div><div class="wf"><span>상세 보기</span>${ic("arrow")}</div></div></div></div>`).join("");
@@ -875,7 +901,7 @@ function draw(){
 draw();
 $("#cards").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset.i!==undefined)open_(e.target.dataset.i)});
 $("#filter").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(b){cur=b.dataset.c;draw()}});
-const RL=[[/시스템/,"SYSTEM DESIGN","data"],[/시나리오|세계관/,"SCENARIO DESIGN","doc"],[/비주얼/,"VISUAL DESIGN","pen"],[/UI/,"UI/UX DESIGN","pen"],[/리소스/,"RESOURCES","pen"],[/마케팅/,"MARKETING","play"],[/구현|AI/,"IMPLEMENTATION","code"]];
+const RL=[[/구현/,"IMPLEMENTATION","code"],[/레벨/,"LEVEL DESIGN","spark"],[/콘텐츠/,"CONTENT DESIGN","spark"],[/제안/,"PROPOSAL","doc"],[/시스템/,"SYSTEM DESIGN","data"],[/시나리오|세계관/,"SCENARIO DESIGN","doc"],[/비주얼/,"VISUAL DESIGN","pen"],[/UI/,"UI/UX DESIGN","pen"],[/리소스/,"RESOURCES","pen"],[/마케팅/,"MARKETING","play"],[/구현|AI/,"IMPLEMENTATION","code"]];
 const rl=h=>RL.find(r=>r[0].test(h))||[0,"ROLE","spark"];
 const gp=p=>{const a=p.sub.split(" / ");return a.length>1?a[0]+" · "+a[1].split(" · ")[0]:a[0].split(" · ")[0]};
 const ytid=u=>(u.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/)||[])[1];
@@ -883,8 +909,8 @@ function playV(u){const id=ytid(u);if(!id)return;$("#vfr").src=`https://www.yout
 vdlg.addEventListener("close",()=>{$("#vfr").src=""});
 vdlg.addEventListener("click",e=>{if(e.target===vdlg)vdlg.close()});
 function open_(i){const p=P[i];
-  const mats=p.l.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${ic(/^https?:/.test(l[1])?"ext":"doc")}${l[0]}</a>`).join("");
-  $("#dbody").innerHTML=`<div class="pd-h"><button class="pd-x" aria-label="닫기" onclick="dlg.close()">×</button><div class="pd-k">PROJECT 0${+i+1} / ${p.team?"TEAM PROJECT":"PERSONAL PROJECT"}</div><h2>${p.t}</h2><div class="pd-s">${gp(p)}</div><div class="pd-c">${p.areas.map(a=>`<span>${a}</span>`).join("")}</div></div>
+  const mats=p.l.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener"${/youtu/.test(l[1])?' class="ft-yt"':/\.pdf$/i.test(l[1])?' class="ft-pdf"':/\.xlsx?$/i.test(l[1])?' class="ft-xls"':/^https?:/.test(l[1])?' class="ft-ext"':""}>${ic(/^https?:/.test(l[1])?"ext":"doc")}${l[0]}</a>`).join("");
+  $("#dbody").innerHTML=`<div class="pd-h"><button class="pd-x" aria-label="닫기" onclick="dlg.close()">×</button><div class="pd-k">PROJECT 0${+i+1} / ${p.docs?"PLANNING DOCUMENTS":p.team?"TEAM PROJECT":"PERSONAL PROJECT"}</div><h2>${p.t}</h2><div class="pd-s">${gp(p)}</div><div class="pd-c">${p.areas.map(a=>`<span>${a}</span>`).join("")}</div></div>
   <div class="pd-b"><div class="pd-m${p.subs?" sl":""}" style="--u:url('${p.img}')">${p.subs?`<div class="sl-t">${[p.img,...p.subs].map((u,k)=>`<img src="${u}" alt="${p.t} 이미지 ${k+1}" draggable="false">`).join("")}</div><button class="sl-p" hidden aria-label="이전 이미지">◀</button><button class="sl-n" aria-label="다음 이미지">▶</button><div class="sl-d"></div>`:`<img src="${p.img}" alt="${p.t} 대표 이미지">`}${p.video?`<button class="pd-play" data-v="${p.video}" aria-label="${p.t} 영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>`:""}</div>
   <div class="pd-r">${p.w.map(w=>{const r=rl(w[0]);return `<div class="pd-rc">${ic(r[2])}<small>${r[1]}</small><b>${w[0]}</b><p>${w[1]}</p></div>`}).join("")}</div>
   ${mats?`<div class="pd-l"><div class="pd-lt">PROJECT MATERIALS<span class="pd-lh">${p.l.some(l=>!/^https?:/.test(l[1]))?"기획서 보기 · 아래 버튼을 클릭하면 열립니다":(p.l.every(l=>/youtu/.test(l[1]))?"시연 영상 보기 · 아래 버튼을 클릭하면 이동합니다":"플레이하기 · 아래 버튼을 클릭하면 이동합니다")}</span></div><div class="pd-ln">${mats}</div></div>`:""}</div>`;
@@ -922,7 +948,7 @@ secs.forEach(x=>io.observe(x));
 // ===== 플레이이력 데이터 : 게임을 추가·수정하려면 아래 목록만 고치세요 =====
 // n 게임 이름 / p 플랫폼 (PC, Console, Switch, Mobile) / g 장르 / i 이미지 파일명 (images/games/ 폴더)
 // t 플레이 기록 문구 (여러 개 가능, 예: t:["클리어","46시간"] / t:["100%","430시간"] / t:["플레이 15년 이상"] / t:["상위 랭커"]). t 가 없으면 h:시간 을 "N시간"으로 표시
-// g 는 MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드","MOBA","비주얼 노벨","생존·호러","스포츠","전략","퍼즐","기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
+// g 는 MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드",'AOS",비주얼 노벨","생존·호러","스포츠","퍼즐","기타 중 하나 (아래 GENRES 에 추가하면 새 장르도 가능)
 const GAMES=[
  {n:"검은사막",p:["PC","Console"],g:"MMORPG",h:10000,t:["10000시간","솔라레 랭커","26시즌TOP20","25시즌TOP9"],i:"blackdesert.jpg"},
  {n:"MapleStory",p:["PC"],g:"MMORPG",t:["15년 플레이"],i:"maple.jpg"},
@@ -930,17 +956,17 @@ const GAMES=[
  {n:"Lethal Company",p:["PC","Console"],g:"생존·호러",h:98,i:"lethal.jpg"},
  {n:"RAFT",p:["PC","Console"],g:"어드벤처",t:["클리어","2회차","80시간"],i:"raft.jpg"},
  {n:"Project Zomboid",p:["PC","Console"],g:"RPG",h:40,i:"zomboid.jpg"},
- {n:"리그오브레전드",p:["PC"],g:"MOBA",t:["10년이상"],i:"lol.jpg"},
+ {n:"리그오브레전드",p:["PC"],g:"AOS",t:["시즌2부터 플레이"],i:"lol.jpg"},
  {n:"이환",p:["PC","Console","Mobile"],g:"RPG",i:"nte.jpg"},
  {n:"트릭컬 리바이브",p:["Mobile"],g:"RPG",i:"trickcal.jpg"},
  {n:"MapleStoryWorlds",p:["PC","Mobile"],g:"MMORPG",h:180,i:"mapleworlds.jpg"},
  {n:"아이온2",p:["PC","Mobile"],g:"MMORPG",h:50,i:"aion.jpg"},
- {n:"STARCRAFT",p:["PC"],g:"전략",h:100,i:"starcraft.jpg"},
+ {n:"STARCRAFT",p:["PC"],g:"AOS",h:100,i:"starcraft.jpg"},
  // ↓ 페이지 넘김 확인용 예시입니다. 지우거나 실제 게임으로 바꾸세요.
- {n:"MapleStoryM",p:["PC","Mobile"],g:"MMORPG",i:"maplem.jpg"},
+ {n:"MapleStoryM",p:["Mobile"],g:"MMORPG",i:"maplem.jpg"},
  {n:"MapleStory2",p:["PC"],g:"MMORPG",i:"maple2.jpg"},
  {n:"Once Human",p:["PC","Console","Mobile"],g:"생존·호러",h:18,i:"oncehuman.jpg"},
- {n:"운빨존많겜",p:["Mobile"],g:"전략",h:40,i:"lucky.jpg"},
+ {n:"운빨존많겜",p:["Mobile"],g:"AOS",h:40,i:"lucky.jpg"},
  {n:"붉은사막",p:["PC","Console"],g:"어드벤처",h:20,i:"desert.jpg"},
  {n:"던전앤파이터",p:["PC"],g:"RPG",i:"df.jpg"},
  {n:"테일즈런너",p:["PC"],g:"스포츠",i:"run.jpg"},
@@ -950,8 +976,8 @@ const GAMES=[
  {n:"Among Us",p:["PC","Console","Mobile"],g:"생존·호러",h:3,i:"amongus.jpg"},
  {n:"미메시스",p:["PC","Console"],g:"생존·호러",h:5,i:"mimesis.png"},
  {n:"트릭스터",p:["PC"],g:"MMORPG",i:"trickster.jpg"},
- {n:"트릭스터R 26",p:["PC"],g:"MMORPG",i:"tricksterr.jpg"},
- {n:"트릭스터AD",p:["PC"],g:"MMOPRG",i:"tricksterad.jpg"},
+ {n:"트릭스터R",p:["PC"],g:"MMORPG",i:"tricksterr.jpg"},
+ {n:"트릭스터AD",p:["PC"],g:"MMORPG",i:"tricksterad.jpg"},
  {n:"트릭스터M",p:["Mobile"],g:"MMORPG",i:"tricksterm.jpg"},
  {n:"디아블로2",p:["PC","Console"],g:"RPG",i:"diablo.jpg"},
  {n:"데카론",p:["PC"],g:"MMORPG",i:"dekaron.jpg"},
@@ -997,45 +1023,47 @@ const GAMES=[
  {n:"알투비트",p:["PC"],g:"스포츠",i:"r2.jpg"},
  {n:"포트리스2",p:["PC"],g:"FPS·슈팅",i:"for.jpg"},
  {n:"V4",p:["Mobile"],g:"MMORPG",i:"v4.jpg"},
- {n:"PICO PARK",p:["PC","Cosole"],g:"퍼즐",i:"pico.jpg"},
- {n:"SUBNAUTICA2",p:["PC","Cosole"],g:"생존·호러",h:9,i:"sub.jpg"},
+ {n:"PICO PARK",p:["PC","Console"],g:"퍼즐",i:"pico.jpg"},
+ {n:"SUBNAUTICA2",p:["PC","Console"],g:"생존·호러",h:9,i:"sub.jpg"},
  {n:"DEADBYDAYLIGHT",p:["PC","Console"],g:"액션",h:4,i:"dbd.jpg"},
- {n:"FAKEBOOK",p:["PC","Cosole"],g:"기타",i:"fake.jpg"},
- {n:"휴먼:폴 플랫",p:["PC","Cosole"],g:"어드벤처",h:5,i:"fall.jpg"},
- {n:"루마섬",p:["PC","Cosole"],g:"기타",h:6,i:"luma.jpg"},
- {n:"Burger Shift: Team Rush",p:["PC","Cosole"],g:"기타",h:3,i:"burger.jpg"},
- {n:"7DAYS TO DIE",p:["PC","Cosole"],g:"생존·호러",h:21,i:"7day.jpg"},
- {n:"LEFT4DEAD2",p:["PC","Cosole"],g:"FPS·슈팅",h:8,i:"l4d.jpg"},
- {n:"BACKROOMS",p:["PC","Cosole"],g:"생존·호러",h:5,i:"backroom.jpg"},
- {n:"BACKROOMS EXTRACTIONS",p:["PC","Cosole"],g:"생존·호러",h:4,i:"backroomex.jpg"},
- {n:"EMISSARY ZERO",p:["PC","Cosole"],g:"생존·호러",h:5,i:"backroomzero.jpg"},
- {n:"DEMONOLOGIST",p:["PC","Cosole"],g:"생존·호러",h:10,i:"demon.jpg"},
- {n:"Lock your door",p:["PC","Cosole"],g:"생존·호러",h:3,i:"door.jpg"},
- {n:"DEVOUR",p:["PC","Cosole"],g:"생존·호러",h:15,i:"devour.jpg"},
- {n:"DECEIT",p:["PC","Cosole"],g:"생존·호러",h:3,i:"deceit.jpg"},
- {n:"DECEIT2",p:["PC","Cosole"],g:"생존·호러",h:4,i:"deceit2.jpg"},
- {n:"LURK IN THE DARK",p:["PC","Cosole"],g:"생존·호러",i:"luke.jpg"},
- {n:"PROJECT UNHNOWN",p:["PC","Cosole"],g:"생존·호러",h:3,i:"project.jpg"},
+ {n:"FAKEBOOK",p:["PC","Console"],g:"퍼즐",i:"fake.jpg"},
+ {n:"휴먼:폴 플랫",p:["PC","Console"],g:"어드벤처",h:5,i:"fall.jpg"},
+ {n:"루마섬",p:["PC","Console"],g:"RPG",h:6,i:"luma.jpg"},
+ {n:"Burger Shift: Team Rush",p:["PC","Console"],g:"퍼즐",h:3,i:"burger.jpg"},
+ {n:"7DAYS TO DIE",p:["PC","Console"],g:"생존·호러",h:21,i:"7day.jpg"},
+ {n:"LEFT4DEAD2",p:["PC","Console"],g:"FPS·슈팅",h:8,i:"l4d.jpg"},
+ {n:"BACKROOMS",p:["PC","Console"],g:"생존·호러",h:5,t:["클리어"],i:"backroom.jpg"},
+ {n:"BACKROOMS EXTRACTIONS",p:["PC","Console"],g:"생존·호러",h:4,t:["클리어"],i:"backroomex.jpg"},
+ {n:"EMISSARY ZERO",p:["PC","Console"],g:"생존·호러",h:5,t:["클리어"],i:"backroomzero.jpg"},
+ {n:"DEMONOLOGIST",p:["PC","Console"],g:"생존·호러",h:10,i:"demon.jpg"},
+ {n:"Lock your door",p:["PC","Console"],g:"생존·호러",h:3,i:"door.jpg"},
+ {n:"DEVOUR",p:["PC","Console"],g:"생존·호러",h:15,t:["클리어","15시간"],i:"devour.jpg"},
+ {n:"DECEIT",p:["PC","Console"],g:"생존·호러",h:3,i:"deceit.jpg"},
+ {n:"DECEIT2",p:["PC","Console"],g:"생존·호러",h:4,i:"deceit2.jpg"},
+ {n:"LURK IN THE DARK",p:["PC","Console"],g:"생존·호러",i:"luke.jpg"},
+ {n:"PROJECT UNHNOWN",p:["PC","Console"],g:"생존·호러",h:3,i:"project.jpg"},
  {n:"POPPY PLAYTIME",p:["PC"],g:"생존·호러",i:"poppy.jpg"},
  {n:"DAVE THE DIVER",p:["PC","Console"],g:"아케이드",i:"dave.jpg"},
  {n:"FIFA ONLINE2",p:["PC"],g:"스포츠",i:"fifa.jpg"},
- {n:"하스스톤",p:["PC","Console"],g:"전략",i:"hearthstone.jpg"},
+ {n:"하스스톤",p:["PC","Console"],g:"AOS",i:"hearthstone.jpg"},
  {n:"Temple Run",p:["Mobile"],g:"아케이드",i:"temple.jpg"},
  {n:"다함께차차차",p:["Mobile"],g:"아케이드",i:"chachacha.jpg"},
  {n:"모두의 마블",p:["Mobile"],g:"아케이드",i:"mable.jpg"}, 
  {n:"아이러브커피",p:["Mobile"],g:"아케이드",i:"coffee.jpg"},
  {n:"윈드러너",p:["Mobile"],g:"아케이드",i:"wind.jpg"},
  {n:"쿠키런",p:["Mobile"],g:"아케이드",i:"cookie.jpg"},
- {n:"마피아42",p:["PC","Mobile"],g:"전략",i:"mafia.jpg"},
- {n:"수호지",p:["Mobile"],g:"전략",i:"tnghwl.jpg"},
- {n:"클래시 오브 클랜",p:["Mobile"],g:"전략",i:"clash.jpg"},
- {n:"클래시 로얄",p:["Mobile"],g:"전략",i:"clash2.jpg"},
- {n:"랜덤 다이스",p:["Mobile"],g:"전략",i:"dice.jpg"},
+ {n:"DEEMO",p:["Mobile"],g:"리듬",i:"deemo.jpg"},
+ {n:"AFK 아레나",p:["Mobile"],g:"RPG",i:"afk.jpg"},
+ {n:"마피아42",p:["PC","Mobile"],g:"AOS",i:"mafia.jpg"},
+ {n:"수호지",p:["Mobile"],g:"AOS",i:"tnghwl.jpg"},
+ {n:"클래시 오브 클랜",p:["Mobile"],g:"AOS",i:"clash.jpg"},
+ {n:"클래시 로얄",p:["Mobile"],g:"AOS",i:"clash2.jpg"},
+ {n:"랜덤 다이스",p:["Mobile"],g:"AOS",i:"dice.jpg"},
  {n:"쿠키런 킹덤",p:["Mobile"],g:["RPG","어드벤처"],i:"cookiek.jpg"},
  {n:"세븐나이츠",p:["Mobile"],g:"RPG",i:"seven.jpg"},
  {n:"다함께 던전왕",p:["Mobile"],g:"RPG",i:"ejswjs.jpg"},
  {n:"카트라이더",p:["PC"],g:"스포츠",i:"kart.jpg"},
- {n:"팔라독",p:["Mobile"],g:"전략",i:"paladog.jpg"},
+ {n:"팔라독",p:["Mobile"],g:"AOS",t:["클리어"],i:"paladog.jpg"},
  {n:"브롤스타즈",p:["Mobile"],g:"액션",i:"qmfhf.jpg"},
  {n:"탕탕특공대",p:["Mobile"],g:"FPS·슈팅",i:"tangtang.jpg"},
  {n:"궁수의 전설",p:["Mobile"],g:"FPS·슈팅",i:"rndtn.jpg"},
@@ -1048,56 +1076,69 @@ const GAMES=[
  {n:"Bounce Ball",p:["Mobile"],g:"퍼즐",i:"bounceball.jpg"},
  {n:"앵그리버드",p:["Mobile"],g:"퍼즐",i:"angry.jpg"},
  {n:"애니팡",p:["Mobile"],g:"퍼즐",i:"anipang.jpg"},
- {n:"2011프로야구",p:["Mobile"],g:"스포츠",i:"baseball2011.jpg"},
- {n:"2012프로야구",p:["Mobile"],g:"스포츠",i:"baseball2012.jpg"},
+ {n:"2011프로야구",p:["Mobile"],g:"스포츠",t:["클리어"],i:"baseball2011.jpg"},
+ {n:"2012프로야구",p:["Mobile"],g:"스포츠",t:["클리어"],i:"baseball2012.jpg"},
  {n:"미니게임천국",p:["Mobile"],g:"아케이드",i:"mini.jpg"},
  {n:"제노니아2",p:["Mobile"],g:["RPG","어드벤처"],i:"zenonia2.jpg"},
  {n:"제노니아4",p:["Mobile"],g:["RPG","어드벤처"],i:"zenonia4.jpg"},
  {n:"놈",p:["Mobile"],g:"아케이드",i:"nom.jpg"},
  {n:"슈퍼액션히어로",p:["Mobile"],g:"액션",i:"super.jpg"},
  {n:"슈퍼액션히어로2",p:["Mobile"],g:"액션",i:"super2.jpg"},
- {n:"오투잼",p:["Mobile"],g:"아케이드",i:"o2jam.jpg"},
- {n:"탭소닉",p:["Mobile"],g:"아케이드",i:"tapsonic.jpg"},
+ {n:"오투잼",p:["Mobile"],g:"리듬",i:"o2jam.jpg"},
+ {n:"탭소닉",p:["Mobile"],g:"리듬",i:"tapsonic.jpg"},
  {n:"레이디 버그",p:["Mobile"],g:"아케이드",i:"bug.jpg"},
  {n:"무한의 계단",p:["Mobile"],g:"아케이드",i:"angks.jpg"},
  {n:"롤러코스터 타이쿤",p:["PC","Console"],g:"아케이드",i:"tycoon.jpg"},
  {n:"주 타이쿤",p:["PC","Console"],g:"아케이드",i:"zoo.jpg"},
  {n:"케로로파이터",p:["PC"],g:"액션",i:"keroro.jpg"},
  {n:"바우트",p:["PC"],g:"액션",i:"bout.jpg"},
- {n:"전쟁시대",p:["PC"],g:"전략",i:"warpc.jpg"},
- {n:"전쟁시대2",p:["PC"],g:"전략",i:"warpc2.jpg"},
+ {n:"전쟁시대",p:["PC"],g:"AOS",t:["클리어"],i:"warpc.jpg"},
+ {n:"전쟁시대2",p:["PC"],g:"AOS",t:["클리어"],i:"warpc2.jpg"},
  {n:"카툰레이서",p:["PC"],g:"스포츠",i:"cartoon.jpg"},
  {n:"마리오카트",p:["Console"],g:"스포츠",i:"mario.jpg"},
- {n:"프린세스 메이커2",p:["PC"],g:"비주얼 노벨",i:"maker.jpg"},
- {n:"보글보글2 히어로",p:["Console"],g:"아케이드",i:"bubble2.jpg"},
+ {n:"프린세스 메이커2",p:["PC"],g:"비주얼 노벨",t:["클리어"],i:"maker.jpg"},
+ {n:"보글보글2 히어로",p:["Console"],g:"아케이드",t:["클리어"],i:"bubble2.jpg"},
  {n:"동물철권2",p:["Console"],g:"액션",i:"animal.jpg"},
- {n:"스노우브라더스2",p:["Console"],g:"아케이드",i:"snow.jpg"},
- {n:"펭귄브라더스",p:["Console"],g:"아케이드",i:"peng.jpg"},
+ {n:"스노우브라더스2",p:["Console"],g:"아케이드",t:["클리어"],i:"snow.jpg"},
+ {n:"펭귄브라더스",p:["Console"],g:"아케이드",t:["클리어"],i:"peng.jpg"},
  {n:"소닉",p:["Console"],g:"어드벤처",i:"sonic.jpg"},
  {n:"철권3",p:["Console"],g:"액션",i:"tekken.jpg"},
  {n:"철권4",p:["Console"],g:"액션",i:"tek4.jpg"},
  {n:"철권5",p:["Console"],g:"액션",i:"tek5.jpg"},
- {n:"리듬세상",p:["Console"],g:"아케이드",i:"rhythm.jpg"},
+ {n:"리듬세상",p:["Console"],g:"리듬",t:["클리어"],i:"rhythm.jpg"},
  {n:"마리오파티DS",p:["Console"],g:"아케이드",i:"marioparty.jpg"},
- {n:"리듬히어로",p:["Console"],g:"아케이드",i:"rhythmhero.jpg"},
- {n:"레이튼교수와 이상한마을",p:["Console"],g:"어드벤처",i:"ray.jpg"},
+ {n:"리듬히어로",p:["Console"],g:"리듬",t:["클리어"],i:"rhythmhero.jpg"},
+ {n:"레이튼교수와 이상한마을",p:["Console"],g:"어드벤처",t:["클리어"],i:"ray.jpg"},
  {n:"고군분투",p:["PC"],g:"아케이드",i:"rhrns.jpg"},
- {n:"메탈슬러그",p:["Console"],g:"FPS·슈팅",i:"metal.jpg"},
- {n:"메탈슬러그2",p:["Console"],g:"FPS·슈팅",i:"metal2.jpg"},
- {n:"메탈슬러그X",p:["Console"],g:"FPS·슈팅",i:"metalx.jpg"},
- {n:"메탈슬러그3",p:["Console"],g:"FPS·슈팅",i:"metal3.jpg"},
- {n:"메탈슬러그4",p:["Console"],g:"FPS·슈팅",i:"metal4.jpg"},
- {n:"메탈슬러그5",p:["Console"],g:"FPS·슈팅",i:"metal5.jpg"},
- {n:"메탈슬러그6",p:["Console"],g:"FPS·슈팅",i:"metal6.jpg"},
- {n:"메탈슬러그7",p:["Console"],g:"FPS·슈팅",i:"metal7.jpg"},
- {n:"공튀기기",p:["PC"],g:"퍼즐",i:"ball.jpg"},
+ {n:"메탈슬러그",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal.jpg"},
+ {n:"메탈슬러그2",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal2.jpg"},
+ {n:"메탈슬러그X",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metalx.jpg"},
+ {n:"메탈슬러그3",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal3.jpg"},
+ {n:"메탈슬러그4",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal4.jpg"},
+ {n:"메탈슬러그5",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal5.jpg"},
+ {n:"메탈슬러그6",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal6.jpg"},
+ {n:"메탈슬러그7",p:["Console"],g:"FPS·슈팅",t:["클리어"],i:"metal7.jpg"},
+ {n:"공튀기기",p:["PC"],g:"퍼즐",t:["클리어"],i:"ball.jpg"},
  {n:"스도쿠7",p:["Mobile"],g:"퍼즐",i:"sdoku.jpg"},
  {n:"탑 로드",p:["Mobile"],g:"퍼즐",i:"toproad.jpg"},
  {n:"Bus Escape",p:["Mobile"],g:"퍼즐",i:"bus.jpg"},
  {n:"Magic Sort",p:["Mobile"],g:"퍼즐",i:"magicsort.jpg"},
+ {n:"피아노 타일2",p:["Mobile"],g:"리듬",i:"piano2.jpg"},
+ {n:"퍼피레드",p:["PC"],g:"퍼즐",i:"puppy.jpg"},
+ {n:"포밍뿌",p:["PC"],g:"퍼즐",i:"foming.jpg"},
+ {n:"리듬스타",p:["Mobile"],g:"리듬",i:"rhythmstar.jpg"},
 ];
 // =====================================================================
-const GENRES=["MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드","MOBA","비주얼 노벨","생존·호러","스포츠","전략","퍼즐","기타"],PCG=["PC","Console","Switch"],GSZ=12;
+// ===== 플레이이력 정렬: 고정 9개 → 플랫폼(PC → Console → Mobile) → 기록 문구 수(클리어 제외) → 플레이타임 → 클리어 → 가나다 =====
+const GFAV=["검은사막","MapleStory","MapleStoryWorlds","PalWorld","RAFT","리그오브레전드","STARCRAFT","Lethal Company","DEVOUR"],isFav=g=>GFAV.includes(g.n.trim());
+(()=>{
+  const rk=g=>g.p.includes("PC")?0:g.p.some(x=>x==="Console"||x==="Switch")?1:2;
+  const hrs=g=>{if(typeof g.h==="number")return g.h;let m=0;(g.t||[]).forEach(x=>{const k=/(\d[\d,]*)\s*시간/.exec(x);if(k)m=Math.max(m,+k[1].replace(/,/g,""))});return m};
+  const clr=g=>(g.t||[]).includes("클리어")?1:0,rec=g=>(g.t||[]).filter(x=>x!=="클리어").length;
+  const pin=g=>{const i=GFAV.indexOf(g.n.trim());return i<0?99:i};
+  GAMES.sort((a,b)=>pin(a)-pin(b)||rk(a)-rk(b)||rec(b)-rec(a)||hrs(b)-hrs(a)||clr(b)-clr(a)||a.n.trim().localeCompare(b.n.trim(),"ko"));
+})();
+const GENRES=["MMORPG","RPG","액션","FPS·슈팅","어드벤처","아케이드","생존·호러","스포츠","AOS","리듬","비주얼 노벨","퍼즐"],PCG=["PC","Console","Switch"],GSZ=12;
 let gpf="전체",ggs=[],gpg=1,gpages=1;
 const gl=g=>Array.isArray(g.g)?g.g:[g.g],pcnt=x=>x==="전체"?GAMES.length:GAMES.filter(g=>x==="Mobile"?g.p.includes("Mobile"):g.p.some(y=>PCG.includes(y))).length;
   const hue=n=>[...n].reduce((a,c)=>(a*31+c.charCodeAt(0))%360,7);
@@ -1117,7 +1158,7 @@ function gdraw(){
   const list=GAMES.filter(g=>gok(g)&&(!ggs.length||gl(g).some(x=>ggs.includes(x)))),pages=Math.max(1,Math.ceil(list.length/GSZ));
   if(gpg>pages)gpg=pages;gpages=pages;
   $("#gg").innerHTML=list.length?list.slice((gpg-1)*GSZ,gpg*GSZ).map(g=>{const h=hue(g.n);
-    return `<div class="gi"><div class="gimg" style="background:linear-gradient(135deg,hsl(${h} 45% 58%),hsl(${(h+40)%360} 50% 30%))"><span>${g.n.trim()[0].toUpperCase()}</span>${g.i?`<img src="images/games/${g.i}" alt="" draggable="false" loading="lazy" onerror="this.remove()">`:""}</div><h4>${g.n}</h4><span class="pp">${g.p.join(" · ")}</span><div class="gt">${(g.t||(g.h?[g.h.toLocaleString("ko-KR")+"시간"]:[])).map(x=>`<span class="${/클리어|10000시간|15년 플레이|100%|솔라레랭커|랭커|엔딩|올클/.test(x)?"hi":""}">${x}</span>`).join("")}</div></div>`}).join(""):'<p class="gempty">해당 조건의 게임이 없습니다.</p>';
+    return `<div class="gi"><div class="gimg" style="background:linear-gradient(135deg,hsl(${h} 45% 58%),hsl(${(h+40)%360} 50% 30%))"><span>${g.n.trim()[0].toUpperCase()}</span>${g.i?`<img src="images/games/${g.i}" alt="" draggable="false" loading="lazy" onerror="this.remove()">`:""}${isFav(g)?'<span class="gfav" title="최애 게임">★ 최애</span>':""}</div><h4>${g.n}</h4><span class="pp">${g.p.join(" · ")}</span><div class="gt">${(g.t||(g.h?[g.h.toLocaleString("ko-KR")+"시간"]:[])).map(x=>`<span class="${/클리어|10000시간|15년 플레이|100%|솔라레랭커|랭커|엔딩|올클/.test(x)?"hi":""}">${x}</span>`).join("")}</div></div>`}).join(""):'<p class="gempty">해당 조건의 게임이 없습니다.</p>';
   $("#gf").innerHTML=["전체","PC & Console","Mobile"].map(x=>`<button class="${x===gpf?"on":""}" data-pf="${x}">${x}</button>`).join("")+'<span class="sep"></span>'+GENRES.map(x=>`<button class="${ggs.includes(x)?"on":""}" data-gf="${x}" aria-pressed="${ggs.includes(x)}">${x}</button>`).join("")+`<span class="gtot">총 ${list.length}개</span>`;
   $("#gn").innerHTML=`<button data-pn="-1" aria-label="이전 페이지" ${gpg<=1?"disabled":""}><svg class="i" style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button><span>${gpg} / ${pages}</span><button data-pn="1" aria-label="다음 페이지" ${gpg>=pages?"disabled":""}>${ic("chev")}</button>`;
 }
